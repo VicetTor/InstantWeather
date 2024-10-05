@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Instant Weather</title>
 </head>
 <body>
@@ -12,21 +14,95 @@
     <h1>INSTANT WEATHER</h1>
     <h3>Votre météo en instantané</h3>
 
-    <!-- SEARCHING -->
+    <!-- SEARCHING 
     <input type="number" placeholder="Saisissez un code postal..." id="postcode" name="postcode" required minlength="5" maxlength="5"/>
     <input type="submit" id="submit" name="submit" />
-    <input type="select" placeholder="Sélectionnez une commune..." id="selectmenu" name="selectmenu" />
+    <input type="select" placeholder="Sélectionnez une commune..." id="selectmenu" name="selectmenu" />-->
 
 
-    <!-- WEATHER 
-    <h2>nameTown</h2>
-    <h3>dateTime</h3>-->
+    <!-- WEATHER -->
+    <div class="cityDate">
+        <h2>Gouville-sur-Mer</h2>
+        <h3>30 juin 2024, 16h12</h3>
+    </div>
+
+    <div class="mainData">
+        <div class="weatherInfo">
+            <p class="temperature">20°</p>
+            <p class="sky">Nuageux</p>
+        </div>
+        <div class="mainInfo">
+            <div class="mainInfoTop">
+                <div class="data">
+                    <p class="number">11°</p>
+                    <p class="textValue">Temp. min.</p>
+                </div>
+                <div class="data">
+                    <p class="number">21°</p>
+                    <p class="textValue">Temp. max.</p>
+                </div>
+            </div>
+            <div class="mainInfoBottom">
+                <div class="data">
+                    <p class="number">60%</p>
+                    <p class="textValue">Proba. pluie</p>
+                </div>
+                <div class="data">
+                    <p class="number">3h25</p>
+                    <p class="textValue">Heure sol.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="supData">
+        <div class="map">
+            <span class="material-symbols-outlined">
+                map
+            </span>
+            <div class="data">
+                <p class="number">48.0833m</p>
+                <p class="textValue">Latitude</p>
+            </div>
+            <div class="data">
+                <p class="number">-1.0833m</p>
+                <p class="textValue">Longitude</p>
+            </div>
+        </div>
+        <div class="rain">
+            <span class="material-symbols-outlined">
+                water_drop
+            </span>
+            <div class="data">
+                <p class="number">13mm</p>
+                <p class="textValue">Cumul pluie</p>
+            </div>
+        </div>
+        <div class="wind">
+            <span class="material-symbols-outlined">
+                air
+            </span>
+            <div class="data">
+                <p class="number">30km/h</p>
+                <p class="textValue">Vent moyen</p>
+            </div>
+            <div class="data">
+                <p class="number">170°</p>
+                <p class="textValue">Direction vent</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- WEATHER PER DAY -->
+    <div class="perDay">
+
+    </div>
 
     <!-- FOOTER -->
-    <div class="footer">
+    <footer>
         <p>Projet JavaScript - INSTANT WEATHER</p>
         <p>BEUVE Léopold    YVRAY RUFFINATTI Victor    K'DUAL Louane</p>
-    </div>
+    </footer>
     
 </body>
 </html>
