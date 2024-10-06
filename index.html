@@ -3,21 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js" defer></script>
     <link rel="stylesheet" href="styles.css"> 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Instant Weather</title>
+    <script src="https://kit.fontawesome.com/40622e83b7.js" crossorigin="anonymous"></script>
+
+    <script defer src="script.js"></script>
 </head>
 <body>
 
-    <!-- TITLE -->
-    <h1>INSTANT WEATHER</h1>
-    <h3>Votre météo en instantané</h3>
+    <!-- TITLE --> 
+     <div class="title">
+        <h1 id="title">INSTANT WEATHER</h1>
+        <h3 id="subtitle">Votre météo en instantané</h3>
+     </div>
+    
+
+    <!-- SEARCHING -->
+    
+    <div class="postalCode">
+        <input type="number" placeholder="Saisissez un code postal" id="postcode" name="postcode" required minlength="5" maxlength="5"/>
+        <button type="submit" id="submit" name="submit">
+            <i id = "load" class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    
+    </div>
+        
+    <div class="city">
+        <select id="ville">
+            <option value="" disabled selected> Sélectionnez une commune </option>
+        </select>
+             
+    </div>
+    
+     
 
     <!-- SEARCHING 
     <input type="number" placeholder="Saisissez un code postal..." id="postcode" name="postcode" required minlength="5" maxlength="5"/>
     <input type="submit" id="submit" name="submit" />
     <input type="select" placeholder="Sélectionnez une commune..." id="selectmenu" name="selectmenu" />-->
+
 
 
     <!-- WEATHER -->
