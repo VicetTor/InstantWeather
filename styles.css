@@ -20,15 +20,22 @@ body{
     visibility: hidden;
 }
 
+#load{
+    color: white;
+}
+
 #title, #subtitle, .postalCode, .city{
     display: flex;
     justify-content: center;
     align-items: center;
-    
+}
+
+#subtitle{
+    margin-bottom: 5em;
 }
 
 #title{
-    text-shadow: 10px 10px 20px black;
+    text-shadow: 2px 7px 20px grey;
 }
 
 
@@ -49,6 +56,12 @@ body{
 
 .city{
     margin-bottom: 15em;
+}
+
+#ville{
+    border-radius: 5em;
+    width: 15em;
+    height: 2.5em;
 }
 
 input{

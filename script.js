@@ -1,7 +1,7 @@
-const validation = document.getElementById("commune");
-const input = document.getElementById("inputCommune");
+const validation = document.getElementById("ville");
+const input = document.getElementById("postcode");
 const submitButton = document.getElementById("submit");
-const paragrapheAffichage = document.getElementById("items");
+
 let dataPerDay = [];
 let dataWeather;
 let valeurInput;
@@ -54,6 +54,7 @@ async function fetchDataNomVille(nomCommune){
     try{
         const result = await fetch(`https://geo.api.gouv.fr/communes?nom=${nomCommune}&fields=departement`);
         const data = await result.json();
+        console.log(data)
         const valeurInsee = data[0].code;
         fetchDataMeteo(valeurInsee);
     }
@@ -69,21 +70,18 @@ validation.addEventListener("change", ()=>{
 })
 
 async function fetchDataMeteo(codeInsee){
-    try{
+    try{ 
         const result = await fetch(`https://api.meteo-concept.com/api/forecast/daily?token=${token}&insee=${codeInsee}`);
         const data = await result.json();
+        console.log(data)
         const tempMinCommune = data.forecast[0].tmin;
         const tempMaxCommune = data.forecast[0].tmax;
         const probaRain = data.forecast[0].probarain;
         const sun_hours = data.forecast[0].sun_hours;
-        affichageTemp(tempMinCommune, tempMaxCommune, probaRain, sun_hours);
     }
     catch(error){
         console.error("Erreur Météo");
     }
 }
 
-function affichageTemp(tempMin, tempMax, probaRain, sun_hours){
-    paragrapheAffichage.style.visibility = "visible";
-    paragrapheAffichage.innerText = `Température Minimum : ${tempMin}, Température Maximal : ${tempMax}, Probabilité de pluie : ${probaRain}%, Heures d'ensoleillement : ${sun_hours}`;
-}
+
