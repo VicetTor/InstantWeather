@@ -87,7 +87,9 @@ async function fetchDataMeteo(codeInsee){
     try{ 
         const result = await fetch(`https://api.meteo-concept.com/api/forecast/daily?token=${token}&insee=${codeInsee}`);
         const data = await result.json();
-        console.log(data)
+        console.log(data);
+        console.log(data.forecast[0].weather)
+        const skyCommune = weatherDescriptions(data.forecast[0].weather);
         const tempMinCommune = data.forecast[0].tmin;
         const tempMaxCommune = data.forecast[0].tmax;
         const probaRainCommune = data.forecast[0].probarain;
@@ -95,6 +97,7 @@ async function fetchDataMeteo(codeInsee){
         const nomVille = data.city.name;
 
         nomCommune.innerText = nomVille;
+        sky.innerText = skyCommune;
         tempMin.innerText = tempMinCommune+'°';
         tempMax.innerText = tempMaxCommune+'°';
         probaRain.innerText = probaRainCommune+'%';
@@ -135,6 +138,7 @@ revenirArriere.addEventListener("click",()=>{
 })
 
 function weatherDescriptions (weather){
+    console.log(weather);
     if(weather == 0){
         return "Ensolleillé";
     } 
