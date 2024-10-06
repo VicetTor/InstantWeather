@@ -13,6 +13,7 @@ const codePostal = document.getElementById("postalCode");
 const title = document.getElementById("title");
 const revenirArriere = document.getElementById("revenirArriere");
 const sky = document.getElementById("sky")
+const body = document.body;
 
 let dataPerDay = [];
 let dataWeather;
@@ -20,7 +21,7 @@ let valeurInput;
 
 const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
 
-async function setDataWeather(codeInsee) {
+/*async function setDataWeather(codeInsee) {
     const url = `https://api.meteo-concept.com/api/forecast/daily?token=4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382&insee=${codeInsee}`;
     try {
     const response = await fetch(url);
@@ -37,7 +38,7 @@ function setDataPerDay(){
         dataPerDay[i] = dataWeather.forecast[i];
         console.log(dataPerDay[i]);
     }
-}
+}*/
 
 async function fetchData(codePostal) { // asynchrone pour exécuter tout le code et attendre la réponse 
     try{
@@ -68,7 +69,6 @@ async function fetchDataNomVille(nomCommune){
     try{
         const result = await fetch(`https://geo.api.gouv.fr/communes?nom=${nomCommune}&fields=departement`);
         const data = await result.json();
-        console.log(data)
         const valeurInsee = data[0].code;
         fetchDataMeteo(valeurInsee);
     }
@@ -87,9 +87,7 @@ async function fetchDataMeteo(codeInsee){
     try{ 
         const result = await fetch(`https://api.meteo-concept.com/api/forecast/daily?token=${token}&insee=${codeInsee}`);
         const data = await result.json();
-        console.log(data);
-        console.log(data.forecast[0].weather);
-        
+        console.log(data)
         const skyCommune = data.forecast[0].weather;
         weatherDescriptions(skyCommune);
         const tempMinCommune = data.forecast[0].tmin;
@@ -132,6 +130,8 @@ function remettreAffichageCommune(){
     revenirArriere.style.visibility ="hidden";
     infoMain.style.visibility = "hidden";
     title.style.marginTop = "15%";
+    body.style.backgroundColor= "#58ABB0";
+    selectionCity.style.visibility = "hidden";
 }
 
 revenirArriere.addEventListener("click",()=>{
@@ -142,21 +142,27 @@ function weatherDescriptions (weather){
     console.log(weather);
     if(weather == 0){
         sky.innerHTML = '<i class="fa-regular fa-sun"></i>';
+        body.style.backgroundColor ="#80DDE3"
     } 
     if((weather >= 1 && weather <= 5) || (weather == 16) ){
         sky.innerHTML = '<i class="fa-solid fa-cloud"></i>';
+        body.style.backgroundColor="#6FB8BD"
     }
     if(weather >= 6 && weather <= 7 ){
         sky.innerHTML = '<i class="fa-solid fa-smog"></i>';
+        body.style.backgroundColor = "#59989C";
     }
     if((weather >= 10 && weather <= 15) || (weather >= 40 && weather <= 48) || (weather >= 210 && weather <= 212) || (weather == 235)){
         sky.innerHTML =  '<i class="fa-solid fa-cloud-rain"></i>';
+        body.style.backgroundColor = "#496769";
     }
     if((weather >= 20 && weather <= 22 ) || (weather >= 30 && weather <= 32) ||  (weather >= 60 && weather <= 68) || (weather >= 70 && weather <= 78) || (weather >= 220 && weather <= 2022) || (weather >= 230 && weather <= 232)){
         sky.innerHTML = '<i class="fa-solid fa-snowflake"></i>'
+        body.style.backgroundColor = "#8BA1A3";
     }
     if((weather >= 100 && weather <= 108) || (weather >= 120 && weather <= 142)){
         sky.innerHTML = '<i class="fa-solid fa-poo-storm"></i>';
+        body.style.backgroundColor = "#302A2A";
     }
     
 
