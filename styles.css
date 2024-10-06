@@ -12,6 +12,14 @@ body{
     color: white
 }
 
+#load{
+    cursor: pointer;
+}
+
+#info{
+    visibility: hidden;
+}
+
 #title, #subtitle, .postalCode, .city{
     display: flex;
     justify-content: center;
