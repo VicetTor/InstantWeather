@@ -1,6 +1,14 @@
 const validation = document.getElementById("ville");
 const input = document.getElementById("postcode");
 const submitButton = document.getElementById("submit");
+const infoMain = document.getElementById("infoMain");
+const tempMin = document.getElementById("tempMin");
+const tempMax = document.getElementById("tempMax");
+const probaRain = document.getElementById("probaRain");
+const heureSol = document.getElementById("heureSol");
+const nomCommune = document.getElementById("nomCommune");
+const heureActuelle = document.getElementById("heureActuelle");
+const selectionCity = document.getElementById("city");
 
 let dataPerDay = [];
 let dataWeather;
@@ -48,6 +56,7 @@ submitButton.addEventListener("click", ()=>{
     validation.innerText = ""
     valeurInput = input.value
     fetchData(valeurInput)
+    city.style.visibility ="visible";
 });
 
 async function fetchDataNomVille(nomCommune){
@@ -76,12 +85,24 @@ async function fetchDataMeteo(codeInsee){
         console.log(data)
         const tempMinCommune = data.forecast[0].tmin;
         const tempMaxCommune = data.forecast[0].tmax;
-        const probaRain = data.forecast[0].probarain;
+        const probaRainCommune = data.forecast[0].probarain;
         const sun_hours = data.forecast[0].sun_hours;
+        const nomVille = data.city.name;
+
+        nomCommune.innerText = nomVille;
+        tempMin.innerText = tempMinCommune+'°';
+        tempMax.innerText = tempMaxCommune+'°';
+        probaRain.innerText = probaRainCommune+'%';
+        heureSol.innerText = sun_hours;
+        affichageInfos();
     }
     catch(error){
         console.error("Erreur Météo");
     }
+}
+
+function affichageInfos(){
+    infoMain.style.visibility = "visible";
 }
 
 

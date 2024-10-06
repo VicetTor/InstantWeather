@@ -16,7 +16,7 @@ body{
     cursor: pointer;
 }
 
-#info{
+#infoMain{
     visibility: hidden;
 }
 
@@ -24,7 +24,7 @@ body{
     color: white;
 }
 
-#title, #subtitle, .postalCode, .city{
+#title, #subtitle, .postalCode, #city{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,7 +54,7 @@ body{
     margin-left: 1em;
 }
 
-.city{
+#city{
     margin-bottom: 15em;
 }
 
@@ -149,7 +149,7 @@ h3{
 }
 
 /* ------------------ SUP DATA ------------------ */
-.supData{
+#supData{
     border: 0.2em solid rgb(255, 255, 255, 0.35);
     border-radius: 1em;
     display: flex;
@@ -159,6 +159,7 @@ h3{
     padding: 1.5em;
     margin: 1.5em auto;
     max-width: 30em;
+    visibility: hidden;
 }
 
 .map, .rain, .wind{
