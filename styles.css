@@ -90,9 +90,10 @@ h3{
     display: flex;
     justify-content: center;
     /*text-shadow: -0.06em 0.06em 1em black;*/
-    margin:1.5em;
+    box-sizing: border-box;
     padding: 1.5em;
-    margin-inline: 16em;
+    margin: 1.5em auto;
+    max-width: 30em;
 }
 
 .map, .rain, .wind{
