@@ -21,19 +21,20 @@
 
     <!-- SEARCHING -->
     
-    <div class="postalCode">
-        <input type="number" placeholder="Saisissez un code postal" id="postcode" name="postcode" required minlength="5" maxlength="5"/>
-        <button type="submit" id="submit" name="submit">
-            <i id = "load" class="fa-solid fa-magnifying-glass"></i>
-        </button>
+    <div id="search">
+        <div class="postalCode">
+            <input type="number" placeholder="Saisissez un code postal" id="postcode" name="postcode" required minlength="5" maxlength="5"/>
+            <button type="submit" id="submit" name="submit">
+                <i id = "load" class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+            
+        <div class="city">
+            <select id="ville">
+                <option value="" disabled selected> Sélectionnez une commune </option>
+            </select>
+        </div>
     </div>
-        
-    <div class="city">
-        <select id="ville">
-            <option value="" disabled selected> Sélectionnez une commune </option>
-        </select>
-    </div>
-
 
     <!-- WEATHER -->
     
@@ -113,14 +114,29 @@
 
 
     <!-- WEATHER PER DAY -->
-    <div class="perDay">
 
+    <div class="choosePerDay">
+        <p>Voir sur plusieurs jours :&nbsp;</p>
+        <select name="howManyDays" id="howManyDays"></select>
+    </div>
+
+    <div class="selectPerDay">
+        
+        <div class="oneDay"> <!-- exemple de date à insérer en JS -->
+            <!-- image -->
+            <span class="material-symbols-outlined">
+                cloud
+            </span>
+             <p class="tempMinMax">14°/21°</p>
+             <p class="datePerDay">01/07</p>
+        </div>
+        
     </div>
 
     <!-- FOOTER -->
     <footer>
         <p>Projet JavaScript - INSTANT WEATHER</p>
-        <p>BEUVE Léopold    YVRAY RUFFINATTI Victor    K'DUAL Louane</p>
+        <p>BEUVE Léopold - YVRAY RUFFINATTI Victor - K'DUAL Louane</p>
     </footer>
     
 </body>

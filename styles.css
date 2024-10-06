@@ -17,6 +17,10 @@ body{
 }
 
 #info{
+    /*visibility: hidden;*/
+}
+
+#search{
     visibility: hidden;
 }
 
@@ -163,6 +167,50 @@ h3{
 
 .map, .rain, .wind{
     text-align: center;
+}
+
+/* ------------------ WEATHER PER DAY ------------------ */
+.choosePerDay{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#howManyDays{
+    width: 4em;
+    height: 2.5em;
+    border: solid rgb(255, 255, 255, 0);
+    border-radius: 0.5em;
+    background-color: rgb(255, 255, 255, 0.5);
+}
+
+.selectPerDay{
+    border: solid rgb(255, 255, 255, 0);
+    border-radius: 1em;
+    background-color: rgb(255, 255, 255, 0.15);
+    max-width: 30em;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 0em;
+    margin: 1.5em auto;
+    max-width: 32em;
+    margin-bottom: 5em;
+}
+
+.oneDay{
+    padding: 0.5em;
+    text-align: center;
+}
+
+.tempMinMax{
+    font-size: 1em;
+    margin: 0;
+}
+
+.datePerDay{
+    font-size: 0.75em;
+    margin: 0;
 }
 
 /* ------------------ FOOTER ------------------ */
