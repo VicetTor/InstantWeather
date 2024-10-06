@@ -13,9 +13,50 @@
 
     <!-- REVENIR EN ARRIERE -->
     <div id="revenirArriere">
-        <span class="material-symbols-outlined">
+        <span id="revenirArriereForm" class="material-symbols-outlined">
             arrow_back
             </span>
+    </div>
+
+    <div id="settings" style="visibility: hidden;">
+        <span id="settingsForm" class="material-symbols-outlined">
+            settings
+            </span>
+    </div>
+
+    <div id="formulaire" style="visibility: hidden;">
+        <span id="cancel" class="material-symbols-outlined" style="cursor:pointer">
+            cancel
+            </span>
+        <form id="checkbox">
+            <label for="latitude"></label>
+                Latitude 
+                <input type="checkbox" id="latitudeCheckBox" name="latitude" value="1">
+            </label>
+
+            <label for="longitude"></label>
+                Longitude
+                <input type="checkbox" id="longitude" name="longitude" value="2">
+            </label>
+
+            <label for="cumulPluie">
+            </label>
+                cumulPluie
+                <input type="checkbox" id="cumulPluie" name="cumulPluie" value="3">
+            </label>
+
+            <label for="directionVent">
+            </label>
+                directionVent
+                <input type="checkbox" id="directionVent" name="directionVent" value="4">
+            </label>
+
+            <label for="ventMoyen"></label>
+                ventMoyen
+                <input type="checkbox" id="ventMoyen" name="ventMoyen" value="5">
+            </label>
+
+        </form>
     </div>
 
     <!-- TITLE --> 

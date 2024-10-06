@@ -25,6 +25,52 @@ body{
     color: white;
 }
 
+#revenirArriereForm{
+    font-size: 4em;
+}
+
+
+#formulaire {
+    position: absolute;
+    top: 20px; 
+    right: 20px; 
+    width: 200px; 
+    background-color: green;
+    padding: 10px; 
+    border-radius: 10px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+#formulaire form {
+    display: flex;
+    flex-direction: column; 
+}
+
+#formulaire label{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    font-size: 0.9em; 
+    margin-bottom: 10px;
+}
+
+#formulaire input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+#settings{
+    position: absolute;
+    top: 2em;
+    right: 2em;
+    cursor: pointer;
+}
+
+#settingsForm{
+    font-size: 4em;
+}
+
 #load{
     cursor: pointer;
     font-size: 2em;

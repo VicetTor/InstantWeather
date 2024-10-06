@@ -20,6 +20,11 @@ const longitude = document.getElementById("longitude");
 const cumulPluie = document.getElementById("cumulPluie");
 const ventMoyen = document.getElementById("ventMoyen");
 const directionVent = document.getElementById("directionVent");
+const settings = document.getElementById("settings");
+const formulaire = document.getElementById("formulaire");
+const cancel = document.getElementById("cancel");
+const checkbox = document.getElementById("checkbox");
+const latitudeCheckBox = document.getElementById("latitudeCheckBox");
 
 let dataPerDay = [];
 let dataWeather;
@@ -107,6 +112,8 @@ async function fetchDataMeteo(codeInsee){
         const directionVentCommune = data.forecast[0].dirwind10m;
         const cumulPluieCommune = data.forecast[0].rr10;
 
+        
+
         cumulPluie.innerText = cumulPluieCommune+"mm";
         ventMoyen.innerText = ventMoyenCommune+"km/h";
         directionVent.innerText = directionVentCommune+'°';
@@ -129,6 +136,7 @@ function affichageInfos(){
     enleverAffichageCommune();
     InstantWeatherPlacer();
     supData.style.visibility = "visible";
+    settings.style.visibility ="visible";
 }
 
 function enleverAffichageCommune(){
@@ -182,6 +190,22 @@ function weatherDescriptions (weather){
         sky.innerHTML = '<i class="fa-solid fa-poo-storm"></i>';
         body.style.backgroundColor = "#302A2A";
     }
-    
+}
+
+settings.addEventListener("click",()=>{
+    formulaire.style.visibility="visible";
+})
+
+cancel.addEventListener("click",()=>{
+    formulaire.style.visibility="hidden";
+})
+
+latitudeCheckBox.addEventListener("change", ()=>{
+    if(latitudeCheckBox.checked){
+        
+    }
+})
+
+function putLatitudeInDetails(data){
 
 }
