@@ -88,8 +88,10 @@ async function fetchDataMeteo(codeInsee){
         const result = await fetch(`https://api.meteo-concept.com/api/forecast/daily?token=${token}&insee=${codeInsee}`);
         const data = await result.json();
         console.log(data);
-        console.log(data.forecast[0].weather)
-        const skyCommune = weatherDescriptions(data.forecast[0].weather);
+        console.log(data.forecast[0].weather);
+        
+        const skyCommune = data.forecast[0].weather;
+        weatherDescriptions(skyCommune);
         const tempMinCommune = data.forecast[0].tmin;
         const tempMaxCommune = data.forecast[0].tmax;
         const probaRainCommune = data.forecast[0].probarain;
@@ -97,7 +99,6 @@ async function fetchDataMeteo(codeInsee){
         const nomVille = data.city.name;
 
         nomCommune.innerText = nomVille;
-        sky.innerText = skyCommune;
         tempMin.innerText = tempMinCommune+'°';
         tempMax.innerText = tempMaxCommune+'°';
         probaRain.innerText = probaRainCommune+'%';
@@ -140,28 +141,23 @@ revenirArriere.addEventListener("click",()=>{
 function weatherDescriptions (weather){
     console.log(weather);
     if(weather == 0){
-        return "Ensolleillé";
+        sky.innerHTML = '<i class="fa-regular fa-sun"></i>';
     } 
     if((weather >= 1 && weather <= 5) || (weather == 16) ){
-        return "Couvert";
+        sky.innerHTML = '<i class="fa-solid fa-cloud"></i>';
     }
     if(weather >= 6 && weather <= 7 ){
-        return "Brouillard";
+        sky.innerHTML = '<i class="fa-solid fa-smog"></i>';
     }
-    if((weather >= 10 && weather <= 15) || (weather >= 40 && weather <= 48) || (weather >= 210 && weather <= 212) ){
-        return "Pluie";
+    if((weather >= 10 && weather <= 15) || (weather >= 40 && weather <= 48) || (weather >= 210 && weather <= 212) || (weather == 235)){
+        sky.innerHTML =  '<i class="fa-solid fa-cloud-rain"></i>';
     }
-    if((weather >= 20 && weather <= 22 ) || (weather >= 60 && weather <= 68) || (weather >= 220 && weather <= 2022)){
-        return "Neige";
-    }
-    if((weather >= 30 && weather <= 32) || (weather >= 70 && weather <= 78) || (weather >= 230 && weather <= 232)){
-        return "Pluie et neige mellees";
+    if((weather >= 20 && weather <= 22 ) || (weather >= 30 && weather <= 32) ||  (weather >= 60 && weather <= 68) || (weather >= 70 && weather <= 78) || (weather >= 220 && weather <= 2022) || (weather >= 230 && weather <= 232)){
+        sky.innerHTML = '<i class="fa-solid fa-snowflake"></i>'
     }
     if((weather >= 100 && weather <= 108) || (weather >= 120 && weather <= 142)){
-        return "Orage";
+        sky.innerHTML = '<i class="fa-solid fa-poo-storm"></i>';
     }
-    if(weather == 235 ){
-        return "Averse de gele";
-    }
+    
 
 }

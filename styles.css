@@ -6,6 +6,9 @@ html,body{
     margin: 0;
     padding: 0;
 }
+#sky i{
+    font-size: 5em;
+}
 
 body{
     background-color: rgb(88, 171, 176);
@@ -20,6 +23,7 @@ body{
 
 #load{
     cursor: pointer;
+    font-size: 2em;
 }
 
 
