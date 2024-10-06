@@ -27,7 +27,6 @@ body{
 #title, #subtitle, .postalCode, .city{
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 #subtitle{
@@ -36,6 +35,7 @@ body{
 
 #title{
     text-shadow: 2px 7px 20px grey;
+    margin-top: 5em;
 }
 
 
@@ -48,6 +48,10 @@ body{
     margin-bottom: 1em;
     margin-left: 2em ;
 
+}
+
+#postalCode{
+    text-align: right;
 }
 
 .postalCode button{
@@ -75,6 +79,14 @@ input{
     background-color: transparent;
 
 }
+
+#postcode {
+    text-align: left; 
+    padding: 5px;
+    margin-right: 10px; 
+}
+
+
 
 /* ------------------ CITY & DATE ------------------ */
 .cityDate{
