@@ -4,18 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instant Weather</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/40622e83b7.js" crossorigin="anonymous"></script>
+
+    <script defer src="script.js"></script>
 </head>
 <body>
 
-    <!-- TITLE -->
-    <h1>INSTANT WEATHER</h1>
-    <h3>Votre météo en instantané</h3>
+    <!-- TITLE --> 
+     <div class="title">
+        <h1 id="title">INSTANT WEATHER</h1>
+        <h3 id="subtitle">Votre météo en instantané</h3>
+     </div>
+    
 
     <!-- SEARCHING -->
-    <input type="number" placeholder="Saisissez un code postal..." id="postcode" name="postcode" required minlength="5" maxlength="5"/>
-    <input type="submit" id="submit" name="submit" />
-    <input type="select" placeholder="Sélectionnez une commune..." id="selectmenu" name="selectmenu" />
-
+    <div class="searchCity">
+        <div class="postalCode">
+            <input type="number" placeholder="Saisissez un code postal..." id="postcode" name="postcode" required minlength="5" maxlength="5"/>
+            <button type="submit" id="submit" name="submit">
+                <i id = "load" class="fa-solid fa-magnifying-glass"></i>
+            </button>
+    
+    
+         </div>
+        
+         <div class="city">
+            <input type="select" placeholder="Sélectionnez une commune..." id="selectmenu" name="selectmenu" />     
+         </div>
+    </div>
+     
+   
 
     <!-- WEATHER 
     <h2>nameTown</h2>

@@ -1,0 +1,42 @@
+body{
+    background-color: rgb(88, 171, 176);
+    color: white
+}
+
+#title, #subtitle, .postalCode, .city{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#title{
+    text-shadow: 10px 10px 20px black;
+}
+
+
+.postalCode input, .city input{
+    border-radius: 30px;
+}
+
+.title{
+    margin-bottom: 7em;
+}
+
+.postalCode{
+    margin-bottom: 1em;
+    margin-left: 2em ;
+
+}
+
+.postalCode button{
+    margin-left: 2%;
+}
+
+.city{
+    margin-bottom: 20%;
+}
+
+.searchCity{
+    align-items: start;
+}
