@@ -18,9 +18,4 @@ function setDataPerDay(){
         dataPerDay[i] = dataWeather.forecast[i];
         console.log(dataPerDay[i]);
     }
-    test()
 }
-
-setDataWeather(50215);
-
-//setTimeout(test,1000);
