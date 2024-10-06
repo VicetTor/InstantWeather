@@ -85,7 +85,8 @@ body{
 input{
     height: 3em;
     width: 15em;
-    text-align: center;
+    text-align: left;
+    text-indent: 1em;
 }
 
 #postalCode button{
