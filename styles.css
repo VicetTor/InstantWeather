@@ -30,13 +30,21 @@ body{
 }
 
 .postalCode button{
-    margin-left: 2%;
+    margin-left: 1em;
 }
 
 .city{
-    margin-bottom: 20%;
+    margin-bottom: 15em;
 }
 
-.searchCity{
-    align-items: start;
+input{
+    height: 3em;
+    width: 15em;
+    text-align: center;
+}
+
+.postalCode button{
+    border: none;
+    background-color: transparent;
+
 }
