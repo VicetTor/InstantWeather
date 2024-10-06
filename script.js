@@ -57,12 +57,10 @@ async function fetchData(codePostal) { // asynchrone pour exécuter tout le code
 }
 
 submitButton.addEventListener("click", ()=>{
-
-  document.getElementById("ville").style.visibility = "visible";
-    validation.innerText = ""
-    valeurInput = input.value
-    fetchData(valeurInput)
-
+    validation.innerText = "";
+    valeurInput = input.value;
+    fetchData(valeurInput);
+    city.style.visibility ="visible";
 });
 
 async function fetchDataNomVille(nomCommune){
