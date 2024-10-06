@@ -1,3 +1,12 @@
+
+html,body{
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body{
     background-color: rgb(88, 171, 176);
     color: white
@@ -19,9 +28,6 @@ body{
     border-radius: 30px;
 }
 
-.title{
-    margin-bottom: 7em;
-}
 
 .postalCode{
     margin-bottom: 1em;
@@ -48,3 +54,103 @@ input{
     background-color: transparent;
 
 }
+
+/* ------------------ CITY & DATE ------------------ */
+.cityDate{
+    text-align: center;
+    margin: 1em;
+}
+
+h2{
+    font-size:2.5em;
+    text-shadow: -0.06em 0.1em 0.5em black;
+    margin:0em;
+    font-weight: lighter;
+}
+
+h3{
+    margin:0em;
+    font-weight: lighter;
+}
+
+/* ------------------ MAIN DATA ------------------ */
+.mainData{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: -0.06em 0.1em 1em black;
+}
+
+.weatherInfo{
+    padding: 2em;
+}
+
+.temperature{
+    font-size: 4em;
+    margin: 0;
+}
+
+.sky{
+    font-size: 1.5em;
+    text-align: center;
+    margin: 0;
+}
+
+.mainInfo{
+    border-radius: 1em;
+    padding: 0.8em;
+    background-color:rgb(255, 255, 255, 0.15);;
+}
+
+.mainInfoTop{
+    display: flex;
+    text-align: center;
+}
+
+.mainInfoBottom{
+    display: flex;
+    text-align: center;
+}
+
+.number{
+    font-size: 1.75em;
+    margin: 0em;
+}
+
+.textValue{
+    font-size: 0.75em;
+    margin: 0;
+}
+
+.data {
+    padding-inline: 1.5em;
+    padding-block: 0.8em;
+}
+
+/* ------------------ SUP DATA ------------------ */
+.supData{
+    border: 0.2em solid rgb(255, 255, 255, 0.35);
+    border-radius: 1em;
+    display: flex;
+    justify-content: center;
+    /*text-shadow: -0.06em 0.06em 1em black;*/
+    box-sizing: border-box;
+    padding: 1.5em;
+    margin: 1.5em auto;
+    max-width: 30em;
+}
+
+.map, .rain, .wind{
+    text-align: center;
+}
+
+/* ------------------ FOOTER ------------------ */
+footer{
+    background-color: rgb(255, 255, 255, 0.25);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 1em;
+    bottom: 0;
+    width: 100%;
+}
+
