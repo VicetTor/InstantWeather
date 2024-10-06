@@ -14,6 +14,12 @@ const title = document.getElementById("title");
 const revenirArriere = document.getElementById("revenirArriere");
 const sky = document.getElementById("sky")
 const body = document.body;
+const supData = document.getElementById("supData");
+const latitude = document.getElementById("latitude");
+const longitude = document.getElementById("longitude");
+const cumulPluie = document.getElementById("cumulPluie");
+const ventMoyen = document.getElementById("ventMoyen");
+const directionVent = document.getElementById("directionVent");
 
 let dataPerDay = [];
 let dataWeather;
@@ -95,7 +101,17 @@ async function fetchDataMeteo(codeInsee){
         const probaRainCommune = data.forecast[0].probarain;
         const sun_hours = data.forecast[0].sun_hours;
         const nomVille = data.city.name;
+        const longitudeCommune = data.city.longitude; 
+        const latitudeCommune = data.city.latitude;
+        const ventMoyenCommune = data.forecast[0].wind10m;
+        const directionVentCommune = data.forecast[0].dirwind10m;
+        const cumulPluieCommune = data.forecast[0].rr10;
 
+        cumulPluie.innerText = cumulPluieCommune+"mm";
+        ventMoyen.innerText = ventMoyenCommune+"km/h";
+        directionVent.innerText = directionVentCommune+'°';
+        latitude.innerText = latitudeCommune;
+        longitude.innerText = longitudeCommune;
         nomCommune.innerText = nomVille;
         tempMin.innerText = tempMinCommune+'°';
         tempMax.innerText = tempMaxCommune+'°';
@@ -112,6 +128,7 @@ function affichageInfos(){
     infoMain.style.visibility = "visible";
     enleverAffichageCommune();
     InstantWeatherPlacer();
+    supData.style.visibility = "visible";
 }
 
 function enleverAffichageCommune(){
@@ -132,6 +149,7 @@ function remettreAffichageCommune(){
     title.style.marginTop = "15%";
     body.style.backgroundColor= "#58ABB0";
     selectionCity.style.visibility = "hidden";
+    supData.style.visibility="hidden";
 }
 
 revenirArriere.addEventListener("click",()=>{
