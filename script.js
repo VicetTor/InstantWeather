@@ -12,6 +12,7 @@ const selectionCity = document.getElementById("city");
 const codePostal = document.getElementById("postalCode");
 const title = document.getElementById("title");
 const revenirArriere = document.getElementById("revenirArriere");
+const sky = document.getElementById("sky")
 
 let dataPerDay = [];
 let dataWeather;
@@ -132,3 +133,31 @@ function remettreAffichageCommune(){
 revenirArriere.addEventListener("click",()=>{
     remettreAffichageCommune();
 })
+
+function weatherDescriptions (weather){
+    if(weather == 0){
+        return "Ensolleillé";
+    } 
+    if((weather >= 1 && weather <= 5) || (weather == 16) ){
+        return "Couvert";
+    }
+    if(weather >= 6 && weather <= 7 ){
+        return "Brouillard";
+    }
+    if((weather >= 10 && weather <= 15) || (weather >= 40 && weather <= 48) || (weather >= 210 && weather <= 212) ){
+        return "Pluie";
+    }
+    if((weather >= 20 && weather <= 22 ) || (weather >= 60 && weather <= 68) || (weather >= 220 && weather <= 2022)){
+        return "Neige";
+    }
+    if((weather >= 30 && weather <= 32) || (weather >= 70 && weather <= 78) || (weather >= 230 && weather <= 232)){
+        return "Pluie et neige mellees";
+    }
+    if((weather >= 100 && weather <= 108) || (weather >= 120 && weather <= 142)){
+        return "Orage";
+    }
+    if(weather == 235 ){
+        return "Averse de gele";
+    }
+
+}
