@@ -12,45 +12,63 @@ body{
     color: white
 }
 
+#revenirArriere{
+    visibility: hidden;
+    cursor: pointer;
+    color: white;
+}
+
 #load{
     cursor: pointer;
 }
 
 #infoMain{
     visibility: hidden;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#postalCode{
+    visibility: visible;
 }
 
 #load{
     color: white;
 }
 
-#title, #subtitle, .postalCode, #city{
+#title, #subtitle, #postalCode, #city{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 #subtitle{
-    margin-bottom: 5em;
+    margin-bottom: 3em;
+    font-size: 1.5em;
 }
 
 #title{
     text-shadow: 2px 7px 20px grey;
+    margin-top: 15%;
+    font-size: 4em;
+    margin-bottom: 0.05em;
 }
 
-
-.postalCode input, .city input{
+#postalCode input, #city input{
     border-radius: 30px;
 }
 
 
-.postalCode{
+#postalCode{
     margin-bottom: 1em;
     margin-left: 2em ;
 
 }
 
-.postalCode button{
+#postalCode button{
     margin-left: 1em;
 }
 
@@ -70,10 +88,9 @@ input{
     text-align: center;
 }
 
-.postalCode button{
+#postalCode button{
     border: none;
     background-color: transparent;
-
 }
 
 /* ------------------ CITY & DATE ------------------ */
@@ -133,7 +150,22 @@ h3{
     text-align: center;
 }
 
-.number{
+#tempMax{
+    font-size: 1.75em;
+    margin: 0em;
+}
+
+#tempMin{
+    font-size: 1.75em;
+    margin: 0em;
+}
+
+#probaRain{
+    font-size: 1.75em;
+    margin: 0em; 
+}
+
+#heureSol{
     font-size: 1.75em;
     margin: 0em;
 }
