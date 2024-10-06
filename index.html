@@ -12,37 +12,44 @@
 </head>
 <body>
 
+
+    <!-- REVENIR EN ARRIERE -->
+    <div id="revenirArriere">
+        <span class="material-symbols-outlined">
+            arrow_back
+            </span>
+    </div>
+
     <!-- TITLE --> 
-    <div class="title">
+    <div id="titleSur">
         <h1 id="title">INSTANT WEATHER</h1>
         <h3 id="subtitle">Votre météo en instantané</h3>
     </div>
-    
+
 
     <!-- SEARCHING -->
     
-    <div id="search">
-        <div class="postalCode">
-            <input type="number" placeholder="Saisissez un code postal" id="postcode" name="postcode" required minlength="5" maxlength="5"/>
-            <button type="submit" id="submit" name="submit">
-                <i id = "load" class="fa-solid fa-magnifying-glass"></i>
-            </button>
-        </div>
-            
-        <div class="city">
-            <select id="ville">
-                <option value="" disabled selected> Sélectionnez une commune </option>
-            </select>
-        </div>
+
+    <div id="postalCode">
+        <input type="number" placeholder="Saisissez un code postal" id="postcode" name="postcode" required minlength="5" maxlength="5"/>
+        <button type="submit" id="submit" name="submit">
+            <i id = "load" class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </div>
+        
+    <div id="city" style="visibility: hidden;" >
+        <select id="ville">
+            <option value="" disabled selected> Sélectionnez une commune </option>
+        </select>
     </div>
 
     <!-- WEATHER -->
     
 
-    <div id="info">
+    <div id="infoMain">
         <div class="cityDate">
-            <h2>Gouville-sur-Mer</h2>
-            <h3>30 juin 2024, 16h12</h3>
+            <h2 id="nomCommune">Gouville-sur-Mer</h2>
+            <h3 id="heureActuelle">30 juin 2024, 16h12</h3>
         </div>
         <div class="mainData">
             <div class="weatherInfo">
@@ -52,62 +59,62 @@
             <div class="mainInfo">
                 <div class="mainInfoTop">
                     <div class="data">
-                        <p class="number">11°</p>
+                        <p id="tempMin"> </p>
                         <p class="textValue">Temp. min.</p>
                     </div>
                     <div class="data">
-                        <p class="number">21°</p>
+                        <p id="tempMax"> </p>
                         <p class="textValue">Temp. max.</p>
                     </div>
                 </div>
                 <div class="mainInfoBottom">
                     <div class="data">
-                        <p class="number">60%</p>
+                        <p id="probaRain">60%</p>
                         <p class="textValue">Proba. pluie</p>
                     </div>
                     <div class="data">
-                        <p class="number">3h25</p>
+                        <p id="heureSol">3h25</p>
                         <p class="textValue">Heure sol.</p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="supData">
-            <div class="map">
-                <span class="material-symbols-outlined">
-                    map
-                </span>
-                <div class="data">
-                    <p class="number">48.0833m</p>
-                    <p class="textValue">Latitude</p>
-                </div>
-                <div class="data">
-                    <p class="number">-1.0833m</p>
-                    <p class="textValue">Longitude</p>
-                </div>
+    <div id="supData">
+        <div class="map">
+            <span class="material-symbols-outlined">
+                map
+            </span>
+            <div class="data">
+                <p class="number">48.0833m</p>
+                <p class="textValue">Latitude</p>
             </div>
-            <div class="rain">
-                <span class="material-symbols-outlined">
-                    water_drop
-                </span>
-                <div class="data">
-                    <p class="number">13mm</p>
-                    <p class="textValue">Cumul pluie</p>
-                </div>
+            <div class="data">
+                <p class="number">-1.0833m</p>
+                <p class="textValue">Longitude</p>
             </div>
-            <div class="wind">
-                <span class="material-symbols-outlined">
-                    air
-                </span>
-                <div class="data">
-                    <p class="number">30km/h</p>
-                    <p class="textValue">Vent moyen</p>
-                </div>
-                <div class="data">
-                    <p class="number">170°</p>
-                    <p class="textValue">Direction vent</p>
-                </div>
+        </div>
+        <div class="rain">
+            <span class="material-symbols-outlined">
+                water_drop
+            </span>
+            <div class="data">
+                <p class="number">13mm</p>
+                <p class="textValue">Cumul pluie</p>
+            </div>
+        </div>
+        <div class="wind">
+            <span class="material-symbols-outlined">
+                air
+            </span>
+            <div class="data">
+                <p class="number">30km/h</p>
+                <p class="textValue">Vent moyen</p>
+            </div>
+            <div class="data">
+                <p class="number">170°</p>
+                <p class="textValue">Direction vent</p>
             </div>
         </div>
     </div>
