@@ -112,11 +112,12 @@ async function fetchDataMeteo(codeInsee){
         const directionVentCommune = data.forecast[0].dirwind10m;
         const cumulPluieCommune = data.forecast[0].rr10;
 
-        
-
+        console.log(directionVentCommune)
+            
         cumulPluie.innerText = cumulPluieCommune+"mm";
         ventMoyen.innerText = ventMoyenCommune+"km/h";
         directionVent.innerText = directionVentCommune+'°';
+        console.log(directionVent.innerText)
         latitude.innerText = latitudeCommune;
         longitude.innerText = longitudeCommune;
         nomCommune.innerText = nomVille;
