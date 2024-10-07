@@ -15,11 +15,11 @@ const revenirArriere = document.getElementById("revenirArriere");
 const sky = document.getElementById("sky")
 const body = document.body;
 const supData = document.getElementById("supData");
-const latitude = document.getElementById("latitude");
-const longitude = document.getElementById("longitude");
-const cumulPluie = document.getElementById("cumulPluie");
-const ventMoyen = document.getElementById("ventMoyen");
-const directionVent = document.getElementById("directionVent");
+const latitude = document.getElementById("lat");
+const longitude = document.getElementById("long");
+const cumulPluie = document.getElementById("cupluie");
+const ventMoyen = document.getElementById("vemoy");
+const directionVent = document.getElementById("dirvent");
 const settings = document.getElementById("settings");
 const formulaire = document.getElementById("formulaire");
 const cancel = document.getElementById("cancel");
@@ -92,6 +92,7 @@ validation.addEventListener("change", ()=>{
     const selectedIndex = validation.selectedIndex;
     const selectOption = validation.options[selectedIndex];
     fetchDataNomVille(selectOption.value)
+   
 })
 
 async function fetchDataMeteo(codeInsee){
@@ -100,6 +101,7 @@ async function fetchDataMeteo(codeInsee){
         const data = await result.json();
         console.log(data)
         const skyCommune = data.forecast[0].weather;
+        
         weatherDescriptions(skyCommune);
         const tempMinCommune = data.forecast[0].tmin;
         const tempMaxCommune = data.forecast[0].tmax;
@@ -112,12 +114,9 @@ async function fetchDataMeteo(codeInsee){
         const directionVentCommune = data.forecast[0].dirwind10m;
         const cumulPluieCommune = data.forecast[0].rr10;
 
-        console.log(directionVentCommune)
-            
         cumulPluie.innerText = cumulPluieCommune+"mm";
         ventMoyen.innerText = ventMoyenCommune+"km/h";
         directionVent.innerText = directionVentCommune+'°';
-        console.log(directionVent.innerText)
         latitude.innerText = latitudeCommune;
         longitude.innerText = longitudeCommune;
         nomCommune.innerText = nomVille;
@@ -138,6 +137,8 @@ function affichageInfos(){
     InstantWeatherPlacer();
     supData.style.visibility = "visible";
     settings.style.visibility ="visible";
+    codePostal.style.position = "absolute";
+    city.style.position ="absolute";
 }
 
 function enleverAffichageCommune(){
@@ -159,6 +160,9 @@ function remettreAffichageCommune(){
     body.style.backgroundColor= "#58ABB0";
     selectionCity.style.visibility = "hidden";
     supData.style.visibility="hidden";
+    codePostal.style.position = "";
+    city.style.position ="";
+    settings.style.visibility ="hidden";
 }
 
 revenirArriere.addEventListener("click",()=>{
@@ -166,7 +170,7 @@ revenirArriere.addEventListener("click",()=>{
 })
 
 function weatherDescriptions (weather){
-    console.log(weather);
+    //console.log(weather);
     if(weather == 0){
         sky.innerHTML = '<i class="fa-regular fa-sun"></i>';
         body.style.backgroundColor ="#80DDE3"

@@ -85,10 +85,6 @@ body{
 #infoMain{
     visibility: hidden;
     text-align: center;
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 #postalCode{
@@ -236,23 +232,23 @@ h3{
     margin: 0em;
 }
 
-#cumulPluie{
+#cupluie{
     font-size: 1.75em;
     margin: 0em;
 }
-#directionVent{
+#dirvent{
     font-size: 1.75em;
     margin: 0em;
 }
-#ventMoyen{
+#vemoy{
     font-size: 1.75em;
     margin: 0em;
 }
-#longitude{
+#long{
     font-size: 1.75em;
     margin: 0em;
 }
-#latitude{
+#lat{
     font-size: 1.75em;
     margin: 0em;
 }
