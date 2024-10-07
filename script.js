@@ -23,8 +23,6 @@ const directionVent = document.getElementById("dirvent");
 const settings = document.getElementById("settings");
 const formulaire = document.getElementById("formulaire");
 const cancel = document.getElementById("cancel");
-const checkbox = document.getElementById("checkbox");
-const latitudeCheckBox = document.getElementById("latitudeCheckBox");
 
 let dataPerDay = [];
 let dataWeather;
@@ -205,12 +203,21 @@ cancel.addEventListener("click",()=>{
     formulaire.style.visibility="hidden";
 })
 
-latitudeCheckBox.addEventListener("change", ()=>{
-    if(latitudeCheckBox.checked){
-        
-    }
-})
 
-function putLatitudeInDetails(data){
+const latitudeCheckBox = document.getElementById("latitudeCheckBox");
+const latitudeText = document.getElementById("textLatitude");
 
+function check(donnee,checkBox){
+    console.log(checkBox);
+    // if(checkBox.value == 1){
+    //     donnee.style.visibility ="hidden";
+    //     textBox.style.visibility ="hidden";
+    //     checkBox.value = 0;
+    // }
+    // else{
+    //     donnee.style.visibility ="visible";
+    //     textBox.style.visibility ="visible";
+    //     checkBox.value = 1;
+    // }
 }
+

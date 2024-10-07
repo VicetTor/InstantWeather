@@ -31,29 +31,29 @@
         <form id="checkbox">
             <label for="latitude"></label>
                 Latitude 
-                <input type="checkbox" id="latitudeCheckBox" name="latitude" value="1">
+                <input type="checkbox" id="latitudeCheckBox" name="latitude" value="1" checked="true" onclick="check(latitude, oui)">
             </label>
 
             <label for="longitude"></label>
                 Longitude
-                <input type="checkbox" id="longitude" name="longitude" value="2">
+                <input type="checkbox" id="longitude" name="longitude" checked="true" value="2">
             </label>
 
             <label for="cumulPluie">
             </label>
                 cumulPluie
-                <input type="checkbox" id="cumulPluie" name="cumulPluie" value="3">
+                <input type="checkbox" id="cumulPluie" name="cumulPluie" checked="true" value="3">
             </label>
 
             <label for="directionVent">
             </label>
                 directionVent
-                <input type="checkbox" id="directionVent" name="directionVent" value="4">
+                <input type="checkbox" id="directionVent" name="directionVent" checked="true" value="4">
             </label>
 
             <label for="ventMoyen"></label>
                 ventMoyen
-                <input type="checkbox" id="ventMoyen" name="ventMoyen" value="5">
+                <input type="checkbox" id="ventMoyen" name="ventMoyen" checked="true" value="5">
             </label>
 
         </form>
@@ -127,7 +127,7 @@
             </span>
             <div class="data">
                 <p id="lat">48.0833m</p>
-                <p class="textValue">Latitude</p>
+                <p class="textValue" id="textLatitude">Latitude</p>
             </div>
             <div class="data">
                 <p id="long">-1.0833m</p>

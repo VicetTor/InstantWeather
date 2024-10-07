@@ -76,12 +76,6 @@ body{
     font-size: 2em;
 }
 
-
-#info{
-    /*visibility: hidden;*/
-}
-
-
 #infoMain{
     visibility: hidden;
     text-align: center;
