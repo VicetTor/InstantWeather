@@ -12,7 +12,9 @@ const selectionCity = document.getElementById("city");
 const codePostal = document.getElementById("postalCode");
 const title = document.getElementById("title");
 const revenirArriere = document.getElementById("revenirArriere");
-const sky = document.getElementById("sky")
+const sky = document.getElementById("sky");
+const skyDescription = document.getElementById("skyDescription");
+
 const body = document.body;
 const supData = document.getElementById("supData");
 const latitude = document.getElementById("lat");
@@ -173,26 +175,32 @@ function weatherDescriptions (weather){
     //console.log(weather);
     if(weather == 0){
         sky.innerHTML = '<i class="fa-regular fa-sun"></i>';
+        skyDescription.innerText = "Soleil";
         body.style.backgroundColor ="#80DDE3"
     } 
     if((weather >= 1 && weather <= 5) || (weather == 16) ){
         sky.innerHTML = '<i class="fa-solid fa-cloud"></i>';
+        skyDescription.innerText = "Nuageux";
         body.style.backgroundColor="#6FB8BD"
     }
     if(weather >= 6 && weather <= 7 ){
         sky.innerHTML = '<i class="fa-solid fa-smog"></i>';
+        skyDescription.innerText = "Brouillard";
         body.style.backgroundColor = "#59989C";
     }
     if((weather >= 10 && weather <= 15) || (weather >= 40 && weather <= 48) || (weather >= 210 && weather <= 212) || (weather == 235)){
         sky.innerHTML =  '<i class="fa-solid fa-cloud-rain"></i>';
+        skyDescription.innerText = "Pluie";
         body.style.backgroundColor = "#496769";
     }
     if((weather >= 20 && weather <= 22 ) || (weather >= 30 && weather <= 32) ||  (weather >= 60 && weather <= 68) || (weather >= 70 && weather <= 78) || (weather >= 220 && weather <= 2022) || (weather >= 230 && weather <= 232)){
-        sky.innerHTML = '<i class="fa-solid fa-snowflake"></i>'
+        sky.innerHTML = '<i class="fa-solid fa-snowflake"></i>';
+        skyDescription.innerText = "Neige";
         body.style.backgroundColor = "#8BA1A3";
     }
     if((weather >= 100 && weather <= 108) || (weather >= 120 && weather <= 142)){
         sky.innerHTML = '<i class="fa-solid fa-poo-storm"></i>';
+        skyDescription.innerText = "Orages";
         body.style.backgroundColor = "#302A2A";
     }
 }
