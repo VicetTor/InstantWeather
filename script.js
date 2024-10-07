@@ -172,7 +172,7 @@ revenirArriere.addEventListener("click",()=>{
 })
 
 function weatherDescriptions (weather){
-    //console.log(weather);
+    console.log("weather: " + weather);
     if(weather == 0){
         sky.innerHTML = '<i class="fa-regular fa-sun"></i>';
         skyDescription.innerText = "Soleil";
