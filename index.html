@@ -163,19 +163,28 @@
 
     <div class="choosePerDay">
         <p>Voir sur plusieurs jours :&nbsp;</p>
-        <select name="howManyDays" id="howManyDays"></select>
+        <select name="howManyDays" id="howManyDays" >
+            <option value="" selected></option>
+            <option value="1" id="1">1</option>
+            <option value="2" id="2">2</option>
+            <option value="3" id="3">3</option>
+            <option value="4" id="4">4</option>
+            <option value="5" id="5">5</option>
+            <option value="6" id="6">6</option>
+            <option value="7" id="7">7</option>
+        </select>
     </div>
 
-    <div class="selectPerDay">
+    <div id="selectPerDay">
         
-        <div class="oneDay"> <!-- exemple de date à insérer en JS -->
-            <!-- image -->
+        <!-- 
+        <div class="oneDay"> 
             <span class="material-symbols-outlined">
                 cloud
             </span>
              <p class="tempMinMax">14°/21°</p>
              <p class="datePerDay">01/07</p>
-        </div>
+        </div>-->
         
     </div>
 
