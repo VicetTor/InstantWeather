@@ -14,7 +14,8 @@ const title = document.getElementById("title");
 const revenirArriere = document.getElementById("revenirArriere");
 const sky = document.getElementById("sky");
 const skyDescription = document.getElementById("skyDescription");
-
+const currentTemperature = document.getElementById("currentTemperature");
+//console.log(currentTemperature);
 const body = document.body;
 const supData = document.getElementById("supData");
 const latitude = document.getElementById("lat");
@@ -32,7 +33,7 @@ let dataPerDay = [];
 let dataWeather;
 let valeurInput;
 
-const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
+const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e";
 
 /*async function setDataWeather(codeInsee) {
     const url = `https://api.meteo-concept.com/api/forecast/daily?token=4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382&insee=${codeInsee}`;
@@ -100,10 +101,12 @@ validation.addEventListener("change", ()=>{
 async function fetchDataMeteo(codeInsee){
     try{ 
         const result = await fetch(`https://api.meteo-concept.com/api/forecast/daily?token=${token}&insee=${codeInsee}`);
+        const resultPeriod = await fetch(`https://api.meteo-concept.com/api/forecast/nextHours?token=${token}&insee=${codeInsee}`);
         const data = await result.json();
-        console.log(data)
+        let dataPeriod = await resultPeriod.json();
+        console.log(dataPeriod);
         const skyCommune = data.forecast[0].weather;
-        
+
         weatherDescriptions(skyCommune);
         const tempMinCommune = data.forecast[0].tmin;
         const tempMaxCommune = data.forecast[0].tmax;
@@ -115,7 +118,11 @@ async function fetchDataMeteo(codeInsee){
         const ventMoyenCommune = data.forecast[0].wind10m;
         const directionVentCommune = data.forecast[0].dirwind10m;
         const cumulPluieCommune = data.forecast[0].rr10;
-
+        const currentTemperatureCommune = dataPeriod.forecast[0].temp2m;
+        
+        
+        console.log( "temperature:" + currentTemperatureCommune);
+        currentTemperature.innerText = currentTemperatureCommune + '°';
         cumulPluie.innerText = cumulPluieCommune+"mm";
         ventMoyen.innerText = ventMoyenCommune+"km/h";
         directionVent.innerText = directionVentCommune+'°';
@@ -126,6 +133,7 @@ async function fetchDataMeteo(codeInsee){
         tempMax.innerText = tempMaxCommune+'°';
         probaRain.innerText = probaRainCommune+'%';
         heureSol.innerText = sun_hours;
+        
         affichageInfos();
     }
     catch(error){
