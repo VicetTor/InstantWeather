@@ -431,3 +431,14 @@ Animation
     to{transform: rotate(360deg);}
 }
 */
+
+/*body{
+    background-color: #01172b;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}*/
+
+canvas{
+    position: absolute;
+}
