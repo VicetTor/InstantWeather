@@ -121,19 +121,19 @@ async function fetchData(codePostal) { // asynchrone pour exécuter tout le code
         
         if(codePostal.trim() == ''){
             console.log(codePostal);
-            errorPostalCode.innerText = "Vous avez rien saisi, veuillez saisir un nombre de 5 chiffres";
+            errorPostalCode.innerText = "Vous avez rien saisi, veuillez saisir un nombre de 5 chiffres.";
             errorPostalCode.style.visibility = "visible";
         }  
         else{
             if(verifPostalCode(codePostal) == 0){
-                errorPostalCode.innerText = "Le code postal n'est pas de la bonne forme. Il doit être de 5 chiffres"; 
+                errorPostalCode.innerText = "Le code postal n'est pas de la bonne forme. Il doit être de 5 chiffres."; 
                 errorPostalCode.style.visibility = "visible";
             }
             else{
                 const result = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${codePostal}`); // Récupérer valeur de l'api
                 const data = await result.json();
                 if(data.length == 0){
-                    errorPostalCode.innerText = "Ce code postal n'existe pas";
+                    errorPostalCode.innerText = "Ce code postal n'existe pas.";
                     errorPostalCode.style.visibility = "visible";
                 }
                 else{
