@@ -355,7 +355,7 @@ footer{
     padding: 0;
     box-sizing: border-box;
 }
-
+/*
 body{
     display: flex;
     justify-content: center;
@@ -371,7 +371,7 @@ body{
     animation: rotation 15s linear;
 }
 
-/*
+
 .goutte{
     position: absolute;
     width: 150px;
