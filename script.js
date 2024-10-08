@@ -43,15 +43,15 @@ var tab_month = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet
 let todayDate;
 let time;
 
-const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
-
+//const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
+const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e";
 /* ------------------------------------------------------------- WEATHER FOR I DAYS ------------------------------------------------------------------------------------------- */
 
 const howManyDays = document.getElementById("howManyDays");
 const selectPerDay = document.getElementById("selectPerDay");
 
 async function setDataWeather(codeInsee) {
-    const url = `https://api.meteo-concept.com/api/forecast/daily?token=4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382&insee=${codeInsee}`;
+    const url = `https://api.meteo-concept.com/api/forecast/daily?token=${token}&insee=${codeInsee}`;
     try {
     const response = await fetch(url);
     dataWeather = await response.json();
@@ -65,11 +65,10 @@ async function setDataWeather(codeInsee) {
 function setDataPerDay(){
     for (let i = 0; i<7; i++){
         dataPerDay[i] = dataWeather.forecast[i];
-        console.log(dataPerDay[i]);
     }
 }
 
-howManyDays.addEventListener("click", ()=>{ console.log(howManyDays.value); onIDays(howManyDays.value); });
+howManyDays.addEventListener("change", ()=>{  onIDays(howManyDays.value); });
 
 function onIDays(i){
     while (selectPerDay.hasChildNodes()) {
@@ -243,6 +242,8 @@ if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
     directionVentCheckBox.checked = true;
     ventMoyenCheckBox.checked = true;
     longitudeCheckBox.checked = true;
+    howManyDays.value = howManyDays.options[0].value;
+
   } else {
     console.info( "This page is not reloaded");
 }
@@ -274,33 +275,43 @@ function remettreAffichageCommune(){
 
 revenirArriere.addEventListener("click",()=>{
     remettreAffichageCommune();
+    howManyDays.value = howManyDays.options[0].value;
+    onIDays(howManyDays.value);
 })
 
 function weatherDescriptions (weather, s){
-    //console.log(weather);
     if(weather == 0){
         s.innerHTML = '<i class="fa-regular fa-sun"></i>';
-        if (s == "sky"){ body.style.backgroundColor ="#80DDE3"; formulaire.style.backgroundColor ="#80DDE3"; }
+        if (s == sky){ body.style.backgroundColor ="#80DDE3"; 
+        formulaire.style.backgroundColor ="#80DDE3"; }
     } 
     if((weather >= 1 && weather <= 5) || (weather == 16) ){
         s.innerHTML = '<i class="fa-solid fa-cloud"></i>';
-        if (s == "sky"){ body.style.backgroundColor="#6FB8BD";formulaire.style.backgroundColor ="#6FB8BD"; }
+        if (s == sky){ body.style.backgroundColor="#6FB8BD";
+        formulaire.style.backgroundColor ="#6FB8BD"; }
     }
     if(weather >= 6 && weather <= 7 ){
         s.innerHTML = '<i class="fa-solid fa-smog"></i>';
-        if (s == "sky"){ body.style.backgroundColor = "#59989C";formulaire.style.backgroundColor ="#59989C"; }
+        if (s == sky){ body.style.backgroundColor = "#59989C";
+        formulaire.style.backgroundColor ="#59989C"; }
     }
     if((weather >= 10 && weather <= 15) || (weather >= 40 && weather <= 48) || (weather >= 210 && weather <= 212) || (weather == 235)){
         s.innerHTML =  '<i class="fa-solid fa-cloud-rain"></i>';
-        if (s == "sky"){ body.style.backgroundColor = "#496769";formulaire.style.backgroundColor ="#496769"}
+        if (s == sky){ 
+        body.style.backgroundColor = "#496769";
+        formulaire.style.backgroundColor ="#496769";
+        console.log(formulaire.style.backGr)
+        }
     }
     if((weather >= 20 && weather <= 22 ) || (weather >= 30 && weather <= 32) ||  (weather >= 60 && weather <= 68) || (weather >= 70 && weather <= 78) || (weather >= 220 && weather <= 2022) || (weather >= 230 && weather <= 232)){
         s.innerHTML = '<i class="fa-solid fa-snowflake"></i>'
-        if (s == "sky"){ body.style.backgroundColor = "#8BA1A3"; formulaire.style.backgroundColor ="#8BA1A3" }
+        if (s == sky){ body.style.backgroundColor = "#8BA1A3"; 
+        formulaire.style.backgroundColor ="#8BA1A3"; }
     }
     if((weather >= 100 && weather <= 108) || (weather >= 120 && weather <= 142)){
         s.innerHTML = '<i class="fa-solid fa-poo-storm"></i>';
-        if (s == "sky"){ body.style.backgroundColor = "#302A2A"; formulaire.style.backgroundColor ="#302A2A" }  
+        if (s == sky){ body.style.backgroundColor = "#302A2A"; 
+        formulaire.style.backgroundColor ="#302A2A"; }  
     }     
 }
 
