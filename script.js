@@ -16,13 +16,21 @@ const sky = document.getElementById("sky")
 const body = document.body;
 const supData = document.getElementById("supData");
 const latitude = document.getElementById("lat");
+const cumulPluie = document.getElementById("cupluie")
 const longitude = document.getElementById("long");
-const cumulPluie = document.getElementById("cupluie");
+
 const ventMoyen = document.getElementById("vemoy");
 const directionVent = document.getElementById("dirvent");
 const settings = document.getElementById("settings");
 const formulaire = document.getElementById("formulaire");
 const cancel = document.getElementById("cancel");
+
+const checkBox = document.getElementById("checkBox");
+const latitudeCheckBox = document.getElementById("latitudeCheckBox");
+const longitudeCheckBox = document.getElementById("longitudeCheckBox");
+const cumulPluieCheckBox = document.getElementById("cumulPluieCheckBox");
+const directionVentCheckBox = document.getElementById("directionVentCheckBox")
+const ventMoyenCheckBox = document.getElementById("ventMoyenCheckBox");
 
 let dataPerDay = [];
 let dataWeather;
@@ -129,6 +137,8 @@ async function fetchDataMeteo(codeInsee){
     }
 }
 
+
+
 function affichageInfos(){
     infoMain.style.visibility = "visible";
     enleverAffichageCommune();
@@ -137,6 +147,46 @@ function affichageInfos(){
     settings.style.visibility ="visible";
     codePostal.style.position = "absolute";
     city.style.position ="absolute";
+}
+
+function verifEncadrer(){
+    if(latitudeCheckBox.checked == false && cumulPluieCheckBox.checked == false && directionVentCheckBox.checked ==false && longitudeCheckBox.checked == false && ventMoyenCheckBox.checked == false ){
+        supData.style.visibility ="hidden";
+    }
+    if(latitudeCheckBox.checked == false && longitudeCheckBox.checked == false){
+        document.getElementById("map").style.visibility ="hidden";
+    }
+    if(cumulPluieCheckBox.checked == false){
+        document.getElementById("pluie").style.visibility ="hidden";
+    }
+    if(directionVentCheckBox.checked == false && ventMoyenCheckBox.checked == false){
+        document.getElementById("vent").style.visibility ="hidden";
+    }
+}
+
+function verifRemettreEncadrer(){
+    if(latitudeCheckBox.checked == true || cumulPluieCheckBox.checked == true || directionVentCheckBox.checked == true || longitudeCheckBox.checked == true || ventMoyenCheckBox.checked == true){
+        supData.style.visibility ="visible";
+    }
+    if(latitudeCheckBox.checked == true || longitudeCheckBox.checked == true){
+        document.getElementById("map").style.visibility ="visible";
+    }
+    if(cumulPluieCheckBox.checked == true){
+        document.getElementById("pluie").style.visibility ="visible";
+    }
+    if(directionVentCheckBox.checked == true || ventMoyenCheckBox.checked == true){
+        document.getElementById("vent").style.visibility ="visible";
+    }
+}
+
+if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+    latitudeCheckBox.checked = true;
+    cumulPluieCheckBox.checked = true;
+    directionVentCheckBox.checked = true;
+    ventMoyenCheckBox.checked = true;
+    longitudeCheckBox.checked = true;
+  } else {
+    console.info( "This page is not reloaded");
 }
 
 function enleverAffichageCommune(){
@@ -161,6 +211,7 @@ function remettreAffichageCommune(){
     codePostal.style.position = "";
     city.style.position ="";
     settings.style.visibility ="hidden";
+    formulaire.style.visibility ="hidden";
 }
 
 revenirArriere.addEventListener("click",()=>{
@@ -172,26 +223,32 @@ function weatherDescriptions (weather){
     if(weather == 0){
         sky.innerHTML = '<i class="fa-regular fa-sun"></i>';
         body.style.backgroundColor ="#80DDE3"
+        formulaire.style.backgroundColor ="#80DDE3"
     } 
     if((weather >= 1 && weather <= 5) || (weather == 16) ){
         sky.innerHTML = '<i class="fa-solid fa-cloud"></i>';
         body.style.backgroundColor="#6FB8BD"
+        formulaire.style.backgroundColor ="#6FB8BD"
     }
     if(weather >= 6 && weather <= 7 ){
         sky.innerHTML = '<i class="fa-solid fa-smog"></i>';
         body.style.backgroundColor = "#59989C";
+        formulaire.style.backgroundColor ="#59989C"
     }
     if((weather >= 10 && weather <= 15) || (weather >= 40 && weather <= 48) || (weather >= 210 && weather <= 212) || (weather == 235)){
         sky.innerHTML =  '<i class="fa-solid fa-cloud-rain"></i>';
         body.style.backgroundColor = "#496769";
+        formulaire.style.backgroundColor ="#496769"
     }
     if((weather >= 20 && weather <= 22 ) || (weather >= 30 && weather <= 32) ||  (weather >= 60 && weather <= 68) || (weather >= 70 && weather <= 78) || (weather >= 220 && weather <= 2022) || (weather >= 230 && weather <= 232)){
         sky.innerHTML = '<i class="fa-solid fa-snowflake"></i>'
         body.style.backgroundColor = "#8BA1A3";
+        formulaire.style.backgroundColor ="#8BA1A3"
     }
     if((weather >= 100 && weather <= 108) || (weather >= 120 && weather <= 142)){
         sky.innerHTML = '<i class="fa-solid fa-poo-storm"></i>';
         body.style.backgroundColor = "#302A2A";
+        formulaire.style.backgroundColor ="#302A2A"
     }
 }
 
@@ -203,21 +260,21 @@ cancel.addEventListener("click",()=>{
     formulaire.style.visibility="hidden";
 })
 
-
-const latitudeCheckBox = document.getElementById("latitudeCheckBox");
-const latitudeText = document.getElementById("textLatitude");
-
-function check(donnee,checkBox){
-    console.log(checkBox);
-    // if(checkBox.value == 1){
-    //     donnee.style.visibility ="hidden";
-    //     textBox.style.visibility ="hidden";
-    //     checkBox.value = 0;
-    // }
-    // else{
-    //     donnee.style.visibility ="visible";
-    //     textBox.style.visibility ="visible";
-    //     checkBox.value = 1;
-    // }
+function verifCheckBox(checkBox,value,text){
+    if(checkBox.checked == false){
+        value.style.visibility = "hidden";
+        text.style.visibility ="hidden";
+        verifEncadrer();
+    }
+    else{
+        value.style.visibility = "visible";
+        text.style.visibility ="visible";
+        verifRemettreEncadrer();
+    }
 }
+
+
+
+
+
 
