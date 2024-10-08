@@ -357,6 +357,7 @@ function weatherDescriptions (weather, s){
     }
     if((weather >= 10 && weather <= 15) || (weather >= 40 && weather <= 48) || (weather >= 210 && weather <= 212) || (weather == 235)){
         s.innerHTML =  '<i class="fa-solid fa-cloud-rain"></i>';
+        
         if (s == sky){ 
           body.style.backgroundColor = "#496769";
           formulaire.style.backgroundColor ="#496769";

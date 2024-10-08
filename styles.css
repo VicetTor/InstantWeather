@@ -439,6 +439,7 @@ Animation
     left: 0;
 }*/
 
-canvas{
+#rainfall {
     position: absolute;
+    
 }
