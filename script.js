@@ -12,7 +12,10 @@ const selectionCity = document.getElementById("city");
 const codePostal = document.getElementById("postalCode");
 const title = document.getElementById("title");
 const revenirArriere = document.getElementById("revenirArriere");
-const sky = document.getElementById("sky")
+const sky = document.getElementById("sky");
+const skyDescription = document.getElementById("skyDescription");
+const currentTemperature = document.getElementById("currentTemperature");
+//console.log(currentTemperature);
 const body = document.body;
 const supData = document.getElementById("supData");
 const latitude = document.getElementById("lat");
@@ -36,6 +39,8 @@ let dataPerDay = [];
 let dataWeather;
 let valeurInput;
 
+
+
 // today date
 let date = new Date();
 var tab_week = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
@@ -46,6 +51,7 @@ let time;
 //const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
 const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e";
 /* ------------------------------------------------------------- WEATHER FOR I DAYS ------------------------------------------------------------------------------------------- */
+
 
 const howManyDays = document.getElementById("howManyDays");
 const selectPerDay = document.getElementById("selectPerDay");
@@ -154,11 +160,14 @@ validation.addEventListener("change", ()=>{
 async function fetchDataMeteo(codeInsee){
     try{ 
         const result = await fetch(`https://api.meteo-concept.com/api/forecast/daily?token=${token}&insee=${codeInsee}`);
+        const resultPeriod = await fetch(`https://api.meteo-concept.com/api/forecast/nextHours?token=${token}&insee=${codeInsee}`);
         const data = await result.json();
-        console.log(data)
-        const skyCommune = data.forecast[0].weather;
+        let dataPeriod = await resultPeriod.json();
+        console.log(dataPeriod);
+        const skyCommune = data.forecast[0].weather; 
         
         weatherDescriptions(skyCommune, sky);
+
         const tempMinCommune = data.forecast[0].tmin;
         const tempMaxCommune = data.forecast[0].tmax;
         const probaRainCommune = data.forecast[0].probarain;
@@ -169,7 +178,11 @@ async function fetchDataMeteo(codeInsee){
         const ventMoyenCommune = data.forecast[0].wind10m;
         const directionVentCommune = data.forecast[0].dirwind10m;
         const cumulPluieCommune = data.forecast[0].rr10;
-
+        const currentTemperatureCommune = dataPeriod.forecast[0].temp2m;
+        
+        
+        console.log( "temperature:" + currentTemperatureCommune);
+        currentTemperature.innerText = currentTemperatureCommune + '°';
         cumulPluie.innerText = cumulPluieCommune+"mm";
         ventMoyen.innerText = ventMoyenCommune+"km/h";
         directionVent.innerText = directionVentCommune+'°';
@@ -179,14 +192,15 @@ async function fetchDataMeteo(codeInsee){
         tempMin.innerText = tempMinCommune+'°';
         tempMax.innerText = tempMaxCommune+'°';
         probaRain.innerText = probaRainCommune+'%';
-        heureSol.innerText = sun_hours;
+        heureSol.innerText = sun_hours;      
+
 
         todayDate = tab_week[date.getDay()] + " " + date.getDate() + " " + tab_month[date.getMonth()] + " " + date.getFullYear();
         let minute = date.getMinutes() + "";
         if (minute.length == 1) { minute = "0"+minute;}
         time = date.getHours() + "h" + minute;
         heureActuelle.innerText = todayDate + ", " + time;
-
+      
         affichageInfos();
     }
     catch(error){
@@ -279,28 +293,30 @@ revenirArriere.addEventListener("click",()=>{
     onIDays(howManyDays.value);
 })
 
+
+
 function weatherDescriptions (weather, s){
     if(weather == 0){
         s.innerHTML = '<i class="fa-regular fa-sun"></i>';
         if (s == sky){ body.style.backgroundColor ="#80DDE3"; 
-        formulaire.style.backgroundColor ="#80DDE3"; }
+          formulaire.style.backgroundColor ="#80DDE3"; }
     } 
     if((weather >= 1 && weather <= 5) || (weather == 16) ){
         s.innerHTML = '<i class="fa-solid fa-cloud"></i>';
         if (s == sky){ body.style.backgroundColor="#6FB8BD";
-        formulaire.style.backgroundColor ="#6FB8BD"; }
+          formulaire.style.backgroundColor ="#6FB8BD"; }
     }
     if(weather >= 6 && weather <= 7 ){
         s.innerHTML = '<i class="fa-solid fa-smog"></i>';
         if (s == sky){ body.style.backgroundColor = "#59989C";
-        formulaire.style.backgroundColor ="#59989C"; }
+          formulaire.style.backgroundColor ="#59989C"; }
     }
     if((weather >= 10 && weather <= 15) || (weather >= 40 && weather <= 48) || (weather >= 210 && weather <= 212) || (weather == 235)){
         s.innerHTML =  '<i class="fa-solid fa-cloud-rain"></i>';
         if (s == sky){ 
-        body.style.backgroundColor = "#496769";
-        formulaire.style.backgroundColor ="#496769";
-        console.log(formulaire.style.backGr)
+          body.style.backgroundColor = "#496769";
+          formulaire.style.backgroundColor ="#496769";
+        
         }
     }
     if((weather >= 20 && weather <= 22 ) || (weather >= 30 && weather <= 32) ||  (weather >= 60 && weather <= 68) || (weather >= 70 && weather <= 78) || (weather >= 220 && weather <= 2022) || (weather >= 230 && weather <= 232)){
@@ -310,8 +326,9 @@ function weatherDescriptions (weather, s){
     }
     if((weather >= 100 && weather <= 108) || (weather >= 120 && weather <= 142)){
         s.innerHTML = '<i class="fa-solid fa-poo-storm"></i>';
-        if (s == sky){ body.style.backgroundColor = "#302A2A"; 
-        formulaire.style.backgroundColor ="#302A2A"; }  
+        if (s == sky){ 
+          body.style.backgroundColor = "#302A2A"; 
+          formulaire.style.backgroundColor ="#302A2A"; }  
     }     
 }
 
