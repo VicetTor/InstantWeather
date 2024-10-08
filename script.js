@@ -116,20 +116,27 @@ async function fetchData(codePostal) { // asynchrone pour exécuter tout le code
     console.log(verifPostalCode(codePostal));
     try{
         
-        if(verifPostalCode(codePostal) == 1){
-            const result = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${codePostal}`); // Récupérer valeur de l'api
-            const data = await result.json();
-            const optionDeBase = document.createElement("option");
-            optionDeBase.innerText = "Selectionner une commune";
-            validation.appendChild(optionDeBase)
-            data.forEach(element => { // Pour chaque élément de data
-                const optionElement = document.createElement("option"); // on crée une option pour le select
-                optionElement.innerText = element.nom // on change son texte
-                validation.appendChild(optionElement) // on l'ajoute dans le select
-            });
+        if(verifPostalCode(codePostal) == 0){
+            alert("le code postal n'est pas de la bonne forme");
+            console.log("le code postal n'est pas de la bonne forme");
         }
         else{
-            console.log("le code postal n'est pas de la bonne forme");
+            const result = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${codePostal}`); // Récupérer valeur de l'api
+            const data = await result.json();
+            if(data.length == 0){
+                alert("Ce code postal n'existe pas");
+            }
+            else{
+                const optionDeBase = document.createElement("option");
+                optionDeBase.innerText = "Selectionner une commune";
+                validation.appendChild(optionDeBase)
+                data.forEach(element => { // Pour chaque élément de data
+                    const optionElement = document.createElement("option"); // on crée une option pour le select
+                    optionElement.innerText = element.nom // on change son texte
+                    validation.appendChild(optionElement) // on l'ajoute dans le select
+              });
+            }
+            
         }
         
     }
