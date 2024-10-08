@@ -118,30 +118,38 @@ async function fetchData(codePostal) { // asynchrone pour exécuter tout le code
     
     try{
         
-        if(verifPostalCode(codePostal) == 0){
-            errorPostalCode.innerText = "Le code postal n'est pas de la bonne forme"; 
+        
+        if(codePostal.trim() == ''){
+            console.log(codePostal);
+            errorPostalCode.innerText = "Vous avez rien saisi, veuillez saisir un nombre de 5 chiffres";
             errorPostalCode.style.visibility = "visible";
-        }
+        }  
         else{
-            const result = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${codePostal}`); // Récupérer valeur de l'api
-            const data = await result.json();
-            if(data.length == 0){
-                errorPostalCode.innerText = "Ce code postal n'existe pas";
+            if(verifPostalCode(codePostal) == 0){
+                errorPostalCode.innerText = "Le code postal n'est pas de la bonne forme. Il doit être de 5 chiffres"; 
                 errorPostalCode.style.visibility = "visible";
             }
             else{
-                
-                const optionDeBase = document.createElement("option");
-                optionDeBase.innerText = "Selectionner une commune";
-                validation.appendChild(optionDeBase)
-                data.forEach(element => { // Pour chaque élément de data
-                    city.style.visibility ="visible";
-                    const optionElement = document.createElement("option"); // on crée une option pour le select
-                    optionElement.innerText = element.nom // on change son texte
-                    validation.appendChild(optionElement) // on l'ajoute dans le select
-              });
-            }
-            ;
+                const result = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${codePostal}`); // Récupérer valeur de l'api
+                const data = await result.json();
+                if(data.length == 0){
+                    errorPostalCode.innerText = "Ce code postal n'existe pas";
+                    errorPostalCode.style.visibility = "visible";
+                }
+                else{
+                    
+                    const optionDeBase = document.createElement("option");
+                    optionDeBase.innerText = "Selectionner une commune";
+                    validation.appendChild(optionDeBase)
+                    data.forEach(element => { // Pour chaque élément de data
+                        city.style.visibility ="visible";
+                        const optionElement = document.createElement("option"); // on crée une option pour le select
+                        optionElement.innerText = element.nom // on change son texte
+                        validation.appendChild(optionElement) // on l'ajoute dans le select
+                  });
+                }
+        }
+            
         }
         
     }
