@@ -115,13 +115,12 @@ function addDivDay(j){ // j indice du tableau dataPerDay[]
 /* ------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
 
 async function fetchData(codePostal) { // asynchrone pour exécuter tout le code et attendre la réponse 
-    console.log(verifPostalCode(codePostal));
+    
     try{
         
         if(verifPostalCode(codePostal) == 0){
-            errorPostalCode.innerText = "Le code postal n'est pas de la bonne forme";
+            errorPostalCode.innerText = "Le code postal n'est pas de la bonne forme"; 
             errorPostalCode.style.visibility = "visible";
-           
         }
         else{
             const result = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${codePostal}`); // Récupérer valeur de l'api
@@ -131,16 +130,18 @@ async function fetchData(codePostal) { // asynchrone pour exécuter tout le code
                 errorPostalCode.style.visibility = "visible";
             }
             else{
+                
                 const optionDeBase = document.createElement("option");
                 optionDeBase.innerText = "Selectionner une commune";
                 validation.appendChild(optionDeBase)
                 data.forEach(element => { // Pour chaque élément de data
+                    city.style.visibility ="visible";
                     const optionElement = document.createElement("option"); // on crée une option pour le select
                     optionElement.innerText = element.nom // on change son texte
                     validation.appendChild(optionElement) // on l'ajoute dans le select
               });
             }
-            
+            ;
         }
         
     }
@@ -148,6 +149,10 @@ async function fetchData(codePostal) { // asynchrone pour exécuter tout le code
         console.error("Erreur");
     }
 }
+
+input.addEventListener("input", () => {
+    errorPostalCode.style.visibility = "hidden"; // Masquer l'erreur dès que l'utilisateur tape quelque chose de nouveau
+});
 
 function verifPostalCode(pc){
     const verifModelePc = /^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$/;
@@ -161,7 +166,7 @@ submitButton.addEventListener("click", ()=>{
     validation.innerText = "";
     valeurInput = input.value;
     fetchData(valeurInput);
-    city.style.visibility ="visible";
+    
 });
 
 async function fetchDataNomVille(nomCommune){
