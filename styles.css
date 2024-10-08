@@ -325,6 +325,11 @@ h3{
     font-size: 2.5em;
 }
 
+#currentTemperature{
+    margin: 0;
+    font-size: 2.5em;
+}
+
 /* ------------------ FOOTER ------------------ */
 footer{
     background-color: rgb(255, 255, 255, 0.25);
