@@ -350,3 +350,21 @@ footer{
     width: 100%;
 }
 
+
+
+
+.gouttes{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.goutte{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-color: transparent;
+    border-radius: 61% 39% 38% 62% / 34% 54% 46% 66%;
+    box-shadow: inset 10px 10px 10px 10px black ;
+}
