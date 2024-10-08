@@ -31,29 +31,29 @@
         <form id="checkbox">
             <label for="latitude"></label>
                 Latitude 
-                <input type="checkbox" id="latitudeCheckBox" name="latitude" value="1">
+                <input type="checkbox" id="latitudeCheckBox" name="latitude" value="1" checked="true" onchange="verifCheckBox(latitudeCheckBox,lat,textLatitude)">
             </label>
 
             <label for="longitude"></label>
                 Longitude
-                <input type="checkbox" id="longitude" name="longitude" value="2">
+                <input type="checkbox" id="longitudeCheckBox" name="longitude" checked="true" value="2" onchange="verifCheckBox(longitudeCheckBox,long,textLongitude)">
             </label>
 
             <label for="cumulPluie">
             </label>
                 cumulPluie
-                <input type="checkbox" id="cumulPluie" name="cumulPluie" value="3">
+                <input type="checkbox" id="cumulPluieCheckBox" name="cumulPluie" checked="true" value="3" onchange="verifCheckBox(cumulPluieCheckBox,cupluie,textCuPluie)">
             </label>
 
             <label for="directionVent">
             </label>
                 directionVent
-                <input type="checkbox" id="directionVent" name="directionVent" value="4">
+                <input type="checkbox" id="directionVentCheckBox" name="directionVent" checked="true" value="4" onchange="verifCheckBox(directionVentCheckBox,dirvent,textDirectionVent)">
             </label>
 
             <label for="ventMoyen"></label>
                 ventMoyen
-                <input type="checkbox" id="ventMoyen" name="ventMoyen" value="5">
+                <input type="checkbox" id="ventMoyenCheckBox" name="ventMoyen" checked="true" value="5" onchange="verifCheckBox(ventMoyenCheckBox,vemoy,textVentMoyen)">
             </label>
 
         </form>
@@ -122,38 +122,38 @@
 
     <div id="supData">
         <div class="map">
-            <span class="material-symbols-outlined">
+            <span class="material-symbols-outlined" id="map">
                 map
             </span>
             <div class="data">
                 <p id="lat">48.0833m</p>
-                <p class="textValue">Latitude</p>
+                <p class="textValue" id="textLatitude">Latitude</p>
             </div>
             <div class="data">
                 <p id="long">-1.0833m</p>
-                <p class="textValue">Longitude</p>
+                <p class="textValue" id="textLongitude">Longitude</p>
             </div>
         </div>
         <div class="rain">
-            <span class="material-symbols-outlined">
+            <span class="material-symbols-outlined" id="pluie">
                 water_drop
             </span>
             <div class="data">
                 <p id="cupluie">13mm</p>
-                <p class="textValue">Cumul pluie</p>
+                <p class="textValue" id="textCuPluie">Cumul pluie</p>
             </div>
         </div>
         <div class="wind">
-            <span class="material-symbols-outlined">
+            <span class="material-symbols-outlined" id="vent">
                 air
             </span>
             <div class="data">
                 <p id="vemoy">30km/h</p>
-                <p class="textValue">Vent moyen</p>
+                <p class="textValue" id="textVentMoyen">Vent moyen</p>
             </div>
             <div class="data">
                 <p id="dirvent">170°</p>
-                <p class="textValue">Direction vent</p>
+                <p class="textValue" id="textDirectionVent">Direction vent</p>
             </div>
         </div>
     </div>
