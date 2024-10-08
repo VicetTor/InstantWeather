@@ -113,21 +113,37 @@ function addDivDay(j){ // j indice du tableau dataPerDay[]
 /* ------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
 
 async function fetchData(codePostal) { // asynchrone pour exécuter tout le code et attendre la réponse 
+    console.log(verifPostalCode(codePostal));
     try{
-        const result = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${codePostal}`); // Récupérer valeur de l'api
-        const data = await result.json();
-        const optionDeBase = document.createElement("option");
-        optionDeBase.innerText = "Selectionner une commune";
-        validation.appendChild(optionDeBase)
-        data.forEach(element => { // Pour chaque élément de data
-            const optionElement = document.createElement("option"); // on crée une option pour le select
-            optionElement.innerText = element.nom // on change son texte
-            validation.appendChild(optionElement) // on l'ajoute dans le select
-        });
+        
+        if(verifPostalCode(codePostal) == 1){
+            const result = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${codePostal}`); // Récupérer valeur de l'api
+            const data = await result.json();
+            const optionDeBase = document.createElement("option");
+            optionDeBase.innerText = "Selectionner une commune";
+            validation.appendChild(optionDeBase)
+            data.forEach(element => { // Pour chaque élément de data
+                const optionElement = document.createElement("option"); // on crée une option pour le select
+                optionElement.innerText = element.nom // on change son texte
+                validation.appendChild(optionElement) // on l'ajoute dans le select
+            });
+        }
+        else{
+            console.log("le code postal n'est pas de la bonne forme");
+        }
+        
     }
     catch (error){
         console.error("Erreur");
     }
+}
+
+function verifPostalCode(pc){
+    const verifModelePc = /^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$/;
+    if(verifModelePc.test(pc)){
+        return 1;
+    }
+    return 0;
 }
 
 submitButton.addEventListener("click", ()=>{
@@ -181,7 +197,7 @@ async function fetchDataMeteo(codeInsee){
         const currentTemperatureCommune = dataPeriod.forecast[0].temp2m;
         
         
-        console.log( "temperature:" + currentTemperatureCommune);
+        //console.log( "temperature:" + currentTemperatureCommune);
         currentTemperature.innerText = currentTemperatureCommune + '°';
         cumulPluie.innerText = cumulPluieCommune+"mm";
         ventMoyen.innerText = ventMoyenCommune+"km/h";
