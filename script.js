@@ -15,6 +15,8 @@ const revenirArriere = document.getElementById("revenirArriere");
 const sky = document.getElementById("sky");
 const skyDescription = document.getElementById("skyDescription");
 const currentTemperature = document.getElementById("currentTemperature");
+const errorPostalCode = document.getElementById("errorPostalCode");
+
 //console.log(currentTemperature);
 const body = document.body;
 const supData = document.getElementById("supData");
@@ -117,14 +119,16 @@ async function fetchData(codePostal) { // asynchrone pour exécuter tout le code
     try{
         
         if(verifPostalCode(codePostal) == 0){
-            alert("le code postal n'est pas de la bonne forme");
-            console.log("le code postal n'est pas de la bonne forme");
+            errorPostalCode.innerText = "Le code postal n'est pas de la bonne forme";
+            errorPostalCode.style.visibility = "visible";
+           
         }
         else{
             const result = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${codePostal}`); // Récupérer valeur de l'api
             const data = await result.json();
             if(data.length == 0){
-                alert("Ce code postal n'existe pas");
+                errorPostalCode.innerText = "Ce code postal n'existe pas";
+                errorPostalCode.style.visibility = "visible";
             }
             else{
                 const optionDeBase = document.createElement("option");
