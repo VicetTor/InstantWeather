@@ -76,12 +76,6 @@ body{
     font-size: 2em;
 }
 
-
-#info{
-    /*visibility: hidden;*/
-}
-
-
 #infoMain{
     visibility: hidden;
     text-align: center;
@@ -296,7 +290,7 @@ h3{
     background-color: rgb(255, 255, 255, 0.5);
 }
 
-.selectPerDay{
+#selectPerDay{
     border: solid rgb(255, 255, 255, 0);
     border-radius: 1em;
     background-color: rgb(255, 255, 255, 0.15);
@@ -324,6 +318,11 @@ h3{
 .datePerDay{
     font-size: 0.75em;
     margin: 0;
+}
+
+.imagePerDay{
+    margin: 0;
+    font-size: 2.5em;
 }
 
 /* ------------------ FOOTER ------------------ */
