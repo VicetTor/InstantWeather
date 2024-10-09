@@ -331,6 +331,7 @@ revenirArriere.addEventListener("click",()=>{
     
     console.log("a");
     //cancelAnimationFrame(animation); // figer l'animation
+    canvas.style.visibility = 'hidden';
     remettreAffichageCommune();
     howManyDays.value = howManyDays.options[0].value;
     onIDays(howManyDays.value);
@@ -364,6 +365,7 @@ function weatherDescriptions (weather, s){
         s.innerHTML =  '<i class="fa-solid fa-cloud-rain"></i>';
         
         if (s == sky){ 
+           // canvas.style.visibility = "block";
             animate();
             body.style.backgroundColor = "#496769";
             formulaire.style.backgroundColor ="#496769";
