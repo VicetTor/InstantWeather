@@ -50,8 +50,8 @@ var tab_month = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet
 let todayDate;
 let time;
 
-//const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
-const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e";
+const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
+//const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e";
 /* ------------------------------------------------------------- WEATHER FOR I DAYS ------------------------------------------------------------------------------------------- */
 
 
@@ -87,6 +87,7 @@ function onIDays(i){
     }
 }
 
+const day1 = document.getElementById("day1");
 function addDivDay(j){ // j indice du tableau dataPerDay[]
     let newDivDay = document.createElement("div");
     let newPWeather = document.createElement("p");
@@ -94,6 +95,7 @@ function addDivDay(j){ // j indice du tableau dataPerDay[]
     let newPImage = document.createElement("p");
 
     newDivDay.className="oneDay";
+    newDivDay.id=="day"+j;
     newPWeather.className="tempMinMax";
     newPDate.className="datePerDay";
     newPImage.className="imagePerDay";
@@ -310,6 +312,16 @@ function InstantWeatherPlacer(){
     title.style.marginTop = "5%";
 }
 
+const textLatitude = document.getElementById("textLatitude");
+const textLongitude = document.getElementById("textLongitude");
+const textCuPluie = document.getElementById("textCuPluie");
+const textVentMoyen = document.getElementById("textVentMoyen");
+const textDirectionVent = document.getElementById("textDirectionVent");
+
+const carte = document.getElementById("carte");
+const pluie = document.getElementById("pluie");
+const vent = document.getElementById("vent");
+
 function remettreAffichageCommune(){
     city.style.visibility = "visible";
     codePostal.style.visibility ="visible";
@@ -323,6 +335,23 @@ function remettreAffichageCommune(){
     city.style.position ="";
     settings.style.visibility ="hidden";
     formulaire.style.visibility ="hidden";
+
+    carte.style.visibility ="hidden";
+    pluie.style.visibility ="hidden";
+    vent.style.visibility ="hidden";
+
+    latitude.style.visibility ="hidden";
+    cumulPluie.style.visibility ="hidden";
+    longitude.style.visibility ="hidden";
+    ventMoyen.style.visibility ="hidden";
+    directionVent.style.visibility ="hidden";
+
+    textLatitude.style.visibility ="hidden";
+    textLongitude.style.visibility ="hidden";
+    textCuPluie.style.visibility ="hidden";
+    textVentMoyen.style.visibility ="hidden";
+    textDirectionVent.style.visibility ="hidden";
+
 }
 
 revenirArriere.addEventListener("click",()=>{
