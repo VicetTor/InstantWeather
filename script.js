@@ -50,8 +50,8 @@ var tab_month = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet
 let todayDate;
 let time;
 
-//const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
-const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e";
+const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
+//const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e";
 /* ------------------------------------------------------------- WEATHER FOR I DAYS ------------------------------------------------------------------------------------------- */
 
 
@@ -342,14 +342,14 @@ function weatherDescriptions (weather, s){
         s.innerHTML = '<i class="fa-regular fa-sun"></i>';
         if (s == sky){ body.style.backgroundColor ="#80DDE3"; 
           formulaire.style.backgroundColor ="#80DDE3";
-          skyDescription.innerText = "Ensoleillé"
+          skyDescription.innerText = "Ensoleillé";
         }
     } 
     if((weather >= 1 && weather <= 5) || (weather == 16) ){
         s.innerHTML = '<i class="fa-solid fa-cloud"></i>';
         if (s == sky){ body.style.backgroundColor="#6FB8BD";
-          formulaire.style.backgroundColor ="#6FB8BD"; 
-          skyDescription.innerText = "Nuageux"
+            formulaire.style.backgroundColor ="#6FB8BD"; 
+            skyDescription.innerText = "Nuageux";
         }
     }
     if(weather >= 6 && weather <= 7 ){
@@ -404,7 +404,6 @@ function verifCheckBox(checkBox,value,text){
         verifRemettreEncadrer();
     }
 }
-
 
 
 
