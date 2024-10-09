@@ -444,3 +444,10 @@ Animation
     z-index: -1; /* mettre en arrière plan, afin que la canvas, ne soit pas au-dessus. Pour pouvoir naviguer */
     
 }
+
+
+canvas{
+    -webkit-animation-play-state:paused;
+  -moz-animation-play-state:paused;
+  animation-play-state:paused;
+}

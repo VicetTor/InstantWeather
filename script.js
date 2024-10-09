@@ -41,7 +41,7 @@ let dataPerDay = [];
 let dataWeather;
 let valeurInput;
 
-
+let animation;
 
 // today date
 let date = new Date();
@@ -328,10 +328,13 @@ function remettreAffichageCommune(){
 }
 
 revenirArriere.addEventListener("click",()=>{
+    
+    console.log("a");
+    //cancelAnimationFrame(animation); // figer l'animation
     remettreAffichageCommune();
     howManyDays.value = howManyDays.options[0].value;
     onIDays(howManyDays.value);
-})
+});
 
 
 
@@ -459,9 +462,8 @@ function animate(){
     createRainDrop();
     updateRaindrops();
     drawRaindrops();
+    animation = requestAnimationFrame(animate);
+    
+}
 
-    requestAnimationFrame(animate);
-}
-function stopAnimate(){
-    cancelAnimationFrame(animate);
-}
+ 
