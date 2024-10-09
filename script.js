@@ -256,6 +256,8 @@ function affichageInfos(){
     settings.style.visibility ="visible";
     codePostal.style.position = "absolute";
     city.style.position ="absolute";
+    selectPerDay.style.visibility ="visible";
+    document.getElementById("choosePerDay").style.visibility ="visible";
 }
 
 function verifEncadrer(){
@@ -318,18 +320,19 @@ function remettreAffichageCommune(){
     title.style.marginTop = "15%";
     body.style.backgroundColor= "#58ABB0";
     selectionCity.style.visibility = "hidden";
-    supData.style.visibility="hidden";
     codePostal.style.position = "";
     city.style.position ="";
     settings.style.visibility ="hidden";
     formulaire.style.visibility ="hidden";
+    selectPerDay.style.visibility ="hidden";
+    supData.style.visibility="hidden";
+    document.getElementById("choosePerDay").style.visibility ="hidden";
 }
 
 revenirArriere.addEventListener("click",()=>{
     remettreAffichageCommune();
     howManyDays.value = howManyDays.options[0].value;
     onIDays(howManyDays.value);
-    supData.style.visibility = "hidden";
 })
 
 

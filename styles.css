@@ -286,11 +286,13 @@ h3{
 }
 
 /* ------------------ WEATHER PER DAY ------------------ */
-.choosePerDay{
+#choosePerDay{
     display: flex;
     align-items: center;
     justify-content: center;
+    visibility: hidden;
 }
+
 
 #howManyDays{
     width: 4em;
@@ -312,6 +314,7 @@ h3{
     margin: 1.5em auto;
     max-width: 32em;
     margin-bottom: 5em;
+    visibility: hidden;
 }
 
 .oneDay{
