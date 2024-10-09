@@ -58,6 +58,8 @@ const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e"
 const howManyDays = document.getElementById("howManyDays");
 const selectPerDay = document.getElementById("selectPerDay");
 
+
+
 async function setDataWeather(codeInsee) {
     const url = `https://api.meteo-concept.com/api/forecast/daily?token=${token}&insee=${codeInsee}`;
     try {
@@ -338,30 +340,31 @@ function weatherDescriptions (weather, s){
         s.innerHTML = '<i class="fa-regular fa-sun"></i>';
         if (s == sky){ body.style.backgroundColor ="#80DDE3"; 
           formulaire.style.backgroundColor ="#80DDE3";
-          skyDescription.innerText = "Ensoleillé"
+          skyDescription.innerText = "Ensoleillé";
         }
     } 
     if((weather >= 1 && weather <= 5) || (weather == 16) ){
         s.innerHTML = '<i class="fa-solid fa-cloud"></i>';
         if (s == sky){ body.style.backgroundColor="#6FB8BD";
           formulaire.style.backgroundColor ="#6FB8BD"; 
-          skyDescription.innerText = "Nuageux"
+          skyDescription.innerText = "Nuageux";
         }
     }
     if(weather >= 6 && weather <= 7 ){
         s.innerHTML = '<i class="fa-solid fa-smog"></i>';
         if (s == sky){ body.style.backgroundColor = "#59989C";
           formulaire.style.backgroundColor ="#59989C"; 
-          skyDescription.innerText = "Brumeux"
+          skyDescription.innerText = "Brumeux";
         }
     }
     if((weather >= 10 && weather <= 15) || (weather >= 40 && weather <= 48) || (weather >= 210 && weather <= 212) || (weather == 235)){
         s.innerHTML =  '<i class="fa-solid fa-cloud-rain"></i>';
         
         if (s == sky){ 
-          body.style.backgroundColor = "#496769";
-          formulaire.style.backgroundColor ="#496769";
-          skyDescription.innerText = "Pluvieux"
+            animate();
+            body.style.backgroundColor = "#496769";
+            formulaire.style.backgroundColor ="#496769";
+            skyDescription.innerText = "Pluvieux"
         }
     }
     if((weather >= 20 && weather <= 22 ) || (weather >= 30 && weather <= 32) ||  (weather >= 60 && weather <= 68) || (weather >= 70 && weather <= 78) || (weather >= 220 && weather <= 2022) || (weather >= 230 && weather <= 232)){
@@ -459,4 +462,6 @@ function animate(){
 
     requestAnimationFrame(animate);
 }
-animate();
+function stopAnimate(){
+    cancelAnimationFrame(animate);
+}
