@@ -441,5 +441,6 @@ Animation
 
 #rainfall {
     position: absolute;
+    z-index: -1; /* mettre en arrière plan, afin que la canvas, ne soit pas au-dessus. Pour pouvoir naviguer */
     
 }
