@@ -42,6 +42,22 @@ let dataWeather;
 let valeurInput;
 
 let animation;
+const canvas = document.getElementById('rainfall');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+canvas.style.visibility = "hidden";
+
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+
+const raindrops = [];
+
+animate();
 
 // today date
 let date = new Date();
@@ -50,8 +66,8 @@ var tab_month = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet
 let todayDate;
 let time;
 
-//const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
-const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e";
+const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
+//const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e";
 /* ------------------------------------------------------------- WEATHER FOR I DAYS ------------------------------------------------------------------------------------------- */
 
 
@@ -365,8 +381,11 @@ function weatherDescriptions (weather, s){
         s.innerHTML =  '<i class="fa-solid fa-cloud-rain"></i>';
         
         if (s == sky){ 
-           // canvas.style.visibility = "block";
-            animate();
+           canvas.style.visibility = "visible";
+           console.log("visible du canvas");
+            
+            
+           
             body.style.backgroundColor = "#496769";
             formulaire.style.backgroundColor ="#496769";
             skyDescription.innerText = "Pluvieux"
@@ -413,14 +432,6 @@ function verifCheckBox(checkBox,value,text){
 
 
 
-const canvas = document.getElementById('rainfall');
-const ctx = canvas.getContext('2d');
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const raindrops = [];
-
 function createRainDrop(){
     const x = Math.random() * canvas.width
     const y = -5;
@@ -459,6 +470,8 @@ function drawRaindrops(){
     }
 
 }
+
+
 
 function animate(){
     createRainDrop();
