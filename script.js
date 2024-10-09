@@ -289,6 +289,7 @@ revenirArriere.addEventListener("click",()=>{
     remettreAffichageCommune();
     howManyDays.value = howManyDays.options[0].value;
     onIDays(howManyDays.value);
+    supData.style.visibility = "hidden";
 })
 
 
