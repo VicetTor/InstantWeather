@@ -88,15 +88,17 @@ body{
 
 #errorPostalCode{
     visibility: hidden;
-    color: red;
+    color: rgb(184, 24, 24);
     border: solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-color: black;
-    background-color: gray;
-    padding: 0.3em;
-
+    display: block;
+    margin: auto;
+    border-color: rgb(145, 28, 28);
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 0.5em;
+    width: 20em;
+    margin-bottom: 2em;
 }
 
 #title, #subtitle, #postalCode, #city{
