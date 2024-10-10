@@ -41,6 +41,8 @@ let dataPerDay = [];
 let dataWeather;
 let valeurInput;
 
+let dataHoraire;
+
 
 
 // today date
@@ -57,6 +59,7 @@ const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382"
 
 const howManyDays = document.getElementById("howManyDays");
 const selectPerDay = document.getElementById("selectPerDay");
+let insee;
 
 async function setDataWeather(codeInsee) {
     const url = `https://api.meteo-concept.com/api/forecast/daily?token=${token}&insee=${codeInsee}`;
@@ -64,6 +67,7 @@ async function setDataWeather(codeInsee) {
     const response = await fetch(url);
     dataWeather = await response.json();
     setDataPerDay();
+    insee = codeInsee;
 
     } catch (error) {
     console.error(error.message);
@@ -87,15 +91,34 @@ function onIDays(i){
     }
 }
 
+
 const day1 = document.getElementById("day1");
+
+let wholeDate;
+let date3parts;
+
+
 function addDivDay(j){ // j indice du tableau dataPerDay[]
     let newDivDay = document.createElement("div");
     let newPWeather = document.createElement("p");
     let newPDate = document.createElement("p");
     let newPImage = document.createElement("p");
 
+    
     newDivDay.className="oneDay";
+
     newDivDay.id=="day"+j;
+
+   // newDivDay.id = "day"+j;
+
+
+    newDivDay.addEventListener("click",()=>{
+        fetchDataMeteo(insee,j);
+
+    },false)
+    
+
+
     newPWeather.className="tempMinMax";
     newPDate.className="datePerDay";
     newPImage.className="imagePerDay";
@@ -104,8 +127,8 @@ function addDivDay(j){ // j indice du tableau dataPerDay[]
 
     weatherDescriptions (dataPerDay[j].weather, newPImage);
     newPWeather.innerHTML = dataPerDay[j].tmin + "°/" + dataPerDay[j].tmax + "°";
-    let wholeDate = dataPerDay[j].datetime.split('T');
-    let date3parts = wholeDate[0].split("-");
+    wholeDate = dataPerDay[j].datetime.split('T');
+    date3parts = wholeDate[0].split("-");
     newPDate.innerHTML = date3parts[2] + "/" + date3parts[1];
 
     newDivDay.appendChild(newPImage);
@@ -113,6 +136,7 @@ function addDivDay(j){ // j indice du tableau dataPerDay[]
     newDivDay.appendChild(newPDate);
     selectPerDay.appendChild(newDivDay);
 }
+
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
 
@@ -123,19 +147,19 @@ async function fetchData(codePostal) { // asynchrone pour exécuter tout le code
         
         if(codePostal.trim() == ''){
             console.log(codePostal);
-            errorPostalCode.innerText = "Vous avez rien saisi, veuillez saisir un nombre de 5 chiffres.";
+            errorPostalCode.innerText = "🚨 Vous avez rien saisi, veuillez saisir un nombre de 5 chiffres.";
             errorPostalCode.style.visibility = "visible";
         }  
         else{
             if(verifPostalCode(codePostal) == 0){
-                errorPostalCode.innerText = "Le code postal n'est pas de la bonne forme. Il doit être de 5 chiffres."; 
+                errorPostalCode.innerText = "🚨 Le code postal n'est pas de la bonne forme. Il doit être de 5 chiffres."; 
                 errorPostalCode.style.visibility = "visible";
             }
             else{
                 const result = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${codePostal}`); // Récupérer valeur de l'api
                 const data = await result.json();
                 if(data.length == 0){
-                    errorPostalCode.innerText = "Ce code postal n'existe pas.";
+                    errorPostalCode.innerText = "🚨 Ce code postal n'existe pas.";
                     errorPostalCode.style.visibility = "visible";
                 }
                 else{
@@ -184,7 +208,7 @@ async function fetchDataNomVille(nomCommune){
         const result = await fetch(`https://geo.api.gouv.fr/communes?nom=${nomCommune}&fields=departement`);
         const data = await result.json();
         const valeurInsee = data[0].code;
-        fetchDataMeteo(valeurInsee);
+        fetchDataMeteo(valeurInsee,0);
         setDataWeather(valeurInsee);
     }
     catch (error){
@@ -199,32 +223,42 @@ validation.addEventListener("change", ()=>{
    
 })
 
-async function fetchDataMeteo(codeInsee){
+async function fetchDataMeteo(codeInsee,i){
     try{ 
+
         const result = await fetch(`https://api.meteo-concept.com/api/forecast/daily?token=${token}&insee=${codeInsee}`);
         const resultPeriod = await fetch(`https://api.meteo-concept.com/api/forecast/nextHours?token=${token}&insee=${codeInsee}`);
         const data = await result.json();
         let dataPeriod = await resultPeriod.json();
-        console.log(dataPeriod);
-        const skyCommune = data.forecast[0].weather; 
-        
+        console.log(data);
+        const skyCommune = data.forecast[i].weather; 
+    
         weatherDescriptions(skyCommune, sky);
 
-        const tempMinCommune = data.forecast[0].tmin;
-        const tempMaxCommune = data.forecast[0].tmax;
-        const probaRainCommune = data.forecast[0].probarain;
-        const sun_hours = data.forecast[0].sun_hours;
+        const tempMinCommune = data.forecast[i].tmin;
+
+       
+        const tempMaxCommune = data.forecast[i].tmax;
+        const probaRainCommune = data.forecast[i].probarain;
+        const sun_hours = data.forecast[i].sun_hours;
         const nomVille = data.city.name;
         const longitudeCommune = data.city.longitude; 
         const latitudeCommune = data.city.latitude;
-        const ventMoyenCommune = data.forecast[0].wind10m;
-        const directionVentCommune = data.forecast[0].dirwind10m;
-        const cumulPluieCommune = data.forecast[0].rr10;
-        const currentTemperatureCommune = dataPeriod.forecast[0].temp2m;
+        const ventMoyenCommune = data.forecast[i].wind10m;
+        const directionVentCommune = data.forecast[i].dirwind10m;
+        const cumulPluieCommune = data.forecast[i].rr10;
+       
+        if(i > 0){
+            currentTemperature.innerText = "";
+        }
+        else{
+            const currentTemperatureCommune = dataPeriod.forecast[0].temp2m;
+            currentTemperature.innerText = currentTemperatureCommune + '°';
+        }
+
         
+       
         
-        //console.log( "temperature:" + currentTemperatureCommune);
-        currentTemperature.innerText = currentTemperatureCommune + '°';
         cumulPluie.innerText = cumulPluieCommune+"mm";
         ventMoyen.innerText = ventMoyenCommune+"km/h";
         directionVent.innerText = directionVentCommune+'°';
@@ -232,17 +266,23 @@ async function fetchDataMeteo(codeInsee){
         longitude.innerText = longitudeCommune;
         nomCommune.innerText = nomVille;
         tempMin.innerText = tempMinCommune+'°';
+      
+
         tempMax.innerText = tempMaxCommune+'°';
         probaRain.innerText = probaRainCommune+'%';
         heureSol.innerText = sun_hours;      
 
+        
 
-        todayDate = tab_week[date.getDay()] + " " + date.getDate() + " " + tab_month[date.getMonth()] + " " + date.getFullYear();
         let minute = date.getMinutes() + "";
         if (minute.length == 1) { minute = "0"+minute;}
         time = date.getHours() + "h" + minute;
-        heureActuelle.innerText = todayDate + ", " + time;
       
+        
+        wholeDate = data.forecast[i].datetime.split('T');
+        date3parts = wholeDate[0].split("-");
+        heureActuelle.innerText = date3parts[2] + " " + tab_month[date3parts[1]] + ", " + time;
+        
         affichageInfos();
     }
     catch(error){
@@ -258,6 +298,8 @@ function affichageInfos(){
     settings.style.visibility ="visible";
     codePostal.style.position = "absolute";
     city.style.position ="absolute";
+    selectPerDay.style.visibility ="visible";
+    document.getElementById("choosePerDay").style.visibility ="visible";
 }
 
 function verifEncadrer(){
@@ -330,11 +372,11 @@ function remettreAffichageCommune(){
     title.style.marginTop = "15%";
     body.style.backgroundColor= "#58ABB0";
     selectionCity.style.visibility = "hidden";
-    supData.style.visibility="hidden";
     codePostal.style.position = "";
     city.style.position ="";
     settings.style.visibility ="hidden";
     formulaire.style.visibility ="hidden";
+
 
     carte.style.visibility ="hidden";
     pluie.style.visibility ="hidden";
@@ -352,13 +394,16 @@ function remettreAffichageCommune(){
     textVentMoyen.style.visibility ="hidden";
     textDirectionVent.style.visibility ="hidden";
 
+    selectPerDay.style.visibility ="hidden";
+    supData.style.visibility="hidden";
+    document.getElementById("choosePerDay").style.visibility ="hidden";
+
 }
 
 revenirArriere.addEventListener("click",()=>{
     remettreAffichageCommune();
     howManyDays.value = howManyDays.options[0].value;
     onIDays(howManyDays.value);
-    supData.style.visibility = "hidden";
 })
 
 
@@ -368,14 +413,14 @@ function weatherDescriptions (weather, s){
         s.innerHTML = '<i class="fa-regular fa-sun"></i>';
         if (s == sky){ body.style.backgroundColor ="#80DDE3"; 
           formulaire.style.backgroundColor ="#80DDE3";
-          skyDescription.innerText = "Ensoleillé"
+          skyDescription.innerText = "Ensoleillé";
         }
     } 
     if((weather >= 1 && weather <= 5) || (weather == 16) ){
         s.innerHTML = '<i class="fa-solid fa-cloud"></i>';
         if (s == sky){ body.style.backgroundColor="#6FB8BD";
-          formulaire.style.backgroundColor ="#6FB8BD"; 
-          skyDescription.innerText = "Nuageux"
+            formulaire.style.backgroundColor ="#6FB8BD"; 
+            skyDescription.innerText = "Nuageux";
         }
     }
     if(weather >= 6 && weather <= 7 ){
@@ -430,7 +475,6 @@ function verifCheckBox(checkBox,value,text){
         verifRemettreEncadrer();
     }
 }
-
 
 
 
