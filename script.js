@@ -52,8 +52,8 @@ var tab_month = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet
 let todayDate;
 let time;
 
-const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
-//const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e";
+//const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
+const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e";
 /* ------------------------------------------------------------- WEATHER FOR I DAYS ------------------------------------------------------------------------------------------- */
 
 
@@ -249,7 +249,7 @@ async function fetchDataMeteo(codeInsee,i){
         const cumulPluieCommune = data.forecast[i].rr10;
        
         if(i > 0){
-            currentTemperature.innerText = "";
+            currentTemperature.innerText = " ";
         }
         else{
             const currentTemperatureCommune = dataPeriod.forecast[0].temp2m;
@@ -300,6 +300,14 @@ function affichageInfos(){
     city.style.position ="absolute";
     selectPerDay.style.visibility ="visible";
     document.getElementById("choosePerDay").style.visibility ="visible";
+
+    verifCheckBox(latitudeCheckBox,lat,textLatitude)
+    verifCheckBox(longitudeCheckBox,long,textLongitude)
+    verifCheckBox(cumulPluieCheckBox,cupluie,textCuPluie)
+    verifCheckBox(directionVentCheckBox,dirvent,textDirectionVent)
+    verifCheckBox(ventMoyenCheckBox,vemoy,textVentMoyen)
+
+
 }
 
 function verifEncadrer(){
@@ -462,6 +470,7 @@ settings.addEventListener("click",()=>{
 cancel.addEventListener("click",()=>{
     formulaire.style.visibility="hidden";
 })
+
 
 function verifCheckBox(checkBox,value,text){
     if(checkBox.checked == false){
