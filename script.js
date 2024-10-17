@@ -242,7 +242,7 @@ async function fetchDataMeteo(codeInsee,i){
         const probaRainCommune = data.forecast[i].probarain;
         const sun_hours = data.forecast[i].sun_hours;
         const nomVille = data.city.name;
-        const longitudeCommune = data.city.longitude; 
+        const longitudeCommune =(data.city.longitude); 
         const latitudeCommune = data.city.latitude;
         const ventMoyenCommune = data.forecast[i].wind10m;
         const directionVentCommune = data.forecast[i].dirwind10m;

@@ -355,3 +355,365 @@ footer{
     width: 100%;
 }
 
+
+
+/*---------------- MEDIA QUERY -------------------*/
+
+
+@media screen and (max-width : 1440px) {
+    #settings{ 
+        margin-right: 2em;
+    }
+    #revenirArriere{
+        margin-left: 2em;
+    }
+}
+
+@media screen and (max-width: 840px) {
+    #settings{
+        margin-top: 10em;
+        margin-right: 2em;
+    }
+    #revenirArriere{
+        margin-top: 10em;
+        margin-left: 2em;
+    }
+}
+
+
+@media screen and (max-width: 810px) {
+    #settings{
+        margin-top: 10em;
+        margin-right: 2em;
+    }
+    #revenirArriere{
+        margin-top: 10em;
+        margin-left: 2em;
+    }
+}
+
+
+
+@media screen and (max-width: 428px) {
+    #settings{
+        margin-top: 13em;
+    }
+    #revenirArriere{
+        margin-top: 13em;
+    }
+    #supData{
+        width: 25em ;
+    }
+    #formulaire{
+        width: 130px;
+    }
+    #selectPerDay{
+        width: 25em;
+    }
+    .imagePerDay{
+        font-size: 2em;
+    }
+    .oneDay{
+        padding: 0.25em;
+    }
+    .datePerDay{
+        font-size: 0.75em;
+        margin: 0;
+    }
+    .imagePerDay{
+        margin: 0;
+        font-size: 1.5em;
+    }
+    .tempMinMax{
+        font-size: 0.9em;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 414px) {
+
+    #selectPerDay{
+        width: 25em;
+    }
+    .imagePerDay{
+        font-size: 2em;
+    }
+    .oneDay{
+        padding: 0.25em;
+    }
+    .datePerDay{
+        font-size: 0.75em;
+        margin: 0;
+    }
+    .imagePerDay{
+        margin: 0;
+        font-size: 1.5em;
+    }
+    .tempMinMax{
+        font-size: 0.9em;
+        margin: 0;
+    }
+    #cupluie{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #dirvent{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #vemoy{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #long{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #lat{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    
+}
+
+@media screen and (max-width: 390px) {
+    #settings{
+        margin-top: 13em;
+    }
+    #revenirArriere{
+        margin-top: 13em;
+    }
+    #supData{
+        width: 22em ;
+    }
+    #formulaire{
+        width: 130px;
+    }
+    #selectPerDay{
+        width: 23em;
+    }
+    .imagePerDay{
+        font-size: 1.5em;
+    }
+    .oneDay{
+        padding: 0.25em;
+    }
+    .datePerDay{
+        font-size: 0.75em;
+        margin: 0;
+    }
+    .imagePerDay{
+        margin: 0;
+        font-size: 1.5em;
+    }
+    .tempMinMax{
+        font-size: 0.9em;
+        margin: 0;
+    }
+    #infoMain{
+        width: 23em;
+    }
+    #cupluie{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #dirvent{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #vemoy{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #long{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #lat{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    #settings{
+        margin-top: 13em;
+    }
+    #revenirArriere{
+        margin-top: 13em;
+    }
+    #supData{
+        width: 22em ;
+    }
+    #formulaire{
+        width: 130px;
+    }
+    #selectPerDay{
+        width: 23em;
+    }
+    .imagePerDay{
+        font-size: 1.5em;
+    }
+    .oneDay{
+        padding: 0.25em;
+    }
+    .datePerDay{
+        font-size: 0.75em;
+        margin: 0;
+    }
+    .imagePerDay{
+        margin: 0;
+        font-size: 1.5em;
+    }
+    .tempMinMax{
+        font-size: 0.9em;
+        margin: 0;
+    }
+    #infoMain{
+        width: 22em;
+    }
+    #cupluie{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #dirvent{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #vemoy{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #long{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #lat{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+}
+
+
+@media screen and (max-width: 360px) {
+    #settings{
+        margin-top: 13em;
+    }
+    #revenirArriere{
+        margin-top: 13em;
+    }
+    #supData{
+        width: 21em ;
+    }
+    #formulaire{
+        width: 130px;
+    }
+    #selectPerDay{
+        width: 22em;
+    }
+    .imagePerDay{
+        font-size: 1.5em;
+    }
+    .oneDay{
+        padding: 0.25em;
+    }
+    .datePerDay{
+        font-size: 0.75em;
+        margin: 0;
+    }
+    .imagePerDay{
+        margin: 0;
+        font-size: 1.5em;
+    }
+    .tempMinMax{
+        font-size: 0.9em;
+        margin: 0;
+    }
+    #infoMain{
+        width: 21em;
+    }
+    #cupluie{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #dirvent{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #vemoy{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #long{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #lat{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+}
+
+
+
+@media screen and (max-width: 320px) {
+    #settings{
+        margin-top: 12em;
+    }
+    #revenirArriere{
+        margin-top: 12em;
+    }
+    #supData{
+        width: 19em ;
+    }
+    #formulaire{
+        width: 130px;
+    }
+    #selectPerDay{
+        width: 19em;
+    }
+    .imagePerDay{
+        font-size: 1em;
+    }
+    .oneDay{
+        padding: 0.25em;
+    }
+    .datePerDay{
+        font-size: 0.6em;
+        margin: 0;
+    }
+    .imagePerDay{
+        margin: 0;
+        font-size: 1em;
+    }
+    .tempMinMax{
+        font-size: 0.7em;
+        margin: 0;
+    }
+    #infoMain{
+        width: 19em;
+    }
+    #cupluie{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #dirvent{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #vemoy{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #long{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #lat{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #title{
+        font-size:3.5em;
+    }
+}
