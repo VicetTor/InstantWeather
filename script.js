@@ -37,6 +37,7 @@ const cumulPluieCheckBox = document.getElementById("cumulPluieCheckBox");
 const directionVentCheckBox = document.getElementById("directionVentCheckBox")
 const ventMoyenCheckBox = document.getElementById("ventMoyenCheckBox");
 
+const card = document.getElementById("card");
 let dataPerDay = [];
 let dataWeather;
 let valeurInput;
@@ -47,6 +48,7 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth * 1.5;
 canvas.height = window.innerHeight * 1.5;
 canvas.style.visibility = "hidden";
+card.style.visibility = "hidden";
 
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth * 1.5;
@@ -69,6 +71,7 @@ let time;
 
 //const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
 //const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e";
+//const token = "ced3b5dd9813f00f0be2ac7c73d561438f2786cc96434a7850bed685692a6f0e";
 const token = "fdc3bc3227d4a88b39ad16fe2fc2d0947f30c5d7718ba9dc1c3660014b309bfc";
 /* ------------------------------------------------------------- WEATHER FOR I DAYS ------------------------------------------------------------------------------------------- */
 
@@ -275,6 +278,7 @@ function affichageInfos(){
     supData.style.visibility = "visible";
     settings.style.visibility ="visible";
     codePostal.style.position = "absolute";
+   card.style.visibility = "visible";
     city.style.position ="absolute";
 }
 
@@ -346,14 +350,13 @@ function remettreAffichageCommune(){
 }
 
 revenirArriere.addEventListener("click",()=>{
-    
-    console.log("a");
     //cancelAnimationFrame(animation); // figer l'animation
     canvas.style.visibility = 'hidden';
     remettreAffichageCommune();
     howManyDays.value = howManyDays.options[0].value;
     onIDays(howManyDays.value);
     supData.style.visibility = "hidden";
+    card.style.visibility = "hidden";
 })
 
 
@@ -412,10 +415,12 @@ function weatherDescriptions (weather, s){
 
 settings.addEventListener("click",()=>{
     formulaire.style.visibility="visible";
+    
 })
 
 cancel.addEventListener("click",()=>{
     formulaire.style.visibility="hidden";
+    
 })
 
 function verifCheckBox(checkBox,value,text){
