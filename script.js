@@ -41,7 +41,24 @@ let dataPerDay = [];
 let dataWeather;
 let valeurInput;
 
+const canvas = document.getElementById('rainfall');
+const ctx = canvas.getContext('2d');
 
+canvas.width = window.innerWidth * 1.5;
+canvas.height = window.innerHeight * 1.5;
+canvas.style.visibility = "hidden";
+
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth * 1.5;
+    canvas.height = window.innerHeight * 1.5;
+    raindrops.length = 0;
+
+});
+
+
+const raindrops = [];
+
+animate();
 
 // today date
 let date = new Date();
@@ -57,6 +74,8 @@ const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e"
 
 const howManyDays = document.getElementById("howManyDays");
 const selectPerDay = document.getElementById("selectPerDay");
+
+
 
 async function setDataWeather(codeInsee) {
     const url = `https://api.meteo-concept.com/api/forecast/daily?token=${token}&insee=${codeInsee}`;
@@ -121,19 +140,19 @@ async function fetchData(codePostal) { // asynchrone pour exécuter tout le code
         
         if(codePostal.trim() == ''){
             console.log(codePostal);
-            errorPostalCode.innerText = "Vous avez rien saisi, veuillez saisir un nombre de 5 chiffres.";
+            errorPostalCode.innerText = "Vous avez rien saisi, veuillez saisir un nombre de 5 chiffres";
             errorPostalCode.style.visibility = "visible";
         }  
         else{
             if(verifPostalCode(codePostal) == 0){
-                errorPostalCode.innerText = "Le code postal n'est pas de la bonne forme. Il doit être de 5 chiffres."; 
+                errorPostalCode.innerText = "Le code postal n'est pas de la bonne forme. Il doit être de 5 chiffres"; 
                 errorPostalCode.style.visibility = "visible";
             }
             else{
                 const result = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${codePostal}`); // Récupérer valeur de l'api
                 const data = await result.json();
                 if(data.length == 0){
-                    errorPostalCode.innerText = "Ce code postal n'existe pas.";
+                    errorPostalCode.innerText = "Ce code postal n'existe pas";
                     errorPostalCode.style.visibility = "visible";
                 }
                 else{
@@ -326,6 +345,10 @@ function remettreAffichageCommune(){
 }
 
 revenirArriere.addEventListener("click",()=>{
+    
+    console.log("a");
+    //cancelAnimationFrame(animation); // figer l'animation
+    canvas.style.visibility = 'hidden';
     remettreAffichageCommune();
     howManyDays.value = howManyDays.options[0].value;
     onIDays(howManyDays.value);
@@ -333,35 +356,40 @@ revenirArriere.addEventListener("click",()=>{
 })
 
 
-
 function weatherDescriptions (weather, s){
     if(weather == 0){
         s.innerHTML = '<i class="fa-regular fa-sun"></i>';
         if (s == sky){ body.style.backgroundColor ="#80DDE3"; 
           formulaire.style.backgroundColor ="#80DDE3";
-          skyDescription.innerText = "Ensoleillé"
+          skyDescription.innerText = "Ensoleillé";
         }
     } 
     if((weather >= 1 && weather <= 5) || (weather == 16) ){
         s.innerHTML = '<i class="fa-solid fa-cloud"></i>';
         if (s == sky){ body.style.backgroundColor="#6FB8BD";
           formulaire.style.backgroundColor ="#6FB8BD"; 
-          skyDescription.innerText = "Nuageux"
+          skyDescription.innerText = "Nuageux";
         }
     }
     if(weather >= 6 && weather <= 7 ){
         s.innerHTML = '<i class="fa-solid fa-smog"></i>';
         if (s == sky){ body.style.backgroundColor = "#59989C";
           formulaire.style.backgroundColor ="#59989C"; 
-          skyDescription.innerText = "Brumeux"
+          skyDescription.innerText = "Brumeux";
         }
     }
     if((weather >= 10 && weather <= 15) || (weather >= 40 && weather <= 48) || (weather >= 210 && weather <= 212) || (weather == 235)){
         s.innerHTML =  '<i class="fa-solid fa-cloud-rain"></i>';
+        
         if (s == sky){ 
-          body.style.backgroundColor = "#496769";
-          formulaire.style.backgroundColor ="#496769";
-          skyDescription.innerText = "Pluvieux"
+           canvas.style.visibility = "visible";
+           console.log("visible du canvas");
+            
+            
+           
+            body.style.backgroundColor = "#496769";
+            formulaire.style.backgroundColor ="#496769";
+            skyDescription.innerText = "Pluvieux"
         }
     }
     if((weather >= 20 && weather <= 22 ) || (weather >= 30 && weather <= 32) ||  (weather >= 60 && weather <= 68) || (weather >= 70 && weather <= 78) || (weather >= 220 && weather <= 2022) || (weather >= 230 && weather <= 232)){
@@ -405,5 +433,52 @@ function verifCheckBox(checkBox,value,text){
 
 
 
+function createRainDrop(){
+    const x = Math.random() * canvas.width;
+    const y = 0;
+    const speed = Math.random() * 5 + 2;
+    const length = Math.random() * 20 + 10;
+
+    raindrops.push({x, y, speed, length});
+}
+
+function updateRaindrops(){
+    for(let i = 0; i < raindrops.length; i++){
+        const raindrop = raindrops[i];
+
+        raindrop.y += raindrop.speed;
+
+        if(raindrop.y > canvas.height){
+            raindrops.splice(i,1);
+            i--;
+        }
+    }
+}
+
+function drawRaindrops(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 2;
+
+    for(let i = 0; i<raindrops.length; i++){
+        const raindrop = raindrops[i];
+
+        ctx.beginPath();
+        ctx.moveTo(raindrop.x, raindrop.y);
+        ctx.lineTo(raindrop.x, raindrop.y + raindrop.length);
+        ctx.stroke();
+    }
+
+}
 
 
+
+function animate(){
+    createRainDrop();
+    updateRaindrops();
+    drawRaindrops();
+    requestAnimationFrame(animate);
+}
+
+ 

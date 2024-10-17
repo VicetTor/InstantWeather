@@ -350,3 +350,109 @@ footer{
     width: 100%;
 }
 
+/*
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    background-color: #edeede;
+    min-height: 100vh;
+}
+
+.gouttes{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotation 15s linear;
+}
+
+
+.goutte{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-color: transparent;
+    border-radius: 61% 39% 38% 62% / 34% 54% 46% 66%;
+    box-shadow: inset 10px 10px 10px 10px rgb(0, 0, 0, 0.05) ,
+                inset 15px 20px 20px   rgb(0, 0, 0.1),
+                inset 15px 20px 20px   rgb(0, 0, 0.05) ;
+
+                inset  -10px -10px -15px rgb(255, 255, 255); 
+}
+
+
+.goutte::before{
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 35px;
+    background-color: #fff;
+    width: 10px;
+    height: 10px;
+    border-radius: 63% 37% 35% 65% / 44% 35% 65% 56%;
+
+}
+
+.goutte::after{
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 35px;
+    background-color: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 38% 62% 62% 38% / 34% 47% 53% 66%;
+
+}
+.goutte:nth-child(2){
+    transform: scale(0.5) translate(-200px, 180px);
+    border-radius: 63% 37% 67% 33% / 31% 35% 65% 69%;
+}
+
+.goutte:nth-child(3){
+    transform: scale(0.5) translate(280px, 10px);
+    border-radius: 63% 37% 67% 33% / 31% 35% 65% 69%;
+}
+
+.goutte:nth-child(4){
+    transform: scale(0.5) translate(120px, -350px);
+    border-radius: 63% 37% 67% 33% / 31% 35% 65% 69%;
+}
+
+Animation 
+@keyframes rotation {
+    from{transform: rotate(0deg);}
+    to{transform: rotate(360deg);}
+}
+*/
+
+/*body{
+    background-color: #01172b;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}*/
+
+#rainfall {
+    position: absolute;
+    z-index: -1; /* mettre en arrière plan, afin que la canvas, ne soit pas au-dessus. Pour pouvoir naviguer */
+    
+}
+
+
+canvas{
+    display: block;
+    position: absolute;
+    
+    /*
+    -webkit-animation-play-state:paused;
+  -moz-animation-play-state:paused;
+  animation-play-state:paused;*/
+
+}
