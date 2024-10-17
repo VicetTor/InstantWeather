@@ -14,6 +14,8 @@ body{
     background-color: rgb(88, 171, 176);
     color: white;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 #revenirArriere{
@@ -358,5 +360,6 @@ footer{
     padding: 1em;
     bottom: 0;
     width: 100%;
+    margin-top: auto;
 }
 
