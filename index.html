@@ -37,23 +37,23 @@
             cancel
         </span>
         <form id="checkbox">
-            <label > Latitude </label>
-                <input type="checkbox" id="latitudeCheckBox" name="latitude" value="1" checked="" onchange="verifCheckBox(latitudeCheckBox,lat,textLatitude)">
-            <label > Longitude </label>
-                <input type="checkbox" id="longitudeCheckBox" name="longitude" checked="" value="2" onchange="verifCheckBox(longitudeCheckBox,long,textLongitude)">
-            <label > cumulPluie </label> 
-                <input type="checkbox" id="cumulPluieCheckBox" name="cumulPluie" checked="" value="3" onchange="verifCheckBox(cumulPluieCheckBox,cupluie,textCuPluie)">
-            <label >directionVent</label>
-                <input type="checkbox" id="directionVentCheckBox" name="directionVent" checked="" value="4" onchange="verifCheckBox(directionVentCheckBox,dirvent,textDirectionVent)">
-            <label > ventMoyen</label>
-                <input type="checkbox" id="ventMoyenCheckBox" name="ventMoyen" checked="" value="5" onchange="verifCheckBox(ventMoyenCheckBox,vemoy,textVentMoyen)">
+            <label for="latitudeCheckBox">Latitude </label>
+                <input type="checkbox" id="latitudeCheckBox" title="latitude" name="latitude" value="1" checked="" onchange="verifCheckBox(latitudeCheckBox,lat,textLatitude)">
+            <label for="longitudeCheckBox">Longitude </label>
+                <input type="checkbox" id="longitudeCheckBox" title="longitude" name="longitude" checked="" value="2" onchange="verifCheckBox(longitudeCheckBox,long,textLongitude)">
+            <label for="cumulPluieCheckBox">cumulPluie </label> 
+                <input type="checkbox" id="cumulPluieCheckBox" title="cumulPluie" name="cumulPluie" checked="" value="3" onchange="verifCheckBox(cumulPluieCheckBox,cupluie,textCuPluie)">
+            <label for="directionVentCheckBox">directionVent</label>
+                <input type="checkbox" id="directionVentCheckBox" title="directionVent" name="directionVent" checked="" value="4" onchange="verifCheckBox(directionVentCheckBox,dirvent,textDirectionVent)">
+             <label for="ventMoyenCheckBox">ventMoyen</label>
+                <input type="checkbox" id="ventMoyenCheckBox" title="ventMoyen" name="ventMoyen" checked="" value="5" onchange="verifCheckBox(ventMoyenCheckBox,vemoy,textVentMoyen)">
         </form>
     </div>
 
     <!-- TITLE --> 
     <div id="titleSur">
         <h1 id="title">INSTANT WEATHER</h1>
-        <h3 id="subtitle">Votre météo en instantané</h3>
+        <h2 id="subtitle">Votre météo en instantané</h2>
     </div>
 
 
@@ -62,13 +62,15 @@
     <p id="errorPostalCode"></p>
 
     <div id="postalCode">
+        <label for="postcode" style="visibility: hidden;">o</label>
         <input type="text" placeholder="Saisissez un code postal" id="postcode" name="postcode"/>
         <button type="submit" id="submit" name="submit">
-            <i id = "load" class="fa-solid fa-magnifying-glass"></i>
+            <em id = "load" class="fa-solid fa-magnifying-glass"></em>
         </button>
     </div>
         
     <div id="city" style="visibility: hidden;" >
+        <label for="ville" style="visibility: hidden;">o</label>
         <select id="ville">
             <option value="" disabled selected> Sélectionnez une commune </option>
         </select>
@@ -156,6 +158,7 @@
 
     <div id="choosePerDay">
         <p>Voir sur plusieurs jours :&nbsp;</p>
+        <label for="howManyDays" style="visibility: hidden;">o</label>
         <select name="howManyDays" id="howManyDays" >
             <option value="0" id="0" selected>-</option>
             <option value="1" id="1">1</option>
