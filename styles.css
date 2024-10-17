@@ -447,7 +447,12 @@ Animation
 
 
 canvas{
+    display: block;
+    position: absolute;
+    
+    /*
     -webkit-animation-play-state:paused;
   -moz-animation-play-state:paused;
-  animation-play-state:paused;
+  animation-play-state:paused;*/
+
 }
