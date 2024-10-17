@@ -16,6 +16,7 @@ const sky = document.getElementById("sky");
 const skyDescription = document.getElementById("skyDescription");
 const currentTemperature = document.getElementById("currentTemperature");
 const errorPostalCode = document.getElementById("errorPostalCode");
+const content = document.getElementById("content");
 
 //console.log(currentTemperature);
 const body = document.body;
@@ -52,8 +53,8 @@ var tab_month = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet
 let todayDate;
 let time;
 
-//const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
-const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e";
+const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
+//const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e";
 /* ------------------------------------------------------------- WEATHER FOR I DAYS ------------------------------------------------------------------------------------------- */
 
 
@@ -165,7 +166,7 @@ async function fetchData(codePostal) { // asynchrone pour exécuter tout le code
                 else{
                     
                     const optionDeBase = document.createElement("option");
-                    optionDeBase.innerText = "Selectionner une commune";
+                    optionDeBase.innerText = "Sélectionnez une commune";
                     validation.appendChild(optionDeBase)
                     data.forEach(element => { // Pour chaque élément de data
                         city.style.visibility ="visible";
@@ -315,7 +316,7 @@ function verifEncadrer(){
         supData.style.visibility ="hidden";
     }
     if(latitudeCheckBox.checked == false && longitudeCheckBox.checked == false){
-        document.getElementById("map").style.visibility ="hidden";
+        document.getElementById("carte").style.visibility ="hidden";
     }
     if(cumulPluieCheckBox.checked == false){
         document.getElementById("pluie").style.visibility ="hidden";
@@ -330,7 +331,7 @@ function verifRemettreEncadrer(){
         supData.style.visibility ="visible";
     }
     if(latitudeCheckBox.checked == true || longitudeCheckBox.checked == true){
-        document.getElementById("map").style.visibility ="visible";
+        document.getElementById("carte").style.visibility ="visible";
     }
     if(cumulPluieCheckBox.checked == true){
         document.getElementById("pluie").style.visibility ="visible";
@@ -355,6 +356,7 @@ if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
 function enleverAffichageCommune(){
     city.style.visibility = "hidden";
     codePostal.style.visibility = "hidden";
+    content.style.visibility = "hidden";
     revenirArriere.style.visibility = "visible";
 }
 
@@ -384,7 +386,7 @@ function remettreAffichageCommune(){
     city.style.position ="";
     settings.style.visibility ="hidden";
     formulaire.style.visibility ="hidden";
-
+    content.style.visibility="visible";
 
     carte.style.visibility ="hidden";
     pluie.style.visibility ="hidden";

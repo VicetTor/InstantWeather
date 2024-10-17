@@ -135,12 +135,9 @@ body{
 
 }
 
-#postalCode button{
-    margin-left: 1em;
-}
-
 #city{
     margin-bottom: 15em;
+    margin-right: 1em;
 }
 
 #ville{
@@ -159,6 +156,14 @@ input{
 #postalCode button{
     border: none;
     background-color: transparent;
+    margin-left: 1em;
+}
+
+#content{
+    text-align: center;
+    font-size: large;
+    color: rgb(255, 255, 255);
+    text-shadow: -0.06em 0.1em 0.5em black;
 }
 
 /* ------------------ CITY & DATE ------------------ */
