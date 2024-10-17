@@ -15,7 +15,7 @@
 <body>
 
     <!-- REVENIR EN ARRIERE -->
-    <div id="revenirArriere">
+    <div id="revenirArriere" style="position: absolute;">
         <span id="revenirArriereForm" class="material-symbols-outlined">
             arrow_back
         </span>
@@ -24,7 +24,7 @@
 
     <!--Settings-->
 
-    <div id="settings" style="visibility: hidden;">
+    <div id="settings" style="visibility: hidden; position:absolute;">
         <span id="settingsForm" class="material-symbols-outlined">
             settings
             </span>
@@ -80,7 +80,7 @@
     <!-- WEATHER -->
     
 
-    <div id="infoMain">
+    <div id="infoMain" style="position: absolute;">
         <div class="cityDate">
             <h2 id="nomCommune">Gouville-sur-Mer</h2>
             <h3 id="heureActuelle">30 juin 2024, 16h12</h3>
@@ -116,7 +116,7 @@
         </div>
     </div>
 
-    <div id="supData">
+    <div id="supData" style="position: absolute;">
         <div id="map">
             <span class="material-symbols-outlined" id="carte">
                 map
@@ -157,7 +157,7 @@
 
     <!-- WEATHER PER DAY -->
 
-    <div id="choosePerDay">
+    <div id="choosePerDay" style="position: absolute;">
         <p>Voir sur plusieurs jours :&nbsp;</p>
         <label for="howManyDays" style="visibility: hidden;">o</label>
         <select name="howManyDays" id="howManyDays" >
@@ -172,13 +172,13 @@
         </select>
     </div>
 
-    <div id="selectPerDay"></div>
+    <div id="selectPerDay" style="position: absolute;"></div>
 
     <!-- FOOTER -->
     <footer>
         <p>Projet JavaScript - INSTANT WEATHER</p>
         <p>BEUVE Léopold - YVRAY RUFFINATTI Victor - K'DUAL Louane</p>
-    </footer>
+    </footer> 
     
 </body>
 </html>

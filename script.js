@@ -18,7 +18,6 @@ const currentTemperature = document.getElementById("currentTemperature");
 const errorPostalCode = document.getElementById("errorPostalCode");
 const content = document.getElementById("content");
 
-//console.log(currentTemperature);
 const body = document.body;
 const supData = document.getElementById("supData");
 const latitude = document.getElementById("lat");
@@ -55,7 +54,8 @@ let time;
 
 //const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
 //const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e";
-const token = "ced3b5dd9813f00f0be2ac7c73d561438f2786cc96434a7850bed685692a6f0e";
+//const token = "ced3b5dd9813f00f0be2ac7c73d561438f2786cc96434a7850bed685692a6f0e";
+const token = "fdc3bc3227d4a88b39ad16fe2fc2d0947f30c5d7718ba9dc1c3660014b309bfc";
 
 /* ------------------------------------------------------------- WEATHER FOR I DAYS ------------------------------------------------------------------------------------------- */
 
@@ -155,7 +155,6 @@ async function fetchData(codePostal) { // asynchrone pour exécuter tout le code
         
         
         if(codePostal.trim() == ''){
-            console.log(codePostal);
             errorPostalCode.innerText = "🚨 Vous avez rien saisi, veuillez saisir un nombre de 5 chiffres.";
             errorPostalCode.style.visibility = "visible";
         }  
@@ -239,7 +238,6 @@ async function fetchDataMeteo(codeInsee,i,dateSemaine){
         const resultPeriod = await fetch(`https://api.meteo-concept.com/api/forecast/nextHours?token=${token}&insee=${codeInsee}`);
         const data = await result.json();
         let dataPeriod = await resultPeriod.json();
-        console.log(data);
         const skyCommune = data.forecast[i].weather; 
     
         weatherDescriptions(skyCommune, sky);
@@ -358,6 +356,15 @@ if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
 }
 
 function enleverAffichageCommune(){
+
+    settings.position ="";
+    revenirArriere.position = "";
+    infoMain.style.position ="";
+    supData.style.position ="";
+    document.getElementById("choosePerDay").style.position ="";
+    selectPerDay.style.position ="";
+    content.style.position ="absolute";
+
     city.style.visibility = "hidden";
     codePostal.style.visibility = "hidden";
     content.style.visibility = "hidden";
@@ -379,6 +386,15 @@ const pluie = document.getElementById("pluie");
 const vent = document.getElementById("vent");
 
 function remettreAffichageCommune(){
+    
+    revenirArriere.position ="absolute";
+    settings.position ="absolute";
+    infoMain.style.position = "absolute";
+    supData.style.position ="absolute";
+    document.getElementById("choosePerDay").style.position ="absolute";
+    selectPerDay.style.position = "absolute";
+    content.style.position ="";
+
     city.style.visibility = "visible";
     codePostal.style.visibility ="visible";
     revenirArriere.style.visibility ="hidden";
