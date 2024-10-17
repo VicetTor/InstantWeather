@@ -68,7 +68,8 @@ let todayDate;
 let time;
 
 //const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
-const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e";
+//const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e";
+const token = "fdc3bc3227d4a88b39ad16fe2fc2d0947f30c5d7718ba9dc1c3660014b309bfc";
 /* ------------------------------------------------------------- WEATHER FOR I DAYS ------------------------------------------------------------------------------------------- */
 
 
