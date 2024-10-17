@@ -94,82 +94,85 @@
      
 
     <!-- WEATHER -->
-    <div id="infoMain">
-        <div class="cityDate">
-            <h2 id="nomCommune">Gouville-sur-Mer</h2>
-            <h3 id="heureActuelle">30 juin 2024, 16h12</h3>
-        </div>
-        <div class="mainData">
-            <div class="weatherInfo">
-
-                <p id="currentTemperature"></p>
-
-
-                <p id="sky"></p>
-                <p id="skyDescription"> </p>
+     <div class="card">
+        <div id="infoMain">
+            <div class="cityDate">
+                <h2 id="nomCommune">Gouville-sur-Mer</h2>
+                <h3 id="heureActuelle">30 juin 2024, 16h12</h3>
             </div>
-            <div class="mainInfo">
-                <div class="mainInfoTop">
-                    <div class="data">
-                        <p id="tempMin"> </p>
-                        <p class="textValue">Temp. min.</p>
+            <div class="mainData">
+                <div class="weatherInfo">
+    
+                    <p id="currentTemperature"></p>
+    
+    
+                    <p id="sky"></p>
+                    <p id="skyDescription"> </p>
+                </div>
+                <div class="mainInfo">
+                    <div class="mainInfoTop">
+                        <div class="data">
+                            <p id="tempMin"> </p>
+                            <p class="textValue">Temp. min.</p>
+                        </div>
+                        <div class="data">
+                            <p id="tempMax"> </p>
+                            <p class="textValue">Temp. max.</p>
+                        </div>
                     </div>
-                    <div class="data">
-                        <p id="tempMax"> </p>
-                        <p class="textValue">Temp. max.</p>
+                    <div class="mainInfoBottom">
+                        <div class="data">
+                            <p id="probaRain"></p>
+                            <p class="textValue">Proba. pluie</p>
+                        </div>
+                        <div class="data">
+                            <p id="heureSol">3h25</p>
+                            <p class="textValue">Heure sol.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="mainInfoBottom">
-                    <div class="data">
-                        <p id="probaRain"></p>
-                        <p class="textValue">Proba. pluie</p>
-                    </div>
-                    <div class="data">
-                        <p id="heureSol">3h25</p>
-                        <p class="textValue">Heure sol.</p>
-                    </div>
+            </div>
+        </div>
+    
+        <div id="supData">
+            <div class="map">
+                <span class="material-symbols-outlined" id="map">
+                    map
+                </span>
+                <div class="data">
+                    <p id="lat">48.0833m</p>
+                    <p class="textValue" id="textLatitude">Latitude</p>
+                </div>
+                <div class="data">
+                    <p id="long">-1.0833m</p>
+                    <p class="textValue" id="textLongitude">Longitude</p>
+                </div>
+            </div>
+            <div class="rain">
+                <span class="material-symbols-outlined" id="pluie">
+                    water_drop
+                </span>
+                <div class="data">
+                    <p id="cupluie">13mm</p>
+                    <p class="textValue" id="textCuPluie">Cumul pluie</p>
+                </div>
+            </div>
+            <div class="wind">
+                <span class="material-symbols-outlined" id="vent">
+                    air
+                </span>
+                <div class="data">
+                    <p id="vemoy">30km/h</p>
+                    <p class="textValue" id="textVentMoyen">Vent moyen</p>
+                </div>
+                <div class="data">
+                    <p id="dirvent">170°</p>
+                    <p class="textValue" id="textDirectionVent">Direction vent</p>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div id="supData">
-        <div class="map">
-            <span class="material-symbols-outlined" id="map">
-                map
-            </span>
-            <div class="data">
-                <p id="lat">48.0833m</p>
-                <p class="textValue" id="textLatitude">Latitude</p>
-            </div>
-            <div class="data">
-                <p id="long">-1.0833m</p>
-                <p class="textValue" id="textLongitude">Longitude</p>
-            </div>
-        </div>
-        <div class="rain">
-            <span class="material-symbols-outlined" id="pluie">
-                water_drop
-            </span>
-            <div class="data">
-                <p id="cupluie">13mm</p>
-                <p class="textValue" id="textCuPluie">Cumul pluie</p>
-            </div>
-        </div>
-        <div class="wind">
-            <span class="material-symbols-outlined" id="vent">
-                air
-            </span>
-            <div class="data">
-                <p id="vemoy">30km/h</p>
-                <p class="textValue" id="textVentMoyen">Vent moyen</p>
-            </div>
-            <div class="data">
-                <p id="dirvent">170°</p>
-                <p class="textValue" id="textDirectionVent">Direction vent</p>
-            </div>
-        </div>
-    </div>
+     </div>
+    
 
 
     <!-- WEATHER PER DAY -->
