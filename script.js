@@ -97,7 +97,7 @@ const day1 = document.getElementById("day1");
 
 let wholeDate;
 let date3parts;
-
+let jourSemaine;
 
 function addDivDay(j){ // j indice du tableau dataPerDay[]
     let newDivDay = document.createElement("div");
@@ -110,28 +110,34 @@ function addDivDay(j){ // j indice du tableau dataPerDay[]
 
     newDivDay.id=="day"+j;
 
-   // newDivDay.id = "day"+j;
-
-
     newDivDay.addEventListener("click",()=>{
-        fetchDataMeteo(insee,j);
+        if ((date.getDay()+j) > 6){
+            jourSemaine = tab_week[date.getDay()+j-7];
+        }
+        else{
+            jourSemaine = tab_week[date.getDay()+j];
+        }
+        fetchDataMeteo(insee,j,jourSemaine);
 
     },false)
-    
-
 
     newPWeather.className="tempMinMax";
     newPDate.className="datePerDay";
     newPImage.className="imagePerDay";
 
-    console.log(dataPerDay[j]);
-
     weatherDescriptions (dataPerDay[j].weather, newPImage);
     newPWeather.innerHTML = dataPerDay[j].tmin + "°/" + dataPerDay[j].tmax + "°";
     wholeDate = dataPerDay[j].datetime.split('T');
     date3parts = wholeDate[0].split("-");
-    newPDate.innerHTML = date3parts[2] + "/" + date3parts[1];
+    
+    if ((date.getDay()+j) > 6){
+        jourSemaine = tab_week[date.getDay()+j-7];
+    }
+    else{
+        jourSemaine = tab_week[date.getDay()+j];
+    }
 
+    newPDate.innerHTML = jourSemaine+ " " + date3parts[2] + "/" + date3parts[1];
     newDivDay.appendChild(newPImage);
     newDivDay.appendChild(newPWeather);
     newDivDay.appendChild(newPDate);
@@ -209,7 +215,7 @@ async function fetchDataNomVille(nomCommune){
         const result = await fetch(`https://geo.api.gouv.fr/communes?nom=${nomCommune}&fields=departement`);
         const data = await result.json();
         const valeurInsee = data[0].code;
-        fetchDataMeteo(valeurInsee,0);
+        fetchDataMeteo(valeurInsee,0,tab_week[date.getDay()]);
         setDataWeather(valeurInsee);
     }
     catch (error){
@@ -224,7 +230,7 @@ validation.addEventListener("change", ()=>{
    
 })
 
-async function fetchDataMeteo(codeInsee,i){
+async function fetchDataMeteo(codeInsee,i,dateSemaine){
     try{ 
 
         const result = await fetch(`https://api.meteo-concept.com/api/forecast/daily?token=${token}&insee=${codeInsee}`);
@@ -255,10 +261,7 @@ async function fetchDataMeteo(codeInsee,i){
         else{
             const currentTemperatureCommune = dataPeriod.forecast[0].temp2m;
             currentTemperature.innerText = currentTemperatureCommune + '°';
-        }
-
-        
-       
+        }       
         
         cumulPluie.innerText = cumulPluieCommune+"mm";
         ventMoyen.innerText = ventMoyenCommune+"km/h";
@@ -282,7 +285,7 @@ async function fetchDataMeteo(codeInsee,i){
         
         wholeDate = data.forecast[i].datetime.split('T');
         date3parts = wholeDate[0].split("-");
-        heureActuelle.innerText = date3parts[2] + " " + tab_month[date3parts[1]] + ", " + time;
+        heureActuelle.innerText = dateSemaine + " " + date3parts[2] + " " + tab_month[date3parts[1]] + ", " + time;
         
         affichageInfos();
     }
@@ -307,7 +310,6 @@ function affichageInfos(){
     verifCheckBox(cumulPluieCheckBox,cupluie,textCuPluie)
     verifCheckBox(directionVentCheckBox,dirvent,textDirectionVent)
     verifCheckBox(ventMoyenCheckBox,vemoy,textVentMoyen)
-
 
 }
 
@@ -415,7 +417,6 @@ revenirArriere.addEventListener("click",()=>{
     howManyDays.value = howManyDays.options[0].value;
     onIDays(howManyDays.value);
 })
-
 
 
 function weatherDescriptions (weather, s){
