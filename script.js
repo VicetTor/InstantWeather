@@ -204,8 +204,13 @@ boutonDeValidation.addEventListener("click", ()=>{
     validation.innerText = "";
     valeurSoumise = entree.value;
     recupererDonnees(valeurSoumise);
-    
 });
+
+entree.addEventListener("keypress", ()=>{
+    validation.innerText = "";
+    valeurSoumise = entree.value;
+    recupererDonnees(valeurSoumise);
+})
 
 async function recupererDonneesVille(nomCommune){
     try{
