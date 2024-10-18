@@ -60,7 +60,7 @@ window.addEventListener('resize', () => {
 
 const raindrops = [];
 
-animate();
+animateRain();
 
 // today date
 let date = new Date();
@@ -480,11 +480,11 @@ function drawRaindrops(){
 
 
 
-function animate(){
+function animateRain(){
     createRainDrop();
     updateRaindrops();
     drawRaindrops();
-    requestAnimationFrame(animate);
+    requestAnimationFrame(animateRain);
 }
 
  
