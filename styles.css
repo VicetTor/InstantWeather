@@ -461,12 +461,23 @@ Animation
     left: 0;
 }*/
 
+#card {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Pour éviter le dépassement */
+}
+
 #rainfall {
-    display: block;
     position: absolute;
-    z-index: -1; /* mettre en arrière plan, afin que la canvas, ne soit pas au-dessus. Pour pouvoir naviguer */
-    top: 0;
-    bottom: 0;
+    z-index: -1; /* En arrière-plan */
+    width: 100%;
+    height: 100%;
+}
+
+.infoMain {
+    position: relative;
+        
 }
 
 
