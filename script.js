@@ -42,17 +42,17 @@ let dataPerDay = [];
 let dataWeather;
 let valeurInput;
 
-const canvas = document.getElementById('rainfall');
-const ctx = canvas.getContext('2d');
+const rainCanvas = document.getElementById("rainCanvas");
+const ctx = rainCanvas.getContext('2d');
 
-canvas.width = window.innerWidth * 1.5;
-canvas.height = window.innerHeight * 1.5;
-canvas.style.visibility = "hidden";
+rainCanvas.width = window.innerWidth * 1.5;
+rainCanvas.height = window.innerHeight * 1.5;
+rainCanvas.style.visibility = "hidden";
 card.style.visibility = "hidden";
 
 window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth * 1.5;
-    canvas.height = window.innerHeight * 1.5;
+    rainCanvas.width = window.innerWidth * 1.5;
+    rainCanvas.height = window.innerHeight * 1.5;
     raindrops.length = 0;
 
 });
@@ -351,7 +351,7 @@ function remettreAffichageCommune(){
 
 revenirArriere.addEventListener("click",()=>{
     //cancelAnimationFrame(animation); // figer l'animation
-    canvas.style.visibility = 'hidden';
+    rainCanvas.style.visibility = 'hidden';
     remettreAffichageCommune();
     howManyDays.value = howManyDays.options[0].value;
     onIDays(howManyDays.value);
@@ -386,8 +386,8 @@ function weatherDescriptions (weather, s){
         s.innerHTML =  '<i class="fa-solid fa-cloud-rain"></i>';
         
         if (s == sky){ 
-           canvas.style.visibility = "visible";
-           console.log("visible du canvas");
+           rainCanvas.style.visibility = "visible";
+           console.log("visible du rainCanvas");
             
             
            
@@ -440,7 +440,7 @@ function verifCheckBox(checkBox,value,text){
 
 
 function createRainDrop(){
-    const x = Math.random() * canvas.width;
+    const x = Math.random() * rainCanvas.width;
     const y = 0;
     const speed = Math.random() * 5 + 2;
     const length = Math.random() * 20 + 10;
@@ -454,7 +454,7 @@ function updateRaindrops(){
 
         raindrop.y += raindrop.speed;
 
-        if(raindrop.y > canvas.height){
+        if(raindrop.y > rainCanvas.height){
             raindrops.splice(i,1);
             i--;
         }
@@ -462,7 +462,7 @@ function updateRaindrops(){
 }
 
 function drawRaindrops(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, rainCanvas.width, rainCanvas.height);
 
     ctx.strokeStyle = 'white';
     ctx.lineWidth = 2;
