@@ -8,90 +8,73 @@
     <title>Instant Weather</title>
     <script src="https://kit.fontawesome.com/40622e83b7.js" crossorigin="anonymous"></script>
     <script defer src="script.js"></script>
+
 </head>
-<body> 
+
+<body>
+
     <!-- REVENIR EN ARRIERE -->
-    <div id="revenirArriere">
-        <span id="revenirArriereForm" class="material-symbols-outlined">
+    <div id="revenirArriere" style="position: absolute;">
+        <span id="revenirArriereFormulaire" class="material-symbols-outlined">
             arrow_back
-            </span>
+        </span>
     </div>
 
-    <div id="settings" style="visibility: hidden;">
-        <span id="settingsForm" class="material-symbols-outlined">
+    <!--PARAMETRES-->
+
+    <div id="parametres" style="visibility: hidden; position:absolute;">
+        <span id="parametresFormulaire" class="material-symbols-outlined">
             settings
             </span>
     </div>
 
+    <!--CHECKBOX-->
+
     <div id="formulaire" style="visibility: hidden;">
-        <span id="cancel" class="material-symbols-outlined" style="cursor:pointer">
+        <span id="annuler" class="material-symbols-outlined" style="cursor:pointer">
             cancel
-            </span>
+        </span>
         <form id="checkbox">
-            <label for="latitude"></label>
-                Latitude 
-                <input type="checkbox" id="latitudeCheckBox" name="latitude" value="1" checked="true" onchange="verifCheckBox(latitudeCheckBox,lat,textLatitude)">
-            </label>
-
-            <label for="longitude"></label>
-                Longitude
-                <input type="checkbox" id="longitudeCheckBox" name="longitude" checked="true" value="2" onchange="verifCheckBox(longitudeCheckBox,long,textLongitude)">
-            </label>
-
-            <label for="cumulPluie">
-            </label>
-                cumulPluie
-                <input type="checkbox" id="cumulPluieCheckBox" name="cumulPluie" checked="true" value="3" onchange="verifCheckBox(cumulPluieCheckBox,cupluie,textCuPluie)">
-            </label>
-
-            <label for="directionVent">
-            </label>
-                directionVent
-                <input type="checkbox" id="directionVentCheckBox" name="directionVent" checked="true" value="4" onchange="verifCheckBox(directionVentCheckBox,dirvent,textDirectionVent)">
-            </label>
-
-            <label for="ventMoyen"></label>
-                ventMoyen
-                <input type="checkbox" id="ventMoyenCheckBox" name="ventMoyen" checked="true" value="5" onchange="verifCheckBox(ventMoyenCheckBox,vemoy,textVentMoyen)">
-            </label>
-
+            <label for="latitudeCheckBox">Latitude </label>
+                <input type="checkbox" id="latitudeCheckBox" title="latitude" name="latitude" value="1" checked="" onchange="verifCheckBox(latitudeCheckBox,lat,textLatitude)">
+            <label for="longitudeCheckBox">Longitude </label>
+                <input type="checkbox" id="longitudeCheckBox" title="longitude" name="longitude" checked="" value="2" onchange="verifCheckBox(longitudeCheckBox,long,textLongitude)">
+            <label for="cumulPluieCheckBox">cumulPluie </label> 
+                <input type="checkbox" id="cumulPluieCheckBox" title="cumulPluie" name="cumulPluie" checked="" value="3" onchange="verifCheckBox(cumulPluieCheckBox,cupluie,textCuPluie)">
+            <label for="directionVentCheckBox">directionVent</label>
+                <input type="checkbox" id="directionVentCheckBox" title="directionVent" name="directionVent" checked="" value="4" onchange="verifCheckBox(directionVentCheckBox,dirvent,textDirectionVent)">
+            <label for="ventMoyenCheckBox">ventMoyen</label>
+                <input type="checkbox" id="ventMoyenCheckBox" title="ventMoyen" name="ventMoyen" checked="" value="5" onchange="verifCheckBox(ventMoyenCheckBox,vemoy,textVentMoyen)">
         </form>
     </div>
 
-    <!-- TITLE --> 
-    <div id="titleSur">
-        <h1 id="title">INSTANT WEATHER</h1>
-        <h3 id="subtitle">Votre météo en instantané</h3>
-    </div>
-
-
-    <!-- SEARCHING -->
+    <!-- TITRE -->
     
-    <p id="errorPostalCode"></p>
+    <div id="titresPrincipaux">
+        <h1 id="titre">INSTANT WEATHER</h1>
+        <h2 id="sous-titre">Votre météo en instantané</h2>
+    </div>
+    <p id="contenu">Choisissez votre commune et consultez les prévisions du jour.</p>
 
-    <div id="postalCode">
-        <input type="text" placeholder="Saisissez un code postal" id="postcode" name="postcode"/>
-        <button type="submit" id="submit" name="submit">
-            <i id = "load" class="fa-solid fa-magnifying-glass"></i>
+    <!-- RECHERCHE -->
+    
+    <p id="erreurCodePostal"></p>
+
+    <div id="codePostal">
+        <label for="codePost" style="visibility: hidden;">o</label>
+        <input type="text" placeholder="Saisissez un code postal" id="codePost" name="codePost"/>
+        <button type="validation" id="validation" name="validation">
+            <em id = "chargement" class="fa-solid fa-magnifying-glass"></em>
         </button>
     </div>
         
-    <div id="city" style="visibility: hidden;" >
+    <div id="indicationVille" style="visibility: hidden;" >
+        <label for="ville" style="visibility: hidden;">o</label>
         <select id="ville">
             <option value="" disabled selected> Sélectionnez une commune </option>
         </select>
     </div>
-
-    <!-- goute d'eau -->
-  <!-- <div class="gouttes">
-        <div class="goutte"> </div>
-        <div class="goutte"> </div>
-        <div class="goutte"> </div>
-        <div class="goutte"> </div>
-    </div> -->
-
-     
-
+  
     <!-- WEATHER -->
     
      <div id="card">
@@ -130,58 +113,91 @@
                             <p id="heureSol">3h25</p>
                             <p class="textValue">Heure sol.</p>
                         </div>
+    <!-- METEO -->
+    
+    <div id="infosPrincipales" style="position: absolute;">
+        <div class="dateEnFonctionVille">
+            <h2 id="nomCommune">Gouville-sur-Mer</h2>
+            <h3 id="heureActuelle">30 juin 2024, 16h12</h3>
+        </div>
+        <div class="donneesPrincipales">
+            <div class="informationsTemperature">
+                <p id="temperatureActuelle"></p>
+                <p id="ciel"></p>
+                <p id="descriptionCiel" > </p>
+            </div>
+            <div class="infoImportantes">
+                <div class="infoImportantesAuDessus">
+                    <div class="donnee">
+                        <p id="tempMin"> </p>
+                        <p class="valeurTexte">Temp. min.</p>
+                    </div>
+                    <div class="donnee">
+                        <p id="tempMax"> </p>
+                        <p class="valeurTexte">Temp. max.</p>
+                    </div>
+                </div>
+                <div class="infoImportantesEnDessous">
+                    <div class="donnee">
+                        <p id="probaPluie"></p>
+                        <p class="valeurTexte">Proba. pluie</p>
+                    </div>
+                    <div class="donnee">
+                        <p id="heureSol">3h25</p>
+                        <p class="valeurTexte">Heure sol.</p>
                     </div>
                 </div>
             </div>
         </div>
-    
-        <div id="supData">
-            <div class="map">
-                <span class="material-symbols-outlined" id="map">
-                    map
-                </span>
-                <div class="data">
-                    <p id="lat">48.0833m</p>
-                    <p class="textValue" id="textLatitude">Latitude</p>
-                </div>
-                <div class="data">
-                    <p id="long">-1.0833m</p>
-                    <p class="textValue" id="textLongitude">Longitude</p>
-                </div>
+  
+    </div>
+
+    <div id="donneesSupplementaires" style="position: absolute;">
+        <div id="cartographie">
+            <span class="material-symbols-outlined" id="carte">
+                map
+            </span>
+            <div class="donnee">
+                <p id="lat">48.0833m</p>
+                <p class="valeurTexte" id="texteLatitude">Latitude</p>
             </div>
-            <div class="rain">
-                <span class="material-symbols-outlined" id="pluie">
-                    water_drop
-                </span>
-                <div class="data">
-                    <p id="cupluie">13mm</p>
-                    <p class="textValue" id="textCuPluie">Cumul pluie</p>
-                </div>
+            <div class="donnee">
+                <p id="long">-1.0833m</p>
+                <p class="valeurTexte" id="texteLongitude">Longitude</p>
             </div>
-            <div class="wind">
-                <span class="material-symbols-outlined" id="vent">
-                    air
-                </span>
-                <div class="data">
-                    <p id="vemoy">30km/h</p>
-                    <p class="textValue" id="textVentMoyen">Vent moyen</p>
-                </div>
-                <div class="data">
-                    <p id="dirvent">170°</p>
-                    <p class="textValue" id="textDirectionVent">Direction vent</p>
-                </div>
+        </div>
+        <div id="pluvieux">
+            <span class="material-symbols-outlined" id="pluie">
+                water_drop
+            </span>
+            <div class="donnee">
+                <p id="cupluie">13mm</p>
+                <p class="valeurTexte" id="texteCuPluie">Cumul pluie</p>
+            </div>
+        </div>
+        <div id="air">
+            <span class="material-symbols-outlined" id="vent">
+                air
+            </span>
+            <div class="donnee">
+                <p id="vemoy">30km/h</p>
+                <p class="valeurTexte" id="texteVentMoyen">Vent moyen</p>
+            </div>
+            <div class="donnee">
+                <p id="dirvent">170°</p>
+                <p class="valeurTexte" id="texteDirectionVent">Direction vent</p>
             </div>
         </div>
      </div>
     
 
+    <!-- METEO PAR JOUR -->
 
-    <!-- WEATHER PER DAY -->
-
-    <div class="choosePerDay">
+    <div id="choixParJour" style="position: absolute;">
         <p>Voir sur plusieurs jours :&nbsp;</p>
-        <select name="howManyDays" id="howManyDays" >
-            <option value="0" selected></option>
+        <label for="combienDeJours" style="visibility: hidden;">o</label>
+        <select name="combienDeJours" id="combienDeJours" >
+            <option value="0" id="0" selected>-</option>
             <option value="1" id="1">1</option>
             <option value="2" id="2">2</option>
             <option value="3" id="3">3</option>
@@ -193,24 +209,13 @@
         </select>
     </div>
 
-    <div id="selectPerDay">
-        
-        <!-- 
-        <div class="oneDay"> 
-            <span class="material-symbols-outlined">
-                cloud
-            </span>
-             <p class="tempMinMax">14°/21°</p>
-             <p class="datePerDay">01/07</p>
-        </div>-->
-        
-    </div>
+    <div id="selectionParJour" style="position: absolute;"></div>
 
-    <!-- FOOTER -->
+    <!-- BAS DE PAGE -->
     <footer>
         <p>Projet JavaScript - INSTANT WEATHER</p>
         <p>BEUVE Léopold - YVRAY RUFFINATTI Victor - K'DUAL Louane</p>
-    </footer>
+    </footer> 
     
 </body>
 </html>
