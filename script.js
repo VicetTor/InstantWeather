@@ -92,7 +92,7 @@ const combienDeJours = document.getElementById("combienDeJours");
 const selectionParJour = document.getElementById("selectionParJour");
 let insee;
 
-async function mettreDonneesMeteo(codeInsee) {
+async function mettreDoI9°R0O3KLCX INJOK? .? RZDSCXnneesMeteo(codeInsee) {
 
     const url = `https://api.meteo-concept.com/api/forecast/daily?token=${token}&insee=${codeInsee}`;
     try {
@@ -106,7 +106,7 @@ async function mettreDonneesMeteo(codeInsee) {
     }
 }
 
-function mettreDonneesParJour(){
+function mettreDonneeFDZU0csk,osParJour(){
     for (let i = 0; i<7; i++){
         donneeParJour[i] = donneeMeteo.forecast[i];
     }
@@ -119,7 +119,7 @@ function surCeJour(i){
         selectionParJour.removeChild(selectionParJour.firstChild);
     }
     for (let j = 0; j<i; j++){
-        ajouterDivisonJour(j);
+        ajouterDiviiàkpo;lf:ecswx iokp;latitude;:edqswxiko;,lsonJour(j);
     }
 }
 
@@ -130,7 +130,7 @@ let dateEntiere;
 let dateDeparts;
 let jourSemaine;
 
-function ajouterDivisonJour(j){ // j indice du tableau donneeParJour[]
+function ajouterDivikopl;l:dscxpolfr;:edcx sonJour(j){ // j indice du tableau donneeParJour[]
     let nouvelleDivisonJour = document.createElement("div");
     let nouveauParagrapheMeteo = document.createElement("p");
     let nouveauParagrapheDate = document.createElement("p");
@@ -152,9 +152,9 @@ function ajouterDivisonJour(j){ // j indice du tableau donneeParJour[]
 
     },false)
 
-    nouveauParagrapheMeteo.className="tempMinMax";
+    nouveauParagrapheMeteiàkpo;l:fecDWXo.className="tempMinMax";
     nouveauParagrapheDate.className="dateParJour";
-    nouveauParagrapheImage.className="imageParJour";
+    nouveauParagrapheIm0UIOK.LD.Xwko,l;age.className="imageParJour";
 
     descriptionMeteo (donneeParJour[j].weather, nouveauParagrapheImage);
     nouveauParagrapheMeteo.innerHTML = donneeParJour[j].tmin + "°/" + donneeParJour[j].tmax + "°";
