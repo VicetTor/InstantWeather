@@ -37,9 +37,31 @@ const cumulPluieCheckBox = document.getElementById("cumulPluieCheckBox");
 const directionVentCheckBox = document.getElementById("directionVentCheckBox")
 const ventMoyenCheckBox = document.getElementById("ventMoyenCheckBox");
 
+const card = document.getElementById("card");
+
 let donneeParJour = [];
 let donneeMeteo;
 let valeurSoumise;
+
+const rainCanvas = document.getElementById("rainCanvas");
+const ctx = rainCanvas.getContext('2d');
+
+rainCanvas.width = window.innerWidth * 1.5;
+rainCanvas.height = window.innerHeight * 1.5;
+rainCanvas.style.visibility = "hidden";
+card.style.visibility = "hidden";
+
+window.addEventListener('resize', () => {
+    rainCanvas.width = window.innerWidth * 1.5;
+    rainCanvas.height = window.innerHeight * 1.5;
+    raindrops.length = 0;
+
+});
+
+const raindrops = [];
+
+animateRain();
+
 
 // date Aujourd'hui
 let date = new Date();
@@ -116,6 +138,7 @@ function ajouterDivisonJour(j){ // j indice du tableau donneeParJour[]
             jourSemaine = tableau_semaine[date.getDay()+j];
         }
         recupererDonneesMeteo(insee,j,jourSemaine);
+        rainCanvas.style.visibility = "hidden";
 
     },false)
 
@@ -295,6 +318,7 @@ function affichageInfos(){
     parametres.style.visibility ="visible";
     codePostal.style.position = "absolute";
     indicationVille.style.position ="absolute";
+    card.style.visibility = "visible";
     selectionParJour.style.visibility ="visible";
     document.getElementById("choixParJour").style.visibility ="visible";
 
@@ -427,6 +451,7 @@ revenirArriere.addEventListener("click",()=>{
     remettreAffichageCommune();
     combienDeJours.value = combienDeJours.options[0].value;
     surCeJour(combienDeJours.value);
+    card.style.visibility = "hidden";
 })
 
 
@@ -455,6 +480,7 @@ function descriptionMeteo (meteo, s){
     if((meteo >= 10 && meteo <= 15) || (meteo >= 40 && meteo <= 48) || (meteo >= 210 && meteo <= 212) || (meteo == 235)){
         s.innerHTML =  '<i class="fa-solid fa-cloud-rain"></i>';
         if (s == ciel){ 
+            rainCanvas.style.visibility = "visible";
             body.style.backgroundColor = "#496769";
             formulaire.style.backgroundColor ="#496769";
             descriptionCiel.innerText = "Pluvieux"
@@ -485,7 +511,6 @@ annuler.addEventListener("click",()=>{
     formulaire.style.visibility="hidden";
 })
 
-
 function verifCheckBox(checkBox,value,text){
     if(checkBox.checked == false){
         value.style.visibility = "hidden";
@@ -499,7 +524,51 @@ function verifCheckBox(checkBox,value,text){
     }
 }
 
+function createRainDrop(){
+    const x = Math.random() * rainCanvas.width;
+    const y = 0;
+    const speed = Math.random() * 5 + 2;
+    const length = Math.random() * 20 + 10;
 
+    raindrops.push({x, y, speed, length});
+}
+
+function updateRaindrops(){
+    for(let i = 0; i < raindrops.length; i++){
+        const raindrop = raindrops[i];
+
+        raindrop.y += raindrop.speed;
+
+        if(raindrop.y > rainCanvas.height){
+            raindrops.splice(i,1);
+            i--;
+        }
+    }
+}
+
+function drawRaindrops(){
+    ctx.clearRect(0, 0, rainCanvas.width, rainCanvas.height);
+
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 2;
+
+    for(let i = 0; i<raindrops.length; i++){
+        const raindrop = raindrops[i];
+
+        ctx.beginPath();
+        ctx.moveTo(raindrop.x, raindrop.y);
+        ctx.lineTo(raindrop.x, raindrop.y + raindrop.length);
+        ctx.stroke();
+    }
+
+}
+
+function animateRain(){
+    createRainDrop();
+    updateRaindrops();
+    drawRaindrops();
+    requestAnimationFrame(animateRain);
+}
 
 
 
