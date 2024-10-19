@@ -1,4 +1,3 @@
-
 html,body{
     overflow-x: hidden;
     width: 100%;
@@ -6,7 +5,7 @@ html,body{
     margin: 0;
     padding: 0;
 }
-#sky i{
+#ciel i{
     font-size: 5em;
 }
 
@@ -14,6 +13,8 @@ body{
     background-color: rgb(88, 171, 176);
     color: white;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 #revenirArriere{
@@ -25,7 +26,7 @@ body{
     color: white;
 }
 
-#revenirArriereForm{
+#revenirArriereFormulaire{
     font-size: 4em;
 }
 
@@ -65,24 +66,24 @@ body{
     
 }
 
-#settings{
+#parametres{
     position: absolute;
     top: 2em;
     right: 2em;
     cursor: pointer;
 }
 
-#settingsForm{
+#parametresFormulaire{
     font-size: 4em;
 }
 
-#load{
+#chargement{
     cursor: pointer;
     font-size: 2em;
     color: white;
 }
 
-#infoMain{
+#infosPrincipales{
     visibility: hidden;
     text-align: center;
      
@@ -100,36 +101,37 @@ body{
     border-color: pink;
 }
 
-
-#postalCode{
+#codePostal{
     visibility: visible;
 }
 
-#errorPostalCode{
+#erreurCodePostal{
     visibility: hidden;
-    color: red;
+    color: rgb(184, 24, 24);
     border: solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-color: black;
-    background-color: gray;
-    padding: 0.3em;
-
+    display: block;
+    margin: auto;
+    border-color: rgb(145, 28, 28);
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 0.5em;
+    width: 20em;
+    margin-bottom: 2em;
 }
 
-#title, #subtitle, #postalCode, #city{
+#titre, #sous-titre, #codePostal, #indicationVille{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#subtitle{
+#sous-titre{
     margin-bottom: 3em;
     font-size: 1.5em;
 }
 
-#title{
+#titre{
     text-shadow: 2px 7px 20px grey;
     margin-top: 15%;
     font-size: 4em;
@@ -141,23 +143,20 @@ body{
     text-align: center; 
 }
 
-#postalCode input, #city input{
+#codePostal input, #indicationVille input{
     border-radius: 30px;
 }
 
 
-#postalCode{
+#codePostal{
     margin-bottom: 1em;
     margin-left: 2em ;
 
 }
 
-#postalCode button{
-    margin-left: 1em;
-}
-
-#city{
+#indicationVille{
     margin-bottom: 15em;
+    margin-right: 1em;
 }
 
 #ville{
@@ -173,13 +172,21 @@ input{
     text-indent: 1em;
 }
 
-#postalCode button{
+#codePostal button{
     border: none;
     background-color: transparent;
+    margin-left: 1em;
+}
+
+#contenu{
+    text-align: center;
+    font-size: large;
+    color: rgb(255, 255, 255);
+    text-shadow: -0.06em 0.1em 0.5em black;
 }
 
 /* ------------------ CITY & DATE ------------------ */
-.cityDate{
+.dateEnFonctionVille{
     text-align: center;
     margin: 1em;
 }
@@ -197,14 +204,14 @@ h3{
 }
 
 /* ------------------ MAIN DATA ------------------ */
-.mainData{
+.donneesPrincipales{
     display: flex;
     justify-content: center;
     align-items: center;
     text-shadow: -0.06em 0.1em 1em black;
 }
 
-.weatherInfo{
+.informationsTemperature{
     padding: 2em;
 }
 
@@ -213,13 +220,13 @@ h3{
     margin: 0;
 }
 
-.sky{
+.ciel{
     font-size: 1.5em;
     text-align: center;
     margin: 0;
 }
 
-.mainInfo{
+.infoImportantes{
     border-radius: 1em;
     padding: 0.8em;
     background-color:rgb(255, 255, 255, 0.15);
@@ -228,12 +235,12 @@ h3{
 
 }
 
-.mainInfoTop{
+.infoImportantesAuDessus{
     display: flex;
     text-align: center;
 }
 
-.mainInfoBottom{
+.infoImportantesEnDessous{
     display: flex;
     text-align: center;
 }
@@ -248,7 +255,7 @@ h3{
     margin: 0em;
 }
 
-#probaRain{
+#probaPluie{
     font-size: 1.75em;
     margin: 0em; 
 }
@@ -279,18 +286,18 @@ h3{
     margin: 0em;
 }
 
-.textValue{
+.valeurTexte{
     font-size: 0.75em;
     margin: 0;
 }
 
-.data {
+.donnee {
     padding-inline: 1.5em;
     padding-block: 0.8em;
 }
 
 /* ------------------ SUP DATA ------------------ */
-#supData{
+#donneesSupplementaires{
     border: 0.2em solid rgb(255, 255, 255, 0.35);
     border-radius: 1em;
     display: flex;
@@ -303,18 +310,20 @@ h3{
     visibility: hidden;
 }
 
-.map, .rain, .wind{
+#cartographie, #pluvieux, #air{
     text-align: center;
 }
 
 /* ------------------ WEATHER PER DAY ------------------ */
-.choosePerDay{
+#choixParJour{
     display: flex;
     align-items: center;
     justify-content: center;
+    visibility: hidden;
 }
 
-#howManyDays{
+
+#combienDeJours{
     width: 4em;
     height: 2.5em;
     border: solid rgb(255, 255, 255, 0);
@@ -322,7 +331,7 @@ h3{
     background-color: rgb(255, 255, 255, 0.5);
 }
 
-#selectPerDay{
+#selectionParJour{
     border: solid rgb(255, 255, 255, 0);
     border-radius: 1em;
     background-color: rgb(255, 255, 255, 0.15);
@@ -334,6 +343,7 @@ h3{
     margin: 1.5em auto;
     max-width: 32em;
     margin-bottom: 5em;
+    visibility: hidden;
 }
 
 .oneDay{
@@ -347,17 +357,17 @@ h3{
     margin: 0;
 }
 
-.datePerDay{
+.dateParJour{
     font-size: 0.75em;
     margin: 0;
 }
 
-.imagePerDay{
+.imageParJour{
     margin: 0;
     font-size: 2.5em;
 }
 
-#currentTemperature{
+#temperatureActuelle{
     margin: 0;
     font-size: 2.5em;
 }
@@ -389,5 +399,367 @@ footer{
 .infoMain {
     position: relative;
         
+}
+
+
+/*---------------- MEDIA QUERY -------------------*/
+
+
+@media screen and (max-width : 1440px) {
+    #parametres{ 
+        margin-right: 2em;
+    }
+    #revenirArriere{
+        margin-left: 2em;
+    }
+}
+
+@media screen and (max-width: 840px) {
+    #parametres{
+        margin-top: 10em;
+        margin-right: 2em;
+    }
+    #revenirArriere{
+        margin-top: 10em;
+        margin-left: 2em;
+    }
+}
+
+
+@media screen and (max-width: 810px) {
+    #parametres{
+        margin-top: 10em;
+        margin-right: 2em;
+    }
+    #revenirArriere{
+        margin-top: 10em;
+        margin-left: 2em;
+    }
+}
+
+
+
+@media screen and (max-width: 428px) {
+    #parametres{
+        margin-top: 13em;
+    }
+    #revenirArriere{
+        margin-top: 13em;
+    }
+    #donneesSupplementaires{
+        width: 25em ;
+    }
+    #formulaire{
+        width: 130px;
+    }
+    #selectionParJour{
+        width: 25em;
+    }
+    .imageParJour{
+        font-size: 2em;
+    }
+    .oneDay{
+        padding: 0.25em;
+    }
+    .dateParJour{
+        font-size: 0.75em;
+        margin: 0;
+    }
+    .imageParJour{
+        margin: 0;
+        font-size: 1.5em;
+    }
+    .tempMinMax{
+        font-size: 0.9em;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 414px) {
+
+    #selectionParJour{
+        width: 25em;
+    }
+    .imageParJour{
+        font-size: 2em;
+    }
+    .oneDay{
+        padding: 0.25em;
+    }
+    .dateParJour{
+        font-size: 0.75em;
+        margin: 0;
+    }
+    .imageParJour{
+        margin: 0;
+        font-size: 1.5em;
+    }
+    .tempMinMax{
+        font-size: 0.9em;
+        margin: 0;
+    }
+    #cupluie{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #dirvent{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #vemoy{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #long{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #lat{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    
+}
+
+@media screen and (max-width: 390px) {
+    #parametres{
+        margin-top: 13em;
+    }
+    #revenirArriere{
+        margin-top: 13em;
+    }
+    #donneesSupplementaires{
+        width: 22em ;
+    }
+    #formulaire{
+        width: 130px;
+    }
+    #selectionParJour{
+        width: 23em;
+    }
+    .imageParJour{
+        font-size: 1.5em;
+    }
+    .oneDay{
+        padding: 0.25em;
+    }
+    .dateParJour{
+        font-size: 0.75em;
+        margin: 0;
+    }
+    .imageParJour{
+        margin: 0;
+        font-size: 1.5em;
+    }
+    .tempMinMax{
+        font-size: 0.9em;
+        margin: 0;
+    }
+    #infosPrincipales{
+        width: 23em;
+    }
+    #cupluie{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #dirvent{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #vemoy{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #long{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #lat{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    #parametres{
+        margin-top: 13em;
+    }
+    #revenirArriere{
+        margin-top: 13em;
+    }
+    #donneesSupplementaires{
+        width: 22em ;
+    }
+    #formulaire{
+        width: 130px;
+    }
+    #selectionParJour{
+        width: 23em;
+    }
+    .imageParJour{
+        font-size: 1.5em;
+    }
+    .oneDay{
+        padding: 0.25em;
+    }
+    .dateParJour{
+        font-size: 0.75em;
+        margin: 0;
+    }
+    .imageParJour{
+        margin: 0;
+        font-size: 1.5em;
+    }
+    .tempMinMax{
+        font-size: 0.9em;
+        margin: 0;
+    }
+    #infosPrincipales{
+        width: 22em;
+    }
+    #cupluie{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #dirvent{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #vemoy{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #long{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #lat{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+}
+
+
+@media screen and (max-width: 360px) {
+    #parametres{
+        margin-top: 13em;
+    }
+    #revenirArriere{
+        margin-top: 13em;
+    }
+    #donneesSupplementaires{
+        width: 21em ;
+    }
+    #formulaire{
+        width: 130px;
+    }
+    #selectionParJour{
+        width: 22em;
+    }
+    .imageParJour{
+        font-size: 1.5em;
+    }
+    .oneDay{
+        padding: 0.25em;
+    }
+    .dateParJour{
+        font-size: 0.75em;
+        margin: 0;
+    }
+    .imageParJour{
+        margin: 0;
+        font-size: 1.5em;
+    }
+    .tempMinMax{
+        font-size: 0.9em;
+        margin: 0;
+    }
+    #infosPrincipales{
+        width: 21em;
+    }
+    #cupluie{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #dirvent{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #vemoy{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #long{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+    #lat{
+        font-size: 1.5em;
+        margin: 0em;
+    }
+}
+
+
+
+@media screen and (max-width: 320px) {
+    #parametres{
+        margin-top: 12em;
+    }
+    #revenirArriere{
+        margin-top: 12em;
+    }
+    #donneesSupplementaires{
+        width: 19em ;
+    }
+    #formulaire{
+        width: 130px;
+    }
+    #selectionParJour{
+        width: 19em;
+    }
+    .imageParJour{
+        font-size: 1em;
+    }
+    .oneDay{
+        padding: 0.25em;
+    }
+    .dateParJour{
+        font-size: 0.6em;
+        margin: 0;
+    }
+    .imageParJour{
+        margin: 0;
+        font-size: 1em;
+    }
+    .tempMinMax{
+        font-size: 0.7em;
+        margin: 0;
+    }
+    #infosPrincipales{
+        width: 19em;
+    }
+    #cupluie{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #dirvent{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #vemoy{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #long{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #lat{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #titre{
+        font-size:3.5em;
+    }
 }
 
