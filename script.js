@@ -36,10 +36,12 @@ const longitudeCheckBox = document.getElementById("longitudeCheckBox");
 const cumulPluieCheckBox = document.getElementById("cumulPluieCheckBox");
 const directionVentCheckBox = document.getElementById("directionVentCheckBox")
 const ventMoyenCheckBox = document.getElementById("ventMoyenCheckBox");
+
 const card = document.getElementById("card");
-let dataPerDay = [];
-let dataWeather;
-let valeurInput;
+
+let donneeParJour = [];
+let donneeMeteo;
+let valeurSoumise;
 
 const rainCanvas = document.getElementById("rainCanvas");
 const ctx = rainCanvas.getContext('2d');
@@ -56,44 +58,31 @@ window.addEventListener('resize', () => {
 
 });
 
-
 const raindrops = [];
 
 animateRain();
 
 
-let donneeParJour = [];
-let donneeMeteo;
-let valeurSoumise;
-
 // date Aujourd'hui
-
 let date = new Date();
 var tableau_semaine = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
 var tableau_mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
 let datedAujourdhui;
 let temps;
 
-
-const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
+//const token = "4fc5437cc97af368607aa51c5e24da9d2d95835be19cd8fecb0d37d29a0c3382";
 //const token = "692bfe589118b1db61eedbd9a9aeecf8ee0f42d8a3c9e128ac454cc13e65f53e";
 //const token = "ced3b5dd9813f00f0be2ac7c73d561438f2786cc96434a7850bed685692a6f0e";
-//const token = "fdc3bc3227d4a88b39ad16fe2fc2d0947f30c5d7718ba9dc1c3660014b309bfc";
-
+const token = "fdc3bc3227d4a88b39ad16fe2fc2d0947f30c5d7718ba9dc1c3660014b309bfc";
 
 /* ------------------------------------------------------------- meteo pour I jours ------------------------------------------------------------------------------------------- */
-
-
-
-
 
 
 const combienDeJours = document.getElementById("combienDeJours");
 const selectionParJour = document.getElementById("selectionParJour");
 let insee;
 
-async function mettreDoI9°R0O3KLCX INJOK? .? RZDSCXnneesMeteo(codeInsee) {
-
+async function mettreDonneesMeteo(codeInsee) {
     const url = `https://api.meteo-concept.com/api/forecast/daily?token=${token}&insee=${codeInsee}`;
     try {
     const response = await fetch(url);
@@ -106,7 +95,7 @@ async function mettreDoI9°R0O3KLCX INJOK? .? RZDSCXnneesMeteo(codeInsee) {
     }
 }
 
-function mettreDonneeFDZU0csk,osParJour(){
+function mettreDonneesParJour(){
     for (let i = 0; i<7; i++){
         donneeParJour[i] = donneeMeteo.forecast[i];
     }
@@ -119,7 +108,7 @@ function surCeJour(i){
         selectionParJour.removeChild(selectionParJour.firstChild);
     }
     for (let j = 0; j<i; j++){
-        ajouterDiviiàkpo;lf:ecswx iokp;latitude;:edqswxiko;,lsonJour(j);
+        ajouterDivisonJour(j);
     }
 }
 
@@ -130,7 +119,7 @@ let dateEntiere;
 let dateDeparts;
 let jourSemaine;
 
-function ajouterDivikopl;l:dscxpolfr;:edcx sonJour(j){ // j indice du tableau donneeParJour[]
+function ajouterDivisonJour(j){ // j indice du tableau donneeParJour[]
     let nouvelleDivisonJour = document.createElement("div");
     let nouveauParagrapheMeteo = document.createElement("p");
     let nouveauParagrapheDate = document.createElement("p");
@@ -149,12 +138,13 @@ function ajouterDivikopl;l:dscxpolfr;:edcx sonJour(j){ // j indice du tableau do
             jourSemaine = tableau_semaine[date.getDay()+j];
         }
         recupererDonneesMeteo(insee,j,jourSemaine);
+        rainCanvas.style.visibility = "hidden";
 
     },false)
 
-    nouveauParagrapheMeteiàkpo;l:fecDWXo.className="tempMinMax";
+    nouveauParagrapheMeteo.className="tempMinMax";
     nouveauParagrapheDate.className="dateParJour";
-    nouveauParagrapheIm0UIOK.LD.Xwko,l;age.className="imageParJour";
+    nouveauParagrapheImage.className="imageParJour";
 
     descriptionMeteo (donneeParJour[j].weather, nouveauParagrapheImage);
     nouveauParagrapheMeteo.innerHTML = donneeParJour[j].tmin + "°/" + donneeParJour[j].tmax + "°";
@@ -183,21 +173,21 @@ async function recupererDonnees(codePostal) { // asynchrone pour exécuter tout 
     try{
         
         
-        if(codePostal.trim() == ''){    
-            errorPostalCode.innerText = "Vous avez rien saisi, veuillez saisir un nombre de 5 chiffres";
-            errorPostalCode.style.visibility = "visible";
+        if(codePostal.trim() == ''){
+            erreurCodePostal.innerText = "🚨 Vous avez rien saisi, veuillez saisir un nombre de 5 chiffres.";
+            erreurCodePostal.style.visibility = "visible";
         }  
         else{
             if(verifPostalCode(codePostal) == 0){
-                errorPostalCode.innerText = "Le code postal n'est pas de la bonne forme. Il doit être de 5 chiffres"; 
-                errorPostalCode.style.visibility = "visible";
-        }  
-        else{
+                erreurCodePostal.innerText = "🚨 Le code postal n'est pas de la bonne forme. Il doit être de 5 chiffres."; 
+                erreurCodePostal.style.visibility = "visible";
+            }
+            else{
                 const result = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${codePostal}`); // Récupérer valeur de l'api
                 const data = await result.json();
                 if(data.length == 0){
-                    errorPostalCode.innerText = "Ce code postal n'existe pas";
-                    errorPostalCode.style.visibility = "visible";
+                    erreurCodePostal.innerText = "🚨 Ce code postal n'existe pas.";
+                    erreurCodePostal.style.visibility = "visible";
                 }
                 else{
                     
@@ -291,9 +281,6 @@ async function recupererDonneesMeteo(codeInsee,i,dateSemaine){
             temperatureActuelle.innerText = currentTemperatureCommune + '°';
         }       
         
-        
-        currentTemperature.innerText = currentTemperatureCommune + '°';
-
         cumulPluie.innerText = cumulPluieCommune+"mm";
         ventMoyen.innerText = ventMoyenCommune+"km/h";
         directionVent.innerText = directionVentCommune+'°';
@@ -330,8 +317,8 @@ function affichageInfos(){
     donneesSupplementaires.style.visibility = "visible";
     parametres.style.visibility ="visible";
     codePostal.style.position = "absolute";
-    card.style.visibility = "visible";
     indicationVille.style.position ="absolute";
+    card.style.visibility = "visible";
     selectionParJour.style.visibility ="visible";
     document.getElementById("choixParJour").style.visibility ="visible";
 
@@ -340,6 +327,7 @@ function affichageInfos(){
     verifCheckBox(cumulPluieCheckBox,cupluie,textCuPluie)
     verifCheckBox(directionVentCheckBox,dirvent,textDirectionVent)
     verifCheckBox(ventMoyenCheckBox,vemoy,textVentMoyen)
+
 }
 
 function verifEncadrer(){
@@ -460,11 +448,10 @@ function remettreAffichageCommune(){
 }
 
 revenirArriere.addEventListener("click",()=>{
-    rainCanvas.style.visibility = 'hidden';
     remettreAffichageCommune();
-    card.style.visibility = "hidden";
     combienDeJours.value = combienDeJours.options[0].value;
     surCeJour(combienDeJours.value);
+    card.style.visibility = "hidden";
 })
 
 
@@ -518,14 +505,11 @@ function descriptionMeteo (meteo, s){
 
 parametres.addEventListener("click",()=>{
     formulaire.style.visibility="visible";
-    
 })
 
 annuler.addEventListener("click",()=>{
     formulaire.style.visibility="hidden";
-    
 })
-
 
 function verifCheckBox(checkBox,value,text){
     if(checkBox.checked == false){
@@ -539,9 +523,6 @@ function verifCheckBox(checkBox,value,text){
         verifRemettreEncadrer();
     }
 }
-
-
-
 
 function createRainDrop(){
     const x = Math.random() * rainCanvas.width;
@@ -588,3 +569,6 @@ function animateRain(){
     drawRaindrops();
     requestAnimationFrame(animateRain);
 }
+
+
+

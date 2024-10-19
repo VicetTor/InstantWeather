@@ -13,8 +13,6 @@ body{
     background-color: rgb(88, 171, 176);
     color: white;
     position: relative;
-    display: flex;
-    flex-direction: column;
 }
 
 #revenirArriere{
@@ -30,8 +28,6 @@ body{
     font-size: 4em;
 }
 
-    
-
 
 #formulaire {
     position: absolute;
@@ -41,9 +37,7 @@ body{
     background-color: green;
     padding: 10px; 
     border-radius: 10px; 
-    
-    
-    
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 #formulaire form {
@@ -63,7 +57,6 @@ body{
     width: 20px;
     height: 20px;
     cursor: pointer;
-    
 }
 
 #parametres{
@@ -86,7 +79,6 @@ body{
 #infosPrincipales{
     visibility: hidden;
     text-align: center;
-     
 }
 
 #card{
@@ -229,10 +221,7 @@ h3{
 .infoImportantes{
     border-radius: 1em;
     padding: 0.8em;
-    background-color:rgb(255, 255, 255, 0.15);
-     
-
-
+    background-color:rgb(255, 255, 255, 0.15);;
 }
 
 .infoImportantesAuDessus{
@@ -380,6 +369,7 @@ footer{
     padding: 1em;
     bottom: 0;
     width: 100%;
+    margin-top: auto;
 }
 
 #card {
@@ -395,12 +385,6 @@ footer{
     width: 100%;
     height: 100%;
 }
-
-.infoMain {
-    position: relative;
-        
-}
-
 
 /*---------------- MEDIA QUERY -------------------*/
 
@@ -762,4 +746,3 @@ footer{
         font-size:3.5em;
     }
 }
-
