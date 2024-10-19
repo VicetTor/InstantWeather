@@ -17,7 +17,6 @@ const skyDescription = document.getElementById("skyDescription");
 const currentTemperature = document.getElementById("currentTemperature");
 const errorPostalCode = document.getElementById("errorPostalCode");
 
-//console.log(currentTemperature);
 const body = document.body;
 const supData = document.getElementById("supData");
 const latitude = document.getElementById("lat");
@@ -244,7 +243,6 @@ async function fetchDataMeteo(codeInsee){
         const currentTemperatureCommune = dataPeriod.forecast[0].temp2m;
         
         
-        //console.log( "temperature:" + currentTemperatureCommune);
         currentTemperature.innerText = currentTemperatureCommune + '°';
         cumulPluie.innerText = cumulPluieCommune+"mm";
         ventMoyen.innerText = ventMoyenCommune+"km/h";
@@ -350,7 +348,6 @@ function remettreAffichageCommune(){
 }
 
 revenirArriere.addEventListener("click",()=>{
-    //cancelAnimationFrame(animation); // figer l'animation
     rainCanvas.style.visibility = 'hidden';
     remettreAffichageCommune();
     howManyDays.value = howManyDays.options[0].value;
