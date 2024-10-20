@@ -689,6 +689,68 @@ footer{
     }
 }
 
+@media screen and (max-width: 350px) {
+    #parametres{
+        margin-top: 12em;
+    }
+    #revenirArriere{
+        margin-top: 12em;
+    }
+    #donneesSupplementaires{
+        width: 19em ;
+    }
+    #formulaire{
+        width: 130px;
+    }
+    #selectionParJour{
+        width: 19em;
+    }
+    .imageParJour{
+        font-size: 1em;
+    }
+    .oneDay{
+        padding: 0.25em;
+    }
+    .dateParJour{
+        font-size: 0.6em;
+        margin: 0;
+    }
+    .imageParJour{
+        margin: 0;
+        font-size: 1em;
+    }
+    .tempMinMax{
+        font-size: 0.7em;
+        margin: 0;
+    }
+    #infosPrincipales{
+        width: 19em;
+    }
+    #cupluie{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #dirvent{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #vemoy{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #long{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #lat{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #titre{
+        font-size:3.5em;
+    }
+}
+
 @media screen and (max-width: 320px) {
     #WeatherCard{
         font-size: 0.7em;
@@ -711,6 +773,68 @@ footer{
     }
     #selectionParJour{
         width: 19em;
+    }
+    .imageParJour{
+        font-size: 1em;
+    }
+    .oneDay{
+        padding: 0.25em;
+    }
+    .dateParJour{
+        font-size: 0.6em;
+        margin: 0;
+    }
+    .imageParJour{
+        margin: 0;
+        font-size: 1em;
+    }
+    .tempMinMax{
+        font-size: 0.7em;
+        margin: 0;
+    }
+    #infosPrincipales{
+        width: 19em;
+    }
+    #cupluie{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #dirvent{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #vemoy{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #long{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #lat{
+        font-size: 1em;
+        margin: 0em;
+    }
+    #titre{
+        font-size:3.5em;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    #parametres{
+        margin-top: 10em;
+    }
+    #revenirArriere{
+        margin-top: 10em;
+    }
+    #donneesSupplementaires{
+        width: 19em ;
+    }
+    #formulaire{
+        width: 130px;
+    }
+    #selectionParJour{
+        width: 18em;
     }
     .imageParJour{
         font-size: 1em;
