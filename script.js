@@ -79,6 +79,13 @@ const combienDeJours = document.getElementById("combienDeJours");
 const selectionParJour = document.getElementById("selectionParJour");
 let insee;
 
+
+/**
+* Permet de récupérer chaque donnée météo pour les 7 jours et de les placer dans les cards de ces jours
+*
+* @param codeInsee le code insee de la commune
+*/
+
 async function mettreDonneesMeteo(codeInsee) {
     const url = `https://api.meteo-concept.com/api/forecast/daily?token=${token}&insee=${codeInsee}`;
     try {
@@ -92,6 +99,10 @@ async function mettreDonneesMeteo(codeInsee) {
     }
 }
 
+/**
+ * Permet de placer chaque donnée dans les 7 jours
+ */
+
 function mettreDonneesParJour(){
     for (let i = 0; i<7; i++){
         donneeParJour[i] = donneeMeteo.forecast[i];
@@ -99,6 +110,12 @@ function mettreDonneesParJour(){
 }
 
 combienDeJours.addEventListener("change", ()=>{  surCeJour(combienDeJours.value); });
+
+/**
+ * Permet d'ajouter les éléments div à chaque jour parmi les 7
+ * 
+ * @param i le jour correspondant
+ */
 
 function surCeJour(i){
     while (selectionParJour.hasChildNodes()) {
@@ -116,6 +133,12 @@ let dateEntiere;
 let dateDeparts;
 let jourSemaine;
 
+
+/**
+ * Permet d'ajouter les éléments divs et paragraphes et date aux 7 jours
+ * 
+ * @param j le jour correspondant
+ */
 function ajouterDivisonJour(j){ // j indice du tableau donneeParJour[]
     let nouvelleDivisonJour = document.createElement("div");
     let nouveauParagrapheMeteo = document.createElement("p");
@@ -165,6 +188,11 @@ function ajouterDivisonJour(j){ // j indice du tableau donneeParJour[]
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
 
+/**
+ * Permet de récupérer les communes avec un code postal en paramètre tout en vérifiant son existance ou sa bonne écriture.
+ * 
+ * @param codePostal le codePostal de la commune
+ */
 async function recupererDonnees(codePostal) { // asynchrone pour exécuter tout le code et attendre la réponse 
     
     try{
@@ -212,6 +240,11 @@ entree.addEventListener("input", () => {
     erreurCodePostal.style.visibility = "hidden"; // Masquer l'erreur dès que l'utilisateur tape quelque chose de nouveau
 });
 
+/**
+ * Permet de vérifier la cohérence du code postal selon un regex
+ * 
+ * @param pc code postal de la commune
+ */
 function verifPostalCode(pc){
     const verifModelePc = /^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$/;
     if(verifModelePc.test(pc)){
@@ -220,18 +253,29 @@ function verifPostalCode(pc){
     return 0;
 }
 
+/**
+ * Permet de valider une entrée de code postal avec un click.
+ */
 boutonDeValidation.addEventListener("click", ()=>{
     validation.innerText = "";
     valeurSoumise = entree.value;
     recupererDonnees(valeurSoumise);
 });
 
+/**
+ * Permet de valider une entrée de code postal avec la touche entrée.
+ */
 entree.addEventListener("keypress", ()=>{
     validation.innerText = "";
     valeurSoumise = entree.value;
     recupererDonnees(valeurSoumise);
 })
 
+/**
+ * Permet de récupérer le codeInsee d'une commune
+ * 
+ * @param nomCommune le nom de la commune
+ */
 async function recupererDonneesVille(nomCommune){
     try{
         const result = await fetch(`https://geo.api.gouv.fr/communes?nom=${nomCommune}&fields=departement`);
@@ -251,6 +295,14 @@ validation.addEventListener("change", ()=>{
     recupererDonneesVille(selectOption.value)
 })
 
+
+/**
+ * Peremt de récupérer les informations météos selon un jour précis entre 1 et 7 
+ * 
+ * @param codeInsee le codeInsee d'une commune
+ * @param i le jour correspondant
+ * @param dateSemaine la date 
+ */
 async function recupererDonneesMeteo(codeInsee,i,dateSemaine){
     try{ 
 
@@ -307,6 +359,9 @@ async function recupererDonneesMeteo(codeInsee,i,dateSemaine){
     }
 }
 
+/**
+ * Permet d'afficher toutes les informations après avoir indiqué la commune
+ */
 function affichageInfos(){
     infosPrincipales.style.visibility = "visible";
     enleverAffichageCommune();
@@ -327,6 +382,9 @@ function affichageInfos(){
 
 }
 
+/**
+ * Permet de vérifier la checkBox et ses éléments cochées.
+ */
 function verifEncadrer(){
     if(latitudeCheckBox.checked == false && cumulPluieCheckBox.checked == false && directionVentCheckBox.checked ==false && longitudeCheckBox.checked == false && ventMoyenCheckBox.checked == false ){
         donneesSupplementaires.style.visibility ="hidden";
@@ -342,6 +400,9 @@ function verifEncadrer(){
     }
 }
 
+/**
+ * Permet de vérifier la checkbox et ses éléments cochées.
+ */
 function verifRemettreEncadrer(){
     if(latitudeCheckBox.checked == true || cumulPluieCheckBox.checked == true || directionVentCheckBox.checked == true || longitudeCheckBox.checked == true || ventMoyenCheckBox.checked == true){
         donneesSupplementaires.style.visibility ="visible";
@@ -357,6 +418,9 @@ function verifRemettreEncadrer(){
     }
 }
 
+/**
+ * Permet de vérifier si un navigateur à reload la page ou non
+ */
 if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
     latitudeCheckBox.checked = true;
     cumulPluieCheckBox.checked = true;
@@ -369,6 +433,9 @@ if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
     console.info( "This page is not reloaded");
 }
 
+/**
+ * permet d'enlever l'affichage de base avec l'entrée du code postal
+ */
 function enleverAffichageCommune(){
 
     parametres.position ="";
@@ -385,6 +452,9 @@ function enleverAffichageCommune(){
     revenirArriere.style.visibility = "visible";
 }
 
+/**
+ * Petite fonction qui permet de placer le titre
+ */
 function PlacerInstantWeather(){
     titre.style.marginTop = "5%";
 }
@@ -399,6 +469,10 @@ const carte = document.getElementById("carte");
 const pluie = document.getElementById("pluie");
 const vent = document.getElementById("vent");
 
+
+/**
+ * Permet de revenir à l'affichage de départ où l'on rentre la commune et le code postal
+ */
 function remettreAffichageCommune(){
     
     revenirArriere.position ="absolute";
@@ -445,6 +519,9 @@ function remettreAffichageCommune(){
 
 }
 
+/**
+ * Permet de revenir en arrière donc à l'affichage de départ.
+ */
 revenirArriere.addEventListener("click",()=>{
     remettreAffichageCommune();
     combienDeJours.value = combienDeJours.options[0].value;
@@ -452,7 +529,12 @@ revenirArriere.addEventListener("click",()=>{
     card.style.visibility = "hidden";
 })
 
-
+/**
+ * Permet de récupérer la description météo et de changer le background et les icones en fonction
+ * 
+ * @param s le temps actuel 
+ * @param meteo la meteo de l'api pour connaitre le temps
+ */
 function descriptionMeteo (meteo, s){
     if(meteo == 0){
         s.innerHTML = '<i class="fa-regular fa-sun"></i>';
@@ -509,6 +591,13 @@ annuler.addEventListener("click",()=>{
     formulaire.style.visibility="hidden";
 })
 
+/**
+ * Permet de savoir si une checkbox est coché ou non et permet d'afficher les valeurs concernées ou non.
+ * 
+ * @param checkBox la checkBox à vérifier parmi les 5
+ * @param value la valeur de la checkBox
+ * @param text le texte à verifier dans cette checkBox
+ */
 function verifCheckBox(checkBox,value,text){
     if(checkBox.checked == false){
         value.style.visibility = "hidden";
@@ -522,6 +611,10 @@ function verifCheckBox(checkBox,value,text){
     }
 }
 
+
+/**
+ * Permet de créer la pluie sur le Canvas
+ */
 function createRainDrop(){
     const x = Math.random() * rainCanvas.width;
     const y = 0;
@@ -531,6 +624,9 @@ function createRainDrop(){
     raindrops.push({x, y, speed, length});
 }
 
+/**
+ * Permet de mettre à jour la pluie à chaque instant.
+ */
 function updateRaindrops(){
     for(let i = 0; i < raindrops.length; i++){
         const raindrop = raindrops[i];
@@ -544,6 +640,9 @@ function updateRaindrops(){
     }
 }
 
+/**
+ * Permet de dessiner les goutes d'eau de la pluie sur le Canvas
+ */
 function drawRaindrops(){
     ctx.clearRect(0, 0, rainCanvas.width, rainCanvas.height);
 
@@ -561,6 +660,9 @@ function drawRaindrops(){
 
 }
 
+/**
+ * Permet d'animer la pluie pour qu'elle soit dynamique
+ */
 function animateRain(){
     createRainDrop();
     updateRaindrops();
