@@ -377,6 +377,12 @@ footer{
     width: auto;
     height: auto;
     overflow: hidden; /* Pour éviter le dépassement */
+    max-width: 32em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -5em;
+    padding: 1em;
+    box-sizing: border-box;
 }
 
 #pluieCanvas {
@@ -424,17 +430,28 @@ footer{
 @media screen and (max-width: 600px) {
     #WeatherCard{
         font-size: 0.8em;
-        max-width: 100%;
     }
 }
 
+@media screen and (max-width: 500px) {
+    #WeatherCard{
+        font-size: 0.8em;
+        margin-top: 0em;
+    }
+    #parametres{
+        margin-top: 12em;
+    }
+    #revenirArriere{
+        margin-top: 12em;
+    }
+}
 
 @media screen and (max-width: 428px) {
     #parametres{
-        margin-top: 13em;
+        margin-top: 12em;
     }
     #revenirArriere{
-        margin-top: 13em;
+        margin-top: 12em;
     }
     #donneesSupplementaires{
         width: 25em ;
@@ -466,7 +483,9 @@ footer{
 }
 
 @media screen and (max-width: 414px) {
-
+    #WeatherCard{
+        max-width: 27em;
+    }
     #selectionParJour{
         width: 25em;
     }
@@ -510,13 +529,13 @@ footer{
     }
     
 }
-
+/*
 @media screen and (max-width: 390px) {
     #parametres{
-        margin-top: 13em;
+        margin-top: 12em;
     }
     #revenirArriere{
-        margin-top: 13em;
+        margin-top: 12em;
     }
     #donneesSupplementaires{
         width: 22em ;
@@ -687,18 +706,21 @@ footer{
         font-size: 1.5em;
         margin: 0em;
     }
-}
+}*/
 
-@media screen and (max-width: 350px) {
-    #parametres{
+@media screen and (max-width: 345px) {
+    /*#parametres{
         margin-top: 12em;
     }
     #revenirArriere{
         margin-top: 12em;
+    }*/
+    #WeatherCard{
+        max-width: 24em;
     }
     #donneesSupplementaires{
-        width: 19em ;
-    }
+        width: 22em ;
+    }/*
     #formulaire{
         width: 130px;
     }
@@ -748,9 +770,9 @@ footer{
     }
     #titre{
         font-size:3.5em;
-    }
+    }*/
 }
-
+/*
 @media screen and (max-width: 320px) {
     #WeatherCard{
         font-size: 0.7em;
@@ -880,4 +902,4 @@ footer{
     #titre{
         font-size:3.5em;
     }
-}
+}*/
