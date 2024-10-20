@@ -411,6 +411,7 @@ function remettreAffichageCommune(){
     document.getElementById("choixParJour").style.position ="absolute";
     selectionParJour.style.position = "absolute";
     contenu.style.position ="";
+    rainCanvas.style.visibility ="hidden";
 
     indicationVille.style.visibility = "visible";
     codePostal.style.visibility ="visible";
