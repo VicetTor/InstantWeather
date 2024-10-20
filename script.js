@@ -43,22 +43,21 @@ let donneeParJour = [];
 let donneeMeteo;
 let valeurSoumise;
 
-const rainCanvas = document.getElementById("rainCanvas");
-const ctx = rainCanvas.getContext('2d');
+const pluieCanvas = document.getElementById("pluieCanvas");
+const ctx = pluieCanvas.getContext('2d');
 
-rainCanvas.width = window.innerWidth * 1.5;
-rainCanvas.height = window.innerHeight * 1.5;
-rainCanvas.style.visibility = "hidden";
+pluieCanvas.width = window.innerWidth * 1.5;
+pluieCanvas.height = window.innerHeight * 1.5;
+pluieCanvas.style.visibility = "hidden";
 card.style.visibility = "hidden";
 
 window.addEventListener('resize', () => {
-    rainCanvas.width = window.innerWidth * 1.5;
-    rainCanvas.height = window.innerHeight * 1.5;
-    raindrops.length = 0;
-
+    pluieCanvas.width = window.innerWidth * 1.5;
+    pluieCanvas.height = window.innerHeight * 1.5;
+    gouttes.length = 0;
 });
 
-const raindrops = [];
+const gouttes = [];
 
 animateRain();
 
@@ -158,7 +157,7 @@ function ajouterDivisonJour(j){ // j indice du tableau donneeParJour[]
             jourSemaine = tableau_semaine[date.getDay()+j];
         }
         recupererDonneesMeteo(insee,j,jourSemaine);
-        rainCanvas.style.visibility = "hidden";
+        pluieCanvas.style.visibility = "hidden";
 
     },false)
 
@@ -482,7 +481,7 @@ function remettreAffichageCommune(){
     document.getElementById("choixParJour").style.position ="absolute";
     selectionParJour.style.position = "absolute";
     contenu.style.position ="";
-    rainCanvas.style.visibility ="hidden";
+    pluieCanvas.style.visibility ="hidden";
 
     indicationVille.style.visibility = "visible";
     codePostal.style.visibility ="visible";
@@ -560,7 +559,7 @@ function descriptionMeteo (meteo, s){
     if((meteo >= 10 && meteo <= 15) || (meteo >= 40 && meteo <= 48) || (meteo >= 210 && meteo <= 212) || (meteo == 235)){
         s.innerHTML =  '<i class="fa-solid fa-cloud-rain"></i>';
         if (s == ciel){ 
-            rainCanvas.style.visibility = "visible";
+            pluieCanvas.style.visibility = "visible";
             body.style.backgroundColor = "#496769";
             formulaire.style.backgroundColor ="#496769";
             descriptionCiel.innerText = "Pluvieux"
@@ -615,26 +614,26 @@ function verifCheckBox(checkBox,value,text){
 /**
  * Permet de créer la pluie sur le Canvas
  */
-function createRainDrop(){
-    const x = Math.random() * rainCanvas.width;
+function creerPluie(){
+    const x = Math.random() * pluieCanvas.width;
     const y = 0;
     const speed = Math.random() * 5 + 2;
     const length = Math.random() * 20 + 10;
 
-    raindrops.push({x, y, speed, length});
+    gouttes.push({x, y, speed, length});
 }
 
 /**
  * Permet de mettre à jour la pluie à chaque instant.
  */
-function updateRaindrops(){
-    for(let i = 0; i < raindrops.length; i++){
-        const raindrop = raindrops[i];
+function mettreAJourPluie(){
+    for(let i = 0; i < gouttes.length; i++){
+        const goutte = gouttes[i];
 
-        raindrop.y += raindrop.speed;
+        goutte.y += goutte.speed;
 
-        if(raindrop.y > rainCanvas.height){
-            raindrops.splice(i,1);
+        if(goutte.y > pluieCanvas.height){
+            gouttes.splice(i,1);
             i--;
         }
     }
@@ -643,18 +642,18 @@ function updateRaindrops(){
 /**
  * Permet de dessiner les goutes d'eau de la pluie sur le Canvas
  */
-function drawRaindrops(){
-    ctx.clearRect(0, 0, rainCanvas.width, rainCanvas.height);
+function dessinerPluie(){
+    ctx.clearRect(0, 0, pluieCanvas.width, pluieCanvas.height);
 
     ctx.strokeStyle = 'white';
     ctx.lineWidth = 2;
 
-    for(let i = 0; i<raindrops.length; i++){
-        const raindrop = raindrops[i];
+    for(let i = 0; i<gouttes.length; i++){
+        const goutte = gouttes[i];
 
         ctx.beginPath();
-        ctx.moveTo(raindrop.x, raindrop.y);
-        ctx.lineTo(raindrop.x, raindrop.y + raindrop.length);
+        ctx.moveTo(goutte.x, goutte.y);
+        ctx.lineTo(goutte.x, goutte.y + goutte.length);
         ctx.stroke();
     }
 
@@ -664,9 +663,9 @@ function drawRaindrops(){
  * Permet d'animer la pluie pour qu'elle soit dynamique
  */
 function animateRain(){
-    createRainDrop();
-    updateRaindrops();
-    drawRaindrops();
+    creerPluie();
+    mettreAJourPluie();
+    dessinerPluie();
     requestAnimationFrame(animateRain);
 }
 

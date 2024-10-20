@@ -379,7 +379,7 @@ footer{
     overflow: hidden; /* Pour éviter le dépassement */
 }
 
-#rainCanvas {
+#pluieCanvas {
     position: absolute;
     z-index: -1; /* En arrière-plan */
     width: 100%;
