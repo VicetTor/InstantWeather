@@ -37,7 +37,7 @@ const cumulPluieCheckBox = document.getElementById("cumulPluieCheckBox");
 const directionVentCheckBox = document.getElementById("directionVentCheckBox")
 const ventMoyenCheckBox = document.getElementById("ventMoyenCheckBox");
 
-const card = document.getElementById("card");
+const card = document.getElementById("WeatherCard");
 
 let donneeParJour = [];
 let donneeMeteo;

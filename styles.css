@@ -81,14 +81,14 @@ body{
     text-align: center;
 }
 
-#card{
+#WeatherCard{
     box-shadow: 0 0 .4rem .4rem rgba(0, 0, 0, 0.1);
     padding: 5%;
     margin: 5%;
     border-radius: 2em;
 }
 
-#card:hover{
+#WeatherCard:hover{
     border: solid;
     border-color: pink;
 }
@@ -372,7 +372,7 @@ footer{
     margin-top: auto;
 }
 
-#card {
+#WeatherCard {
     position: relative;
     width: auto;
     height: auto;
@@ -422,7 +422,7 @@ footer{
 }
 
 @media screen and (max-width: 600px) {
-    #card{
+    #WeatherCard{
         font-size: 0.8em;
         max-width: 100%;
     }
@@ -690,7 +690,7 @@ footer{
 }
 
 @media screen and (max-width: 320px) {
-    #card{
+    #WeatherCard{
         font-size: 0.7em;
         max-width: 100%;
     }
